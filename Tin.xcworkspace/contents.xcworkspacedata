@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:examples/Sway/Sway.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:examples/SimpleDrawing/SimpleDrawing.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:examples/RandomCircles/RandomCircles.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:examples/CartDemo/CartDemo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:examples/Attraction/Attraction.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Tin/Tin.xcodeproj">
+   </FileRef>
+</Workspace>
