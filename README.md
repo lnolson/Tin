@@ -6,9 +6,9 @@ Tin is a Swift Framework for general media arts programming, with an aim for sim
 
 Helpful documentation about how to use this is tbd. (working on it...)
 
-There are several example projects in the Examples folder.
+There are several projects in the examples folder as a starting point.
 
-Loren Olson
-School of Arts, Media and Engineering
-Herberger Institute for Design and the Arts
-Arizona State University
+Loren Olson<br>
+School of Arts, Media and Engineering<br>
+Herberger Institute for Design and the Arts<br>
+Arizona State University<br>
