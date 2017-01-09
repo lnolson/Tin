@@ -3,7 +3,9 @@
 //  Tin
 //
 //  Created by Loren Olson on 1/6/17.
-//  Copyright © 2017 ASU. All rights reserved.
+//  Created at the School of Arts, Media and Engineering,
+//  Herberger Institute for Design and the Arts,
+//  Arizona State University.
 //
 
 //  Swift implementation of Improved Noise by Ken Perlin.

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C32CA1B1E2357DE004D19BC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 5C32CA1A1E2357DE004D19BC /* README.md */; };
 		5C4C93E41E203C0200503D38 /* Tin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4C93DA1E203C0200503D38 /* Tin.framework */; };
 		5C4C93E91E203C0200503D38 /* TinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4C93E81E203C0200503D38 /* TinTests.swift */; };
 		5C4C93EB1E203C0200503D38 /* Tin.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C4C93DD1E203C0200503D38 /* Tin.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C32CA1A1E2357DE004D19BC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		5C4C93DA1E203C0200503D38 /* Tin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C4C93DD1E203C0200503D38 /* Tin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tin.h; sourceTree = "<group>"; };
 		5C4C93DE1E203C0200503D38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 		5C4C93D01E203C0200503D38 = {
 			isa = PBXGroup;
 			children = (
+				5C32CA1A1E2357DE004D19BC /* README.md */,
 				5C4C93DC1E203C0200503D38 /* Tin */,
 				5C4C93E71E203C0200503D38 /* TinTests */,
 				5C4C93DB1E203C0200503D38 /* Products */,
@@ -251,6 +254,7 @@
 				5C4C94091E203C4F00503D38 /* TVector2.swift in Sources */,
 				5C4C94001E203C4F00503D38 /* Tin.swift in Sources */,
 				5C4C94081E203C4F00503D38 /* TRandom.swift in Sources */,
+				5C32CA1B1E2357DE004D19BC /* README.md in Sources */,
 				5C4C94011E203C4F00503D38 /* CoreGraphicsRenderer.swift in Sources */,
 				5C4C94041E203C4F00503D38 /* TStopwatch.swift in Sources */,
 				5C4C94881E206B0C00503D38 /* ImprovedNoise.swift in Sources */,
