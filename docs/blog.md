@@ -10,7 +10,7 @@ title: Blog
 {% for post in site.posts %}
 	<li class="list-group-item">
     	<span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>&nbsp;&nbsp;
-		<span class="lead"><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a></span>
+		<span class="lead"><a class="post-link" href="{{ post.url | prepend: site.github.url }}">{{ post.title | escape }}</a></span>
 	</li>
 {% endfor %}
 </ul>
@@ -18,5 +18,5 @@ title: Blog
 </div>
 
 <div class="spacer"> 
-<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.github.url }}">via RSS</a></p>
 </div>
