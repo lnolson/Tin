@@ -1,0 +1,30 @@
+---
+layout: default
+title: Tin
+---
+{% include header.html %}
+
+
+<div class="jumbotron">
+	<h1>Tin</h1>
+	<p>The Tin Framework. A Swift framework for general media arts programming.</p>
+</div>
+
+<div>
+	<p>
+		Tin is a simple framework written in Swift for media arts programming suitable for learning how to code. Tin requires Swift 3, and macOS 10.11+. A few of the priorities that influence Tin.
+	</p>
+	<ul>
+		<li>Use Swift Programming language.</li>
+		<li>Be Swift native, and Swifty in spirit - as long as that is simple.</li>
+		<li>Simple, easy to learn.</li>
+		<li>Two frameworks/libraries that I'm inspired by in their directness and simplicity: from long ago, IrisGL; from recent teaching experience, Processing.</li>
+		<li>Simplicity and clarity is more important than immediate optimization.</li>
+		<li>Work in a way that will allow other (more complex, and specialized) libraries to be used, whether in a user project, or in future framework extensions.</li>
+	</ul>
+	
+	<p>
+		The current (limited) drawing API reflects these priorities. Rendering is done using CoreGraphics apis. A user can easily get a context and do any addition CG drawing. The framework implementation is intended to allow for the possibilty of multiple Rendering implementations. I hope to (soon) create an alternative that directly uses Metal apis.
+	</p>
+</div>
+

@@ -13,3 +13,6 @@ build/
 !default.perspectivev3
 *.xccheckout
 xcuserdata/
+_site
+.sass-cache
+.jekyll-metadata

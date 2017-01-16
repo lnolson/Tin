@@ -1,0 +1,39 @@
+---
+layout: default
+title: Reference
+---
+{% include header.html %}
+
+<p class="text-muted spacer">Global Function</p>
+<h3>constrain()</h3>
+
+<p class="text-muted spacer">Declaration</p>
+<p>func constrain(value: CGFloat, min: CGFloat, max: CGFloat) -> CGFloat</p>
+
+<p class="text-muted spacer">Parameters</p>
+<table class="table table-bordered">
+	<tr>
+		<td>value</td>
+		<td>The input value that will be constrained.</td>
+	</tr>
+	<tr>
+		<td>min</td>
+		<td>The lower bound, value cannot fall below this value.</td>
+	</tr>
+	<tr>
+		<td>max</td>
+		<td>The upper bound, value cannot exceed this value.</td>
+	</tr>
+</table>
+
+<p class="text-muted spacer">Returns</p>
+<p>CGFloat</p>
+
+<p class="text-muted spacer">Description</p>
+<p>Constrains a value to not exceed a maximum and fall below a minimum value.</p>
+
+<p class="text-muted spacer">Examples</p>
+
+{% highlight swift %}
+brightness = constrain(value: brightness, min: 0.0, max: 255.0)
+{% endhighlight %}

@@ -1,0 +1,13 @@
+---
+layout: default
+---
+{% include header.html %}
+
+<div class="spacer">
+	
+<h2>{{ page.title }}</h2>
+<p class="text-muted" style="margin-bottom: 30px;">{{ page.date | date: "%A, %-d %B %Y" | upcase }}</p>
+
+{{ content }}
+
+</div>
