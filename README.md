@@ -4,7 +4,7 @@ This is the source code for the Tin Framework.
 
 Tin is a Swift Framework for general media arts programming, with an aim for simplicity and ease of use. This project grew out of my desire to use Swift for teaching, and was strongly influenced by my experiences with Processing. (https://processing.org)
 
-Helpful documentation about how to use this is tbd. (working on it...)
+A project website is in development at [https://lnolson.github.io/Tin/](https://lnolson.github.io/Tin/).
 
 There are several projects in the examples folder as a starting point.
 
