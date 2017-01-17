@@ -1,0 +1,57 @@
+---
+layout: default
+title: Reference
+---
+{% include header.html %}
+
+<p class="text-muted spacer">Global Function</p>
+<h3>map()</h3>
+
+<p class="text-muted spacer">Declaration</p>
+<code>func map(value: CGFloat, start1: CGFloat, stop1: CGFloat, start2: CGFloat, stop2: CGFloat) -> CGFloat</code>
+
+<p class="text-muted spacer">Parameters</p>
+<table class="table table-bordered">
+	<tr>
+		<td>value</td>
+		<td>The input value to be re-mapped.</td>
+	</tr>
+	<tr>
+		<td>start1</td>
+		<td>The lower bound of the input range.</td>
+	</tr>
+	<tr>
+		<td>stop1</td>
+		<td>The upper bound of the input range.</td>
+	</tr>
+	<tr>
+		<td>start2</td>
+		<td>The lower bound of the output range.</td>
+	</tr>
+	<tr>
+		<td>stop2</td>
+		<td>The upper bound of the output range.</td>
+	</tr>
+</table>
+
+<p class="text-muted spacer">Returns</p>
+<p>CGFloat</p>
+
+<p class="text-muted spacer">Description</p>
+<p>
+	Remap a number from one range to another. Numbers outside the input range are not clamped, since out of range can be useful. Example: If the input range is 0 to 1, and output range is 0 to 100. Given the value 0.25, the result 25.0 is returned.
+</p>
+
+<p class="text-muted spacer">Examples</p>
+
+{% highlight swift %}
+let a = 0.25
+let b = map(value: a, start1:0.0, stop1: 1.0, start2: 0.0, stop2: 100.0)
+// The value of b is 25.0
+
+let v1 = 25.0
+let v2 = map(value: v1, start1:0.0, stop1: 100.0, start2: 1000.0, stop2: 2000.0)
+// The value of v2 is 1250.0
+{% endhighlight %}
+
+<p class="text-muted spacer">Related</p>

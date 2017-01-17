@@ -1,0 +1,46 @@
+---
+layout: default
+title: Reference
+---
+{% include header.html %}
+
+<p class="text-muted spacer">Global Function</p>
+<h3>norm()</h3>
+
+<p class="text-muted spacer">Declaration</p>
+<code>func norm(value: CGFloat, startValue: CGFloat, endValue: CGFloat) -> CGFloat</code>
+
+<p class="text-muted spacer">Parameters</p>
+<table class="table table-bordered">
+	<tr>
+		<td>value</td>
+		<td>The input value to be normalized.</td>
+	</tr>
+	<tr>
+		<td>startValue</td>
+		<td>The lower bound of the input range.</td>
+	</tr>
+	<tr>
+		<td>endValue</td>
+		<td>The upper bound of the input range.</td>
+	</tr>
+</table>
+
+<p class="text-muted spacer">Returns</p>
+<p>CGFloat</p>
+
+<p class="text-muted spacer">Description</p>
+<p>
+	Normalizes a number in another range into a value between 0 and 1.
+</p>
+
+<p class="text-muted spacer">Examples</p>
+
+{% highlight swift %}
+let a = 20.0
+let b = norm(value: a, startValue: 0.0, endValue: 50.0)
+// The value of b is 0.4
+{% endhighlight %}
+
+<p class="text-muted spacer">Related</p>
+<p><a href="{{site.github.url}}../map">map()</a></p>

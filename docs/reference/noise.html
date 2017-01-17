@@ -1,0 +1,46 @@
+---
+layout: default
+title: Reference
+---
+{% include header.html %}
+
+<p class="text-muted spacer">Global Function</p>
+<h3>noise()</h3>
+
+<p class="text-muted spacer">Declaration</p>
+<code>func noise( x: CGFloat, y: CGFloat, z: CGFloat ) -> CGFloat</code>
+
+<p class="text-muted spacer">Parameters</p>
+<table class="table table-bordered">
+	<tr>
+		<td>x</td>
+		<td>The x axis coordinate in noise texture.</td>
+	</tr>
+	<tr>
+		<td>y</td>
+		<td>The y axis coordinate in noise texture.</td>
+	</tr>
+	<tr>
+		<td>z</td>
+		<td>The z axis coordinate in noise texture.</td>
+	</tr>
+</table>
+
+<p class="text-muted spacer">Returns</p>
+<p>CGFloat</p>
+
+<p class="text-muted spacer">Description</p>
+<p>
+	Calculate the Perlin noise value at specified location. 
+</p>
+
+<p class="text-muted spacer">Examples</p>
+
+{% highlight swift %}
+let a = 20.0
+let b = norm(value: a, startValue: 0.0, endValue: 50.0)
+// The value of b is 0.4
+{% endhighlight %}
+
+<p class="text-muted spacer">Related</p>
+<p><a href="{{site.github.url}}../map">map()</a></p>
