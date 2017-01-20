@@ -40,6 +40,9 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     }
     
     
+    // MARK: - Rendering cycle
+    
+    
     public func prepareForUpdate(frame: NSRect) {
         if let context = NSGraphicsContext.current() {
             if useLayer && cglayer == nil {
@@ -63,6 +66,7 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     }
     
     
+    // MARK: - Drawing methods
     
     
     public func background(red: CGFloat, green: CGFloat, blue: CGFloat) {
@@ -74,24 +78,17 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     }
     
     
-    public func rect(x1: CGFloat, y1: CGFloat, x2: CGFloat, y2: CGFloat) {
-        let r = CGRect(x: x1, y: y1, width: x2 - x1 + 1.0, height: y2 - y1 + 1.0)
-        if delegate.fill {
-            cg.fill(r)
-        }
-        if delegate.stroke {
-            cg.stroke(r)
-        }
+    public func ellipse(x: CGFloat, y: CGFloat, w: CGFloat, h: CGFloat) {
+        let r = CGRect(x: x, y: y, width: w, height: h)
+        ellipse(inRect: r)
     }
     
-    
-    public func rect(x: CGFloat, y: CGFloat, w: CGFloat, h: CGFloat) {
-        let r = CGRect(x: x, y: y, width: w, height: h)
+    public func ellipse(inRect rect: CGRect) {
         if delegate.fill {
-            cg.fill(r)
+            cg.fillEllipse(in: rect)
         }
         if delegate.stroke {
-            cg.stroke(r)
+            cg.strokeEllipse(in: rect)
         }
     }
     
@@ -119,13 +116,12 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     }
     
     
-    public func ellipse(x: CGFloat, y: CGFloat, w: CGFloat, h: CGFloat) {
-        let r = CGRect(x: x, y: y, width: w, height: h)
+    public func rect(withRect rect: CGRect) {
         if delegate.fill {
-            cg.fillEllipse(in: r)
+            cg.fill(rect)
         }
         if delegate.stroke {
-            cg.strokeEllipse(in: r)
+            cg.stroke(rect)
         }
     }
     
@@ -148,27 +144,33 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     }
     
     
-    public func beginPath() {
+    public func pathBegin() {
         cg.beginPath()
     }
     
     
-    public func pathVertex(x: CGFloat, y: CGFloat) {
+    public func pathVertex(at point: CGPoint) {
         if delegate.pathVertexCount == 0 {
-            cg.move(to: CGPoint(x: x, y: y))
+            cg.move(to: point)
         }
         else {
-            cg.addLine(to: CGPoint(x: x, y: y))
+            cg.addLine(to: point)
         }
     }
     
     
-    public func closePath() {
+    public func pathAddCurve(to: CGPoint, control1: CGPoint, control2: CGPoint) {
+        cg.addCurve(to: to, control1: control1, control2: control2)
+    }
+    
+    
+    
+    public func pathClose() {
         cg.closePath()
     }
     
     
-    public func endPath() {
+    public func pathEnd() {
         var path: CGPath?
         if delegate.fill {
             if delegate.stroke { path = cg.path }
@@ -179,6 +181,9 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
             cg.strokePath()
         }
     }
+    
+    
+    // MARK: - Color state
     
     
     public func setStrokeColor(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
@@ -200,6 +205,10 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
         return currentFillColor
     }
     
+    
+    // MARK: - Context state
+    
+    
     public func pushState() {
         cg.saveGState()
     }
@@ -207,6 +216,10 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     public func popState() {
         cg.restoreGState()
     }
+    
+    
+    // MARK: - Transformations
+    
     
     public func translate(dx: CGFloat, dy: CGFloat) {
         cg.translateBy(x: dx, y: dy)
@@ -216,10 +229,13 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
         cg.rotate(by: angle)
     }
     
+    // TODO
     public func scale(by amount: CGFloat) {
         
     }
     
+    
+    // MARK: - Image
     
     public func image(x: CGFloat, y: CGFloat, image: TImage) {
         let rect = CGRect(x: x, y: y, width: image.width, height: image.height)
@@ -228,6 +244,8 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
         }
     }
     
+    
+    // MARK: - Text
     
     public func text(message: String, x: CGFloat, y: CGFloat, font: TFont) {
         let attributes = font.makeAttributes()

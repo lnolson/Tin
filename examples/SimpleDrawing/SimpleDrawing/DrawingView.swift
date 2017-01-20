@@ -39,10 +39,18 @@ class DrawingView: TView {
         tin.stroke = true
         tin.setFillColor(red: 0.1, green: 0.6, blue: 0.2, alpha: 1.0)
         tin.setStrokeColor(red: 0.1, green: 0.05, blue: 0.05, alpha: 1.0)
-        tin.rect(x: tin.midX - 50.0, y: tin.midY - 50.0, w: 100.0, h: 100.0)
+        tin.rect(x: tin.midX - 50.0, y: tin.midY - 50.0, width: 100.0, height: 100.0)
+        
+        tin.rect(withRect: CGRect(x: 1000, y: 10, width: 30, height: 100))
+        let o = CGPoint(x: 1050, y: 10)
+        let s = CGSize(width: 30, height: 100)
+        tin.rect(origin: o, size: s)
+        
+        tin.rect(centerX: tin.midX, centerY: tin.midY, width: 50.0, height: 50.0)
         
         tin.setFillColor(red: 0.6, green: 0.1, blue: 0.2, alpha: 1.0)
-        tin.ellipse(x: tin.midX - 50.0, y: tin.midY + 75.0, w: 100.0, h: 100.0)
+        //tin.ellipse(x: tin.midX - 50.0, y: tin.midY + 75.0, width: 100.0, height: 100.0)
+        tin.ellipse(centerX: tin.midX, centerY: tin.midY + 125.0, width: 100.0, height: 100.0)
         
         tin.lineWidth(5.0)
         tin.line(x1: tin.midX - 400.0, y1: tin.midY - 100.0, x2: tin.midX + 400.0, y2: tin.midY - 100)
@@ -56,11 +64,19 @@ class DrawingView: TView {
         tin.lineWidth(3.0)
         tin.stroke = true
         tin.fill = true
-        tin.beginPath()
+        tin.pathBegin()
         tin.pathVertex(x: 50.0, y: 50.0)
         tin.pathVertex(x: 125.0, y: 100.0)
         tin.pathVertex(x: 50.0, y: 150.0)
-        tin.endPath()
+        tin.pathEnd()
+        
+        tin.fill = false
+        tin.lineWidth(15.0)
+        tin.pathBegin()
+        tin.pathVertex(x: 150.0, y: 50.0)
+        tin.pathAddCurve(to: CGPoint(x: 300.0, y: 180.0), control1: CGPoint(x: 230.0, y: 50.0), control2: CGPoint(x: 300.0, y: 100.0))
+        tin.pathEnd()
+        
         
         
         tin.image(x: 800.0, y: 300.0, image: snowman!)
