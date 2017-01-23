@@ -30,7 +30,9 @@ class DrawingView: TView {
     
     override func update() {
         
-        tin.background(red: 0.5, green: 0.5, blue: 0.5)
+        //tin.background(red: 0.5, green: 0.5, blue: 0.5)
+        tin.background(gray: 0.5)
+        
         
         
         tin.lineWidth(2.0)
@@ -57,7 +59,8 @@ class DrawingView: TView {
         
         
         tin.lineWidth(2.0)
-        tin.setFillColor(red: 0.3, green: 0.2, blue: 0.8, alpha: 1.0)
+        //tin.setFillColor(red: 0.3, green: 0.2, blue: 0.8, alpha: 1.0)
+        tin.setFillColor(color: NSColor(red: 0.3, green: 0.2, blue: 0.8, alpha: 1.0))
         tin.stroke = true
         tin.triangle(x1: tin.midX, y1: tin.size.height - 20.0, x2: tin.midX - 50.0, y2: tin.size.height - 100.0, x3: tin.midX + 50.0, y3: tin.size.height - 100.0)
         

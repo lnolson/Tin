@@ -53,6 +53,11 @@ open class TView: NSView {
         super.init(coder: coder)
     }
     
+    public init(width: CGFloat, height: CGFloat) {
+        let newFrame = NSRect(x: 0.0, y: 0.0, width: width, height: height)
+        super.init(frame: newFrame)
+    }
+    
     
     // MARK: - instance methods
     

@@ -136,6 +136,14 @@ public class Tin {
         render?.background(red: red, green: green, blue: blue)
     }
     
+    public func background(gray: CGFloat) {
+        render?.background(red: gray, green: gray, blue: gray)
+    }
+    
+    public func background(color: NSColor) {
+        render?.background(red: color.redComponent, green: color.greenComponent, blue: color.blueComponent)
+    }
+    
     
     // Ellipse methods
     
@@ -280,10 +288,35 @@ public class Tin {
         render?.setStrokeColor(red: red, green: green, blue: blue, alpha: alpha)
     }
     
+    public func setStrokeColor(gray: CGFloat, alpha: CGFloat) {
+        render?.setStrokeColor(red: gray, green: gray, blue: gray, alpha: alpha)
+    }
+    
+    public func setStrokeColor(gray: CGFloat) {
+        render?.setStrokeColor(red: gray, green: gray, blue: gray, alpha: 1.0)
+    }
+    
+    public func setStrokeColor(color: NSColor) {
+        render?.setStrokeColor(red: color.redComponent, green: color.greenComponent, blue: color.blueComponent, alpha: color.alphaComponent)
+    }
+    
     
     public func setFillColor(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         render?.setFillColor(red: red, green: green, blue: blue, alpha: alpha)
     }
+    
+    public func setFillColor(gray: CGFloat, alpha: CGFloat) {
+        render?.setFillColor(red: gray, green: gray, blue: gray, alpha: alpha)
+    }
+    
+    public func setFillColor(gray: CGFloat) {
+        render?.setFillColor(red: gray, green: gray, blue: gray, alpha: 1.0)
+    }
+    
+    public func setFillColor(color: NSColor) {
+        render?.setFillColor(red: color.redComponent, green: color.greenComponent, blue: color.blueComponent, alpha: color.alphaComponent)
+    }
+    
     
     public func strokeColor() -> NSColor {
         return (render?.strokeColor())!
@@ -341,7 +374,7 @@ public class Tin {
         mouseY = point.y
     }
     
-    public func updateFrameCount() {
+    func updateFrameCount() {
         frameCount += 1
     }
     

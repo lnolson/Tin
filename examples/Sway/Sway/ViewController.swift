@@ -26,7 +26,9 @@ class ViewController: NSViewController {
             view.window?.setFrame(newWinFrame, display: true)
         }
         
-        view = SwayView(frame: newFrame)
+        //view = SwayView(frame: newFrame)
+ 
+        view = SwayView(width: 1200.0, height: 600.0)
         view.window?.title = "Sway"
     }
 
