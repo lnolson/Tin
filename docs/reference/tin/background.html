@@ -1,0 +1,47 @@
+---
+layout: default
+title: Reference
+---
+{% include header.html %}
+
+<ol class="breadcrumb">
+  <li><a href="../..">Reference</a></li>
+  <li><a href="..">Tin</a></li>
+  <li class="active">background()</li>
+</ol>
+
+<p class="text-muted spacer">Tin Instance Method</p>
+<h3>background()</h3>
+
+<p class="text-muted spacer">Declaration</p>
+<code>func background(red: CGFloat, green: CGFloat, blue: CGFloat)</code>
+
+<p class="text-muted spacer">Parameters</p>
+<table class="table table-bordered">
+	<tr>
+		<td>red</td>
+		<td>red color componenet</td>
+	</tr>
+	<tr>
+		<td>green</td>
+		<td>green color component</td>
+	</tr>
+	<tr>
+		<td>blue</td>
+		<td>blue color component</td>
+	</tr>
+</table>
+
+<p class="text-muted spacer">Returns</p>
+<p>none</p>
+
+<p class="text-muted spacer">Description</p>
+<p>Set the clear color, then clear the view. Typically, this is used as the first drawing operation in the update method.</p>
+
+<p class="text-muted spacer">Examples</p>
+
+{% highlight swift %}
+tin.background(red: 0.5, green: 0.5, blue: 0.5)
+{% endhighlight %}
+
+<p class="text-muted spacer">Related</p>
