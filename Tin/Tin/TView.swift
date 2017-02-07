@@ -118,7 +118,7 @@ open class TView: NSView {
             let averageDrawTime = totalDrawTime / TimeInterval(tin.frameCount - 1)
             tin.setFillColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
             infoFont.horizontalAlignment = .right
-            tin.text(message: String(format: "Draw %.04f", averageDrawTime), x: frame.width - 5, y: 5, font: infoFont)
+            tin.text(message: String(format: "Draw %.04f", averageDrawTime), font: infoFont, x: frame.width - 5, y: 5)
         }
         
         tin.didFinishUpdate()

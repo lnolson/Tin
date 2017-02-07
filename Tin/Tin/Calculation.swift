@@ -12,6 +12,27 @@
 //  A few global useful computation functions.
 
 
+
+public protocol Mathable: Equatable {
+    
+    static func +(lhs: Self, rhs: Self) -> Self
+    
+    static func -(lhs: Self, rhs: Self) -> Self
+    
+    static func *(lhs: Self, rhs: Self) -> Self
+    
+    static func /(lhs: Self, rhs: Self) -> Self
+    
+}
+
+
+extension Int: Mathable {}
+extension Float: Mathable {}
+extension Double: Mathable {}
+extension CGFloat: Mathable {}
+
+
+
 import Foundation
 
 /**
@@ -24,7 +45,7 @@ import Foundation
  - Returns: (CGFloat) The constrained value.
  
  */
-public func constrain( value: CGFloat, min: CGFloat, max: CGFloat ) -> CGFloat {
+public func constrain<T: Comparable>( value: T, min: T, max: T ) -> T {
     if value < min {
         return min
     }
@@ -49,7 +70,7 @@ public func constrain( value: CGFloat, min: CGFloat, max: CGFloat ) -> CGFloat {
  - Returns: (CGFloat) The interpolated value.
  
  */
-public func lerp(startValue: CGFloat, endValue: CGFloat, t: CGFloat) -> CGFloat {
+public func lerp<T>(startValue: T, endValue: T, t: T) -> T where T: NumericFloatingPoint, T: Mathable {
     return startValue + (endValue - startValue) * t;
 }
 
@@ -62,8 +83,8 @@ public func lerp(startValue: CGFloat, endValue: CGFloat, t: CGFloat) -> CGFloat 
  
  - Returns: (CGFloat) Magnitude (ie length).
  */
-public func mag(x: CGFloat, y: CGFloat) -> CGFloat {
-    return sqrt((x * x) + (y * y))
+public func mag<T>(x: T, y: T) -> T where T: NumericFloatingPoint, T: Mathable {
+    return sqrt(x * x + y * y)
 }
 
 
@@ -83,7 +104,7 @@ public func mag(x: CGFloat, y: CGFloat) -> CGFloat {
  
  - Returns: (CGFloat) The re-mapped value.
  */
-public func map(value: CGFloat, start1: CGFloat, stop1: CGFloat, start2: CGFloat, stop2: CGFloat) -> CGFloat {
+public func remap<T>(value: T, start1: T, stop1: T, start2: T, stop2: T) -> T where T: NumericFloatingPoint, T: Mathable {
     let result = start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1))
     if result.isNaN {
         print("NaN (not a number)")
@@ -104,7 +125,7 @@ public func map(value: CGFloat, start1: CGFloat, stop1: CGFloat, start2: CGFloat
  
  - Returns: (CGFloat) Normalized value.
  */
-public func norm(value: CGFloat, startValue: CGFloat, endValue: CGFloat) -> CGFloat {
+public func norm<T>(value: T, startValue: T, endValue: T) -> T where T: NumericFloatingPoint, T: Mathable {
     return (value - startValue) / (endValue - startValue)
 }
 
@@ -119,7 +140,7 @@ public func norm(value: CGFloat, startValue: CGFloat, endValue: CGFloat) -> CGFl
  
  - Returns: (CGFloat) distance.
  */
-public func dist( x1: CGFloat, y1: CGFloat, x2: CGFloat, y2: CGFloat ) -> CGFloat {
+public func dist<T>( x1: T, y1: T, x2: T, y2: T ) -> T where T: NumericFloatingPoint, T: Mathable {
     return sqrt(sq(value:(x2 - x1)) + sq(value:(y2 - y1)))
 }
 
@@ -131,13 +152,13 @@ public func dist( x1: CGFloat, y1: CGFloat, x2: CGFloat, y2: CGFloat ) -> CGFloa
  
  - Returns: (CGFloat) square of value.
  */
-public func sq( value: CGFloat ) -> CGFloat {
+public func sq<T>( value: T ) -> T where T: NumericFloatingPoint, T: Mathable {
     return value * value
 }
 
 
-let radiansToDegrees = 180.0 / CGFloat.pi
-let degreesToRadians = CGFloat.pi / 180.0
+let radiansToDegrees = 57.2957795130823
+let degreesToRadians = 0.0174532925199433
 
 /**
  Convert from Radians to Degrees.
@@ -146,8 +167,8 @@ let degreesToRadians = CGFloat.pi / 180.0
  
  - Returns: (CGFloat) The converted value in degrees.
  */
-public func toDegrees(radians: CGFloat) -> CGFloat {
-    return radians * radiansToDegrees
+public func toDegrees<T>(radians: T) -> T where T: NumericFloatingPoint, T: Mathable {
+    return radians * 57.2957795130823   // radians * radiansToDegrees
 }
 
 
@@ -158,7 +179,7 @@ public func toDegrees(radians: CGFloat) -> CGFloat {
  
  - Returns: (CGFloat) The converted value in radians.
  */
-public func toRadians(degrees: CGFloat) -> CGFloat {
-    return degrees * degreesToRadians
+public func toRadians<T>(degrees: T) -> T where T: NumericFloatingPoint, T: Mathable {
+    return degrees * 0.0174532925199433 // radians * degreesToRadians
 }
 

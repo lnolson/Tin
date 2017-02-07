@@ -15,6 +15,34 @@ import Cocoa
 public var tin = Tin()
 
 
+// http://stackoverflow.com/questions/39486362/how-to-cast-generic-number-type-t-to-cgfloat
+
+public protocol NumericFloatingPoint : Comparable, Equatable, BinaryFloatingPoint {
+    init(_ value: Float)
+    init(_ value: Double)
+    init(_ value: CGFloat)
+    
+    // 'shadow method' that allows instances of Numeric
+    // to coerce themselves to another Numeric type
+    func _asOther<T:NumericFloatingPoint>() -> T
+}
+
+extension NumericFloatingPoint {
+    
+    // Default implementation of init(fromNumeric:) simply gets the inputted value
+    // to coerce itself to the same type as the initialiser is called on
+    // (the generic parameter T in _asOther() is inferred to be the same type as self)
+    init<T:NumericFloatingPoint>(fromNumeric numeric: T) { self = numeric._asOther() }
+}
+
+// Implementations of _asOther() – they simply call the given initialisers listed
+// in the protocol requirement (it's required for them to be repeated like this,
+// as the compiler won't know which initialiser you're referring to otherwise)
+extension Float   : NumericFloatingPoint { public func _asOther<T:NumericFloatingPoint>() -> T { return T(self) }}
+extension Double  : NumericFloatingPoint { public func _asOther<T:NumericFloatingPoint>() -> T { return T(self) }}
+extension CGFloat : NumericFloatingPoint { public func _asOther<T:NumericFloatingPoint>() -> T { return T(self) }}
+
+
 public protocol TinRenderProtocol {
     
     var delegate: Tin { get set }
@@ -29,14 +57,14 @@ public protocol TinRenderProtocol {
     
     
     // drawing methods
-    func background(red: CGFloat, green: CGFloat, blue: CGFloat)
+    func background<T>(red: T, green: T, blue: T) where T: NumericFloatingPoint
     
     func ellipse(inRect rect: CGRect)
     func rect(withRect rect: CGRect)
     
-    func line(x1: CGFloat, y1: CGFloat, x2: CGFloat, y2: CGFloat)
-    func lineWidth(_ width: CGFloat)
-    func triangle(x1: CGFloat, y1: CGFloat, x2: CGFloat, y2: CGFloat, x3: CGFloat, y3: CGFloat)
+    func line<T>(x1: T, y1: T, x2: T, y2: T) where T: NumericFloatingPoint
+    func lineWidth<T>(_ width: T) where T: NumericFloatingPoint
+    func triangle<T>(x1: T, y1: T, x2: T, y2: T, x3: T, y3: T) where T: NumericFloatingPoint
     
     func pathBegin()
     func pathVertex(at point: CGPoint)
@@ -46,8 +74,8 @@ public protocol TinRenderProtocol {
     
     
     // color state
-    func setStrokeColor(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
-    func setFillColor(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
+    func setStrokeColor<T>(red: T, green: T, blue: T, alpha: T) where T: NumericFloatingPoint
+    func setFillColor<T>(red: T, green: T, blue: T, alpha: T) where T: NumericFloatingPoint
     func strokeColor() -> NSColor
     func fillColor() -> NSColor
     
@@ -55,14 +83,14 @@ public protocol TinRenderProtocol {
     // context state & transformations
     func pushState()
     func popState()
-    func translate(dx: CGFloat, dy: CGFloat)
-    func rotate(by angle: CGFloat)
-    func scale(by amount: CGFloat)
+    func translate<T>(dx: T, dy: T) where T: NumericFloatingPoint
+    func rotate<T>(by angle: T) where T: NumericFloatingPoint
+    func scale<T>(by amount: T) where T: NumericFloatingPoint
     
     
     // image & text
-    func image(x: CGFloat, y: CGFloat, image: TImage)
-    func text(message: String, x: CGFloat, y: CGFloat, font: TFont)
+    func image<T>(image: TImage, x: T, y: T) where T: NumericFloatingPoint
+    func text<T>(message: String, font: TFont, x: T, y: T) where T: NumericFloatingPoint
     
 }
 
@@ -132,11 +160,11 @@ public class Tin {
     // MARK: - Drawing methods
     
     
-    public func background(red: CGFloat, green: CGFloat, blue: CGFloat) {
+    public func background<T>(red: T, green: T, blue: T) where T: NumericFloatingPoint {
         render?.background(red: red, green: green, blue: blue)
     }
     
-    public func background(gray: CGFloat) {
+    public func background<T>(gray: T) where T: NumericFloatingPoint {
         render?.background(red: gray, green: gray, blue: gray)
     }
     
@@ -148,14 +176,18 @@ public class Tin {
     // Ellipse methods
     
     // Draw an ellipse. Input is left,bottom and right,top coordinates.
-    public func ellipse(left: CGFloat, bottom: CGFloat, right: CGFloat, top: CGFloat) {
-        let r = CGRect(x: left, y: bottom, width: right - left + 1.0, height: top - bottom + 1.0)
+    public func ellipse<T>(left: T, bottom: T, right: T, top: T) where T: NumericFloatingPoint {
+        let x = CGFloat(fromNumeric: left)
+        let y = CGFloat(fromNumeric: bottom)
+        let w = CGFloat(fromNumeric: right - left + 1.0)
+        let h = CGFloat(fromNumeric: top - bottom + 1.0)
+        let r = CGRect(x: x, y: y, width: w, height: h)
         render?.ellipse(inRect: r)
     }
     
     // Draw an ellipse. Input is left,bottom coordinate and width,height size.
-    public func ellipse(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
-        let r = CGRect(x: x, y: y, width: width, height: height)
+    public func ellipse<T>(x: T, y: T, width: T, height: T) where T: NumericFloatingPoint {
+        let r = CGRect(x: CGFloat(fromNumeric: x), y: CGFloat(fromNumeric: y), width: CGFloat(fromNumeric: width), height: CGFloat(fromNumeric: height))
         render?.ellipse(inRect: r)
     }
     
@@ -166,8 +198,12 @@ public class Tin {
     }
     
     // Draw an ellipse. Input is centerX,centerY coordinate and width,height size.
-    public func ellipse(centerX: CGFloat, centerY: CGFloat, width: CGFloat, height: CGFloat) {
-        let r = CGRect(x: centerX - width/2.0, y: centerY - height/2.0, width: width, height: height)
+    public func ellipse<T>(centerX: T, centerY: T, width: T, height: T) where T: NumericFloatingPoint {
+        let x = CGFloat(fromNumeric: centerX - width / 2.0)
+        let y = CGFloat(fromNumeric: centerY - height / 2.0)
+        let w = CGFloat(fromNumeric: width)
+        let h = CGFloat(fromNumeric: height)
+        let r = CGRect(x: x, y: y, width: w, height: h)
         render?.ellipse(inRect: r)
     }
     
@@ -186,11 +222,11 @@ public class Tin {
     
     // Line methods
     
-    public func line(x1: CGFloat, y1: CGFloat, x2: CGFloat, y2: CGFloat) {
+    public func line<T>(x1: T, y1: T, x2: T, y2: T) where T: NumericFloatingPoint {
         render?.line(x1: x1, y1: y1, x2: x2, y2: y2)
     }
     
-    public func lineWidth(_ width: CGFloat) {
+    public func lineWidth<T>(_ width: T) where T: NumericFloatingPoint {
         render?.lineWidth(width)
     }
     
@@ -198,14 +234,18 @@ public class Tin {
     // Rectangle methods
     
     // Draw a rectangle. Input is left,bottom and right,top coordinates.
-    public func rect(left: CGFloat, bottom: CGFloat, right: CGFloat, top: CGFloat) {
-        let r = CGRect(x: left, y: bottom, width: right - left + 1.0, height: top - bottom + 1.0)
+    public func rect<T>(left: T, bottom: T, right: T, top: T) where T: NumericFloatingPoint {
+        let x = CGFloat(fromNumeric: left)
+        let y = CGFloat(fromNumeric: bottom)
+        let w = CGFloat(fromNumeric: right - left + 1.0)
+        let h = CGFloat(fromNumeric: top - bottom + 1.0)
+        let r = CGRect(x: x, y: y, width: w, height: h)
         render?.rect(withRect: r)
     }
     
     // Draw a rectangle. Input is left,bottom coordinate and width,height size.
-    public func rect(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
-        let r = CGRect(x: x, y: y, width: width, height: height)
+    public func rect<T>(x: T, y: T, width: T, height: T) where T: NumericFloatingPoint {
+        let r = CGRect(x: CGFloat(fromNumeric: x), y: CGFloat(fromNumeric: y), width: CGFloat(fromNumeric: width), height: CGFloat(fromNumeric: height))
         render?.rect(withRect: r)
     }
     
@@ -216,8 +256,12 @@ public class Tin {
     }
     
     // Draw a rectangle. Input is centerX,centerY coordinate and width,height size.
-    public func rect(centerX: CGFloat, centerY: CGFloat, width: CGFloat, height: CGFloat) {
-        let r = CGRect(x: centerX - width/2.0, y: centerY - height/2.0, width: width, height: height)
+    public func rect<T>(centerX: T, centerY: T, width: T, height: T) where T: NumericFloatingPoint {
+        let x = CGFloat(fromNumeric: centerX - width / 2.0)
+        let y = CGFloat(fromNumeric: centerY - height / 2.0)
+        let w = CGFloat(fromNumeric: width)
+        let h = CGFloat(fromNumeric: height)
+        let r = CGRect(x: x, y: y, width: w, height: h)
         render?.rect(withRect: r)
     }
     
@@ -235,7 +279,7 @@ public class Tin {
     
     
     
-    public func triangle(x1: CGFloat, y1: CGFloat, x2: CGFloat, y2: CGFloat, x3: CGFloat, y3: CGFloat) {
+    public func triangle<T>(x1: T, y1: T, x2: T, y2: T, x3: T, y3: T) where T: NumericFloatingPoint {
         render?.triangle(x1: x1, y1: y1, x2: x2, y2: y2, x3: x3, y3: y3)
     }
     
@@ -250,8 +294,8 @@ public class Tin {
     }
     
     // Add a new point to the current path. (input 2 CGFloats)
-    public func pathVertex(x: CGFloat, y: CGFloat) {
-        let point = CGPoint(x: x, y: y)
+    public func pathVertex<T>(x: T, y: T) where T: NumericFloatingPoint {
+        let point = CGPoint(x: CGFloat(fromNumeric: x), y: CGFloat(fromNumeric: y))
         render?.pathVertex(at: point)
         pathVertexCount += 1
     }
@@ -284,15 +328,15 @@ public class Tin {
     // MARK: - Color state
     
     
-    public func setStrokeColor(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+    public func setStrokeColor<T>(red: T, green: T, blue: T, alpha: T) where T: NumericFloatingPoint {
         render?.setStrokeColor(red: red, green: green, blue: blue, alpha: alpha)
     }
     
-    public func setStrokeColor(gray: CGFloat, alpha: CGFloat) {
+    public func setStrokeColor<T>(gray: T, alpha: T) where T: NumericFloatingPoint {
         render?.setStrokeColor(red: gray, green: gray, blue: gray, alpha: alpha)
     }
     
-    public func setStrokeColor(gray: CGFloat) {
+    public func setStrokeColor<T>(gray: T) where T: NumericFloatingPoint {
         render?.setStrokeColor(red: gray, green: gray, blue: gray, alpha: 1.0)
     }
     
@@ -301,15 +345,15 @@ public class Tin {
     }
     
     
-    public func setFillColor(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+    public func setFillColor<T>(red: T, green: T, blue: T, alpha: T) where T: NumericFloatingPoint {
         render?.setFillColor(red: red, green: green, blue: blue, alpha: alpha)
     }
     
-    public func setFillColor(gray: CGFloat, alpha: CGFloat) {
+    public func setFillColor<T>(gray: T, alpha: T) where T: NumericFloatingPoint {
         render?.setFillColor(red: gray, green: gray, blue: gray, alpha: alpha)
     }
     
-    public func setFillColor(gray: CGFloat) {
+    public func setFillColor<T>(gray: T) where T: NumericFloatingPoint {
         render?.setFillColor(red: gray, green: gray, blue: gray, alpha: 1.0)
     }
     
@@ -338,15 +382,15 @@ public class Tin {
         render?.popState()
     }
     
-    public func translate(dx: CGFloat, dy: CGFloat) {
+    public func translate<T>(dx: T, dy: T) where T: NumericFloatingPoint {
         render?.translate(dx: dx, dy: dy)
     }
     
-    public func rotate(by angle: CGFloat) {
+    public func rotate<T>(by angle: T) where T: NumericFloatingPoint {
         render?.rotate(by: angle)
     }
     
-    public func scale(by amount: CGFloat) {
+    public func scale<T>(by amount: T) where T: NumericFloatingPoint {
         render?.scale(by: amount)
     }
     
@@ -354,16 +398,16 @@ public class Tin {
     // MARK: - Image
     
     
-    public func image(x: CGFloat, y: CGFloat, image: TImage) {
-        render?.image(x: x, y: y, image: image)
+    public func image<T>(image: TImage, x: T, y: T) where T: NumericFloatingPoint {
+        render?.image(image: image, x: x, y: y)
     }
     
     
     // MARK: - Text
     
     
-    public func text(message: String, x: CGFloat, y: CGFloat, font: TFont) {
-        render?.text(message: message, x: x, y: y, font: font)
+    public func text<T>(message: String, font: TFont, x: T, y: T) where T: NumericFloatingPoint {
+        render?.text(message: message, font: font, x: x, y: y)
     }
     
     

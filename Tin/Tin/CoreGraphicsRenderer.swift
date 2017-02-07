@@ -69,9 +69,9 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     // MARK: - Drawing methods
     
     
-    public func background(red: CGFloat, green: CGFloat, blue: CGFloat) {
+    public func background<T>(red: T, green: T, blue: T) where T: NumericFloatingPoint {
         cg.saveGState()
-        cg.setFillColor(red: red, green: green, blue: blue, alpha: 1.0)
+        cg.setFillColor(red: CGFloat(fromNumeric: red), green: CGFloat(fromNumeric: green), blue: CGFloat(fromNumeric: blue), alpha: 1.0)
         let r = CGRect(x: 0.0, y: 0.0, width: delegate.size.width, height: delegate.size.height)
         cg.fill(r)
         cg.restoreGState()
@@ -93,7 +93,7 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     }
     
     
-    public func line(x1: CGFloat, y1: CGFloat, x2: CGFloat, y2: CGFloat) {
+    public func line<T>(x1: T, y1: T, x2: T, y2: T) where T: NumericFloatingPoint {
         var mode: CGPathDrawingMode = .fill
         if delegate.fill == false && delegate.stroke == false {
             return
@@ -105,14 +105,14 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
             mode = .fillStroke
         }
         cg.beginPath()
-        cg.move(to: CGPoint(x: x1, y: y1))
-        cg.addLine(to: CGPoint(x: x2, y: y2))
+        cg.move(to: CGPoint(x: CGFloat(fromNumeric: x1), y: CGFloat(fromNumeric: y1)))
+        cg.addLine(to: CGPoint(x: CGFloat(fromNumeric: x2), y: CGFloat(fromNumeric: y2)))
         cg.drawPath(using: mode)
     }
     
     
-    public func lineWidth(_ width: CGFloat) {
-        cg.setLineWidth(width)
+    public func lineWidth<T>(_ width: T) where T: NumericFloatingPoint {
+        cg.setLineWidth(CGFloat(fromNumeric: width))
     }
     
     
@@ -126,11 +126,11 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     }
     
     
-    public func triangle(x1: CGFloat, y1: CGFloat, x2: CGFloat, y2: CGFloat, x3: CGFloat, y3: CGFloat) {
+    public func triangle<T>(x1: T, y1: T, x2: T, y2: T, x3: T, y3: T) where T: NumericFloatingPoint {
         cg.beginPath()
-        cg.move(to: CGPoint(x: x1, y: y1))
-        cg.addLine(to: CGPoint(x: x2, y: y2))
-        cg.addLine(to: CGPoint(x: x3, y: y3))
+        cg.move(to: CGPoint(x: CGFloat(fromNumeric: x1), y: CGFloat(fromNumeric: y1)))
+        cg.addLine(to: CGPoint(x: CGFloat(fromNumeric: x2), y: CGFloat(fromNumeric: y2)))
+        cg.addLine(to: CGPoint(x: CGFloat(fromNumeric: x3), y: CGFloat(fromNumeric: y3)))
         cg.closePath()
         var path: CGPath?
         if delegate.fill {
@@ -186,15 +186,23 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     // MARK: - Color state
     
     
-    public func setStrokeColor(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
-        cg.setStrokeColor(red: red, green: green, blue: blue, alpha: alpha)
-        currentStrokeColor = NSColor(calibratedRed: red, green: green, blue: blue, alpha: alpha)
+    public func setStrokeColor<T>(red: T, green: T, blue: T, alpha: T) where T: NumericFloatingPoint {
+        let r = CGFloat(fromNumeric: red)
+        let g = CGFloat(fromNumeric: green)
+        let b = CGFloat(fromNumeric: blue)
+        let a = CGFloat(fromNumeric: alpha)
+        cg.setStrokeColor(red: r, green: g, blue: b, alpha: a)
+        currentStrokeColor = NSColor(calibratedRed: r, green: g, blue: b, alpha: a)
     }
     
     
-    public func setFillColor(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
-        cg.setFillColor(red: red, green: green, blue: blue, alpha: alpha)
-        currentFillColor = NSColor(calibratedRed: red, green: green, blue: blue, alpha: alpha)
+    public func setFillColor<T>(red: T, green: T, blue: T, alpha: T) where T: NumericFloatingPoint {
+        let r = CGFloat(fromNumeric: red)
+        let g = CGFloat(fromNumeric: green)
+        let b = CGFloat(fromNumeric: blue)
+        let a = CGFloat(fromNumeric: alpha)
+        cg.setFillColor(red: r, green: g, blue: b, alpha: a)
+        currentFillColor = NSColor(calibratedRed: r, green: g, blue: b, alpha: a)
     }
     
     public func strokeColor() -> NSColor {
@@ -221,24 +229,24 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     // MARK: - Transformations
     
     
-    public func translate(dx: CGFloat, dy: CGFloat) {
-        cg.translateBy(x: dx, y: dy)
+    public func translate<T>(dx: T, dy: T) where T: NumericFloatingPoint {
+        cg.translateBy(x: CGFloat(fromNumeric: dx), y: CGFloat(fromNumeric: dy))
     }
     
-    public func rotate(by angle: CGFloat) {
-        cg.rotate(by: angle)
+    public func rotate<T>(by angle: T) where T: NumericFloatingPoint {
+        cg.rotate(by: CGFloat(fromNumeric: angle))
     }
     
     // TODO
-    public func scale(by amount: CGFloat) {
+    public func scale<T>(by amount: T) where T: NumericFloatingPoint {
         
     }
     
     
     // MARK: - Image
     
-    public func image(x: CGFloat, y: CGFloat, image: TImage) {
-        let rect = CGRect(x: x, y: y, width: image.width, height: image.height)
+    public func image<T>(image: TImage, x: T, y: T) where T: NumericFloatingPoint {
+        let rect = CGRect(x: CGFloat(fromNumeric: x), y: CGFloat(fromNumeric: y), width: image.width, height: image.height)
         if let cgimage = image.cgimage {
             cg.draw(cgimage, in: rect)
         }
@@ -247,7 +255,7 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     
     // MARK: - Text
     
-    public func text(message: String, x: CGFloat, y: CGFloat, font: TFont) {
+    public func text<T>(message: String, font: TFont, x: T, y: T) where T: NumericFloatingPoint {
         let attributes = font.makeAttributes()
         let str: NSAttributedString = NSAttributedString(string: message, attributes: attributes)
         let size = str.size()
@@ -256,23 +264,23 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
         // Instead, below uses CoreText.
         //str.draw(at: NSPoint(x: x, y: y))
         
-        var xPos = x
+        var xPos = CGFloat(fromNumeric: x)
         if font.horizontalAlignment == .center {
-            xPos = x - size.width / 2.0
+            xPos = xPos - size.width / 2.0
         }
         else if font.horizontalAlignment == .right {
-            xPos = x - size.width
+            xPos = xPos - size.width
         }
         
-        var yPos = y + font.font.descender
+        var yPos = CGFloat(fromNumeric: y) + font.font.descender
         if font.verticalAlignment == .bottom {
-            yPos = y
+            yPos = CGFloat(fromNumeric: y)
         }
         else if font.verticalAlignment == .center {
-            yPos = y - size.height / 2.0
+            yPos = CGFloat(fromNumeric: y) - size.height / 2.0
         }
         else if font.verticalAlignment == .top {
-            yPos = y - size.height
+            yPos = CGFloat(fromNumeric: y) - size.height
         }
         
         let textPath = CGPath(rect: CGRect(x: xPos, y: yPos, width: ceil(size.width), height: ceil(size.height)), transform: nil)

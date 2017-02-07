@@ -15,13 +15,13 @@ import GameplayKit
 public struct TRandom {
     static let randomSource = GKLinearCongruentialRandomSource.sharedRandom()
     
-    public static func next( max: CGFloat ) -> (CGFloat) {
-        return CGFloat(self.randomSource.nextUniform()) * max
+    public static func next<T>( max: T ) -> (T) where T: BinaryFloatingPoint {
+        return T(self.randomSource.nextUniform()) * max
     }
     
-    public static func next( min: CGFloat, max: CGFloat) -> (CGFloat) {
+    public static func next<T>( min: T, max: T) -> (T) where T: BinaryFloatingPoint {
         let distance = max - min
-        return min + CGFloat(self.randomSource.nextUniform()) * distance
+        return min + T(self.randomSource.nextUniform()) * distance
     }
     
 }

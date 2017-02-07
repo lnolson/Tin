@@ -30,8 +30,8 @@ class DrawingView: TView {
     
     override func update() {
         
-        //tin.background(red: 0.5, green: 0.5, blue: 0.5)
-        tin.background(gray: 0.5)
+        tin.background(red: 0.5, green: 0.5, blue: 0.5)
+        //tin.background(gray: 0.5)
         
         
         
@@ -42,6 +42,8 @@ class DrawingView: TView {
         tin.setFillColor(red: 0.1, green: 0.6, blue: 0.2, alpha: 1.0)
         tin.setStrokeColor(red: 0.1, green: 0.05, blue: 0.05, alpha: 1.0)
         tin.rect(x: tin.midX - 50.0, y: tin.midY - 50.0, width: 100.0, height: 100.0)
+        
+        tin.rect(left: 5, bottom: 5, right: 20, top: 20)
         
         tin.rect(withRect: CGRect(x: 1000, y: 10, width: 30, height: 100))
         let o = CGPoint(x: 1050, y: 10)
@@ -82,8 +84,8 @@ class DrawingView: TView {
         
         
         
-        tin.image(x: 800.0, y: 300.0, image: snowman!)
-        tin.image(x: 200.0, y: 300.0, image: logo!)
+        tin.image(image: snowman!, x: 800.0, y: 300.0)
+        tin.image(image: logo!, x: 200.0, y: 300.0)
         
         
         if let f = font {
@@ -93,7 +95,7 @@ class DrawingView: TView {
             f.lineHeightMultiple = 1.0
             f.paragraphAlignment = .center
             f.kerning = 0.0
-            tin.text(message: "Tin", x: tin.midX, y: 50.0, font: f)
+            tin.text(message: "Tin", font: f, x: tin.midX, y: 50.0)
         }
         
         

@@ -18,10 +18,10 @@ class SwayView: TView {
     override func setup() {
         
         for _ in 0...400 {
-            let x = TRandom.next(max: frame.width)
-            let y = TRandom.next(min: 40.0, max: 100.0)
-            let w = TRandom.next(min: 16, max: 22)
-            let h = TRandom.next(min: 90, max: 110)
+            let x: CGFloat = TRandom.next(max: frame.width)
+            let y: CGFloat = TRandom.next(min: 40.0, max: 100.0)
+            let w: CGFloat = TRandom.next(min: 16, max: 22)
+            let h: CGFloat = TRandom.next(min: 90, max: 110)
             let s1 = createPlant(x: x, y: y, w: w, h: h)
             segments.append(s1)
         }

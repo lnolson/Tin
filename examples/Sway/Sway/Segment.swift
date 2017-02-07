@@ -53,7 +53,7 @@ class Segment {
         tin.translate(dx: x, dy: y)
         tin.rotate(by: rot)
         
-        tin.rect(x: -w / 2.0, y: 0.0, w: w, h: h)
+        tin.rect(x: -w / 2.0, y: 0.0, width: w, height: h)
         
         if (child != nil) {
             child?.render()

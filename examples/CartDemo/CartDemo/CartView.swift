@@ -31,7 +31,7 @@ class CartView: TView {
         // Ground
         tin.setFillColor(red: 0.05, green: 0.4, blue: 0.1, alpha: 1.0)
         tin.stroke = false
-        tin.rect(x: 0, y: 0, w: frame.width, h: y-r)
+        tin.rect(x: 0, y: 0, width: frame.width, height: y-r)
         
         cart()
     }
@@ -46,7 +46,7 @@ class CartView: TView {
         tin.lineWidth(3.0)
         tin.setStrokeColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
         tin.stroke = true
-        tin.rect(x: -(bodyWidth/2.0), y: 0.0, w: bodyWidth, h: bodyHeight)
+        tin.rect(x: -(bodyWidth/2.0), y: 0.0, width: bodyWidth, height: bodyHeight)
         
         // Two wheels
         let wheelBase = (bodyWidth / 2.0) * 0.55
@@ -63,7 +63,7 @@ class CartView: TView {
         let a: CGFloat = -x / r
         tin.rotate(by: a)
         
-        tin.ellipse(x: -r, y: -r, w: r * 2, h: r * 2)
+        tin.ellipse(x: -r, y: -r, width: r * 2, height: r * 2)
         
         // Draw two lines, so we can see wheel rotation
         tin.line(x1: 0.0, y1: -r, x2: 0.0, y2: r)

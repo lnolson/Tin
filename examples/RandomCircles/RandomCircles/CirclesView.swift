@@ -38,7 +38,7 @@ class CirclesView: TView {
         
         tin.setFillColor(red: r, green: g, blue: b, alpha: 1.0)
         tin.stroke = false
-        tin.ellipse(x: x, y: y, w: 60.0, h: 60.0)
+        tin.ellipse(x: x, y: y, width: 60.0, height: 60.0)
         
     }
     
