@@ -21,26 +21,35 @@ struct TStopwatch {
     
     var info = mach_timebase_info()
     var startTime: UInt64 = 0
-    var endTime: UInt64 = 0
-    var elapsed: UInt64 = 0
     
+    // This is the raw elapsed time value, but this value is CPU dependant!
+    // See https://developer.apple.com/library/content/qa/qa1398/_index.html
+    // Instead, user should use elapsedNanoSeconds or elapsedSeconds
+    var elapsed: UInt64 {
+        let currentTime = mach_absolute_time()
+        return currentTime - startTime
+    }
     
-    init?() {
-        guard mach_timebase_info(&info) == KERN_SUCCESS else { return nil }
+    var elapsedNanoSeconds: UInt64 {
+        return elapsed * UInt64(info.numer) / UInt64(info.denom)
+    }
+    
+    var elapsedSeconds: TimeInterval {
+        return TimeInterval(elapsedNanoSeconds) / TimeInterval(NSEC_PER_SEC)
     }
     
     
-    mutating func start() {
+    // The startTime is set on initialization
+    init?() {
+        guard mach_timebase_info(&info) == KERN_SUCCESS else { return nil }
         startTime = mach_absolute_time()
     }
     
     
-    mutating func stop() -> TimeInterval {
-        endTime = mach_absolute_time()
-        elapsed = endTime - startTime
-        
-        let nanoSeconds = elapsed * UInt64(info.numer) / UInt64(info.denom)
-        return TimeInterval(nanoSeconds) / TimeInterval(NSEC_PER_SEC)
+    // Reset the startTime
+    mutating func reset() {
+        startTime = mach_absolute_time()
     }
+    
     
 }

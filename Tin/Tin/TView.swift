@@ -37,6 +37,7 @@ open class TView: NSView {
     private var totalDrawTime: TimeInterval = 0.0
     private var infoFont = TFont(fontName: "Courier New", ofSize: 14.0)
     public var showStats = true
+    private var statsString = ""
     
     
     
@@ -103,8 +104,7 @@ open class TView: NSView {
     
     
     open override func draw(_ dirtyRect: NSRect) {
-        var t = TStopwatch()
-        t?.start()
+        let t = TStopwatch()
         
         super.draw(dirtyRect)
         
@@ -115,18 +115,22 @@ open class TView: NSView {
         update()
         
         if showStats {
-            let averageDrawTime = totalDrawTime / TimeInterval(tin.frameCount - 1)
+            var elapsedTime: TimeInterval = 0.0
+            if let t = t {
+                elapsedTime = t.elapsedSeconds
+                totalDrawTime += elapsedTime
+            }
+            if tin.frameCount % Int(frameRate) == 0 {
+                let averageDrawTime = totalDrawTime / TimeInterval(tin.frameCount)
+                statsString = String(format: "Draw %0.4f/%.04f", elapsedTime, averageDrawTime)
+            }
             tin.setFillColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
             infoFont.horizontalAlignment = .right
-            tin.text(message: String(format: "Draw %.04f", averageDrawTime), font: infoFont, x: frame.width - 5, y: 5)
+            tin.text(message: statsString, font: infoFont, x: frame.width - 5, y: 5)
         }
         
+        // All drawing operations need to happen before calling didFinishUpdate()
         tin.didFinishUpdate()
-        
-        if t != nil {
-            let elapsed = t!.stop()
-            totalDrawTime += elapsed
-        }
     }
     
     

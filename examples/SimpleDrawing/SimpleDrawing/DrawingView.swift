@@ -98,7 +98,7 @@ class DrawingView: TView {
             tin.text(message: "Tin", font: f, x: tin.midX, y: 50.0)
         }
         
-        
+        stopUpdates()
         
     }
     
