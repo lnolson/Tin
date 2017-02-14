@@ -61,6 +61,14 @@ fileprivate func grad( hash: Int, x: CGFloat, y: CGFloat, z:CGFloat ) -> CGFloat
 }
 
 
+fileprivate func grad( hash: Int, x: CGFloat, y: CGFloat ) -> CGFloat {
+    let h = hash & 15;                      // CONVERT LO 4 BITS OF HASH CODE
+    let u = h<8 ? x : y                     // INTO 12 GRADIENT DIRECTIONS.
+    let v = h<4 ? y : x
+    return ((h&1) == 0 ? u : -u) + ((h&2) == 0 ? v : -v)
+}
+
+
 public func noise( x: CGFloat, y: CGFloat, z: CGFloat ) -> CGFloat {
     let X = Int(floor(x)) & 255             // FIND UNIT CUBE THAT
     let Y = Int(floor(y)) & 255             // CONTAINS POINT.
@@ -90,3 +98,27 @@ public func noise( x: CGFloat, y: CGFloat, z: CGFloat ) -> CGFloat {
                                     b: lerp(t: u, a: grad(hash: p[AB+1], x: x, y: y-1, z: z-1),
                                                   b: grad(hash: p[BB+1], x: x-1, y: y-1, z: z-1))))
 }
+
+
+public func noise(x: CGFloat, y: CGFloat) -> CGFloat {
+    let X = Int(floor(x)) & 255
+    let Y = Int(floor(y)) & 255
+    var x = x
+    var y = y
+    x -= floor(x)
+    y -= floor(y)
+    let u = fade(x)
+    let v = fade(y)
+    let A  = p[X]+Y
+    let AA = p[A]
+    let AB = p[A+1]
+    let B  = p[X+1]+Y
+    let BA = p[B]
+    let BB = p[B+1]
+    
+    let x1 = lerp(t: u, a: grad(hash: p[AA], x: x, y: y), b: grad(hash: p[BA], x: x - 1, y: y))
+    let x2 = lerp(t: u, a: grad(hash: p[AB], x: x, y: y-1), b: grad(hash: p[BB], x: x - 1, y: y - 1))
+    
+    return lerp(t: v, a: x1, b: x2)
+}
+

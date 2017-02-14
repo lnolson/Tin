@@ -40,7 +40,7 @@ class Segment {
     
     func process() {
         let u = (x + y) * freq + (CGFloat(tin.frameCount) / 120.0)
-        let z = noise(x: u, y: 0.0, z: 0.0) * amp
+        let z = noise(x: u, y: 0.0) * amp
         rot += z
         if child != nil {
             child?.process()
