@@ -76,9 +76,18 @@ class CartView: TView {
     override func mouseDown(with event: NSEvent) {
     }
     
-    
+/*
     override func mouseDragged(with event: NSEvent) {
         super.mouseDragged(with: event)
         x = x + (tin.mouseX - tin.pmouseX)
+    }
+ */
+    
+    override func mouseDragged() {
+        x = x + (tin.mouseX - tin.pmouseX)
+    }
+    
+    
+    override func mouseUp() {
     }
 }

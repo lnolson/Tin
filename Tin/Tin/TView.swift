@@ -38,6 +38,7 @@ open class TView: NSView {
     private var infoFont = TFont(fontName: "Courier New", ofSize: 14.0)
     public var showStats = true
     private var statsString = ""
+    public var event: NSEvent = NSEvent()
     
     
     
@@ -160,27 +161,89 @@ open class TView: NSView {
     }
     
     
+    // Idea. Don't have students override these NSResponder methods.
+    // During early part of introductory class, I don't want to deal with
+    // complexity of overriding functions, and needing to call the super.
+    // Provide another method for implentation in subclasses, which never
+    // requires call to super. 
+    // Should the names be very different to avoid confusion? Neet to consider.
     open override func keyDown(with event: NSEvent) {
-        
+        self.event = event
+        keyDown()
     }
+    
     
     open override func keyUp(with event: NSEvent) {
-        
+        self.event = event
+        keyUp()
     }
     
-    open override func mouseMoved(with event: NSEvent) {
+    
+    open override func mouseDown(with event: NSEvent) {
         let point: CGPoint = convert(event.locationInWindow, from: nil)
         tin.mouseMoved(to: point)
+        self.event = event
+        mouseDown()
     }
+    
     
     open override func mouseDragged(with event: NSEvent) {
         let point: CGPoint = convert(event.locationInWindow, from: nil)
         tin.mouseMoved(to: point)
+        self.event = event
+        mouseDragged()
+    }
+    
+    
+    open override func mouseMoved(with event: NSEvent) {
+        let point: CGPoint = convert(event.locationInWindow, from: nil)
+        tin.mouseMoved(to: point)
+        self.event = event
+        mouseMoved()
+    }
+    
+    
+    open override func mouseUp(with event: NSEvent) {
+        let point: CGPoint = convert(event.locationInWindow, from: nil)
+        tin.mouseMoved(to: point)
+        self.event = event
+        mouseUp()
     }
     
     
     
+    // MARK: - Simplified override methods for events
     
+    // Users should override these methods, not the NSResponder methods.
+    
+    open func keyDown() {
+        
+    }
+    
+    
+    open func keyUp() {
+        
+    }
+    
+    
+    open func mouseDown() {
+        
+    }
+    
+    
+    open func mouseDragged() {
+        
+    }
+    
+    
+    open func mouseMoved() {
+        
+    }
+    
+    
+    open func mouseUp() {
+        
+    }
     
     
 }
