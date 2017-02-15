@@ -69,7 +69,7 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     // MARK: - Drawing methods
     
     
-    public func background<T>(red: T, green: T, blue: T) where T: NumericFloatingPoint {
+    public func background<T>(red: T, green: T, blue: T) where T: Numeric {
         cg.saveGState()
         cg.setFillColor(red: CGFloat(fromNumeric: red), green: CGFloat(fromNumeric: green), blue: CGFloat(fromNumeric: blue), alpha: 1.0)
         let r = CGRect(x: 0.0, y: 0.0, width: delegate.size.width, height: delegate.size.height)
@@ -93,7 +93,7 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     }
     
     
-    public func line<T>(x1: T, y1: T, x2: T, y2: T) where T: NumericFloatingPoint {
+    public func line<T>(x1: T, y1: T, x2: T, y2: T) where T: Numeric {
         var mode: CGPathDrawingMode = .fill
         if delegate.fill == false && delegate.stroke == false {
             return
@@ -111,7 +111,7 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     }
     
     
-    public func lineWidth<T>(_ width: T) where T: NumericFloatingPoint {
+    public func lineWidth<T>(_ width: T) where T: Numeric {
         cg.setLineWidth(CGFloat(fromNumeric: width))
     }
     
@@ -126,7 +126,7 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     }
     
     
-    public func triangle<T>(x1: T, y1: T, x2: T, y2: T, x3: T, y3: T) where T: NumericFloatingPoint {
+    public func triangle<T>(x1: T, y1: T, x2: T, y2: T, x3: T, y3: T) where T: Numeric {
         cg.beginPath()
         cg.move(to: CGPoint(x: CGFloat(fromNumeric: x1), y: CGFloat(fromNumeric: y1)))
         cg.addLine(to: CGPoint(x: CGFloat(fromNumeric: x2), y: CGFloat(fromNumeric: y2)))
@@ -186,7 +186,7 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     // MARK: - Color state
     
     
-    public func setStrokeColor<T>(red: T, green: T, blue: T, alpha: T) where T: NumericFloatingPoint {
+    public func setStrokeColor<T>(red: T, green: T, blue: T, alpha: T) where T: Numeric {
         let r = CGFloat(fromNumeric: red)
         let g = CGFloat(fromNumeric: green)
         let b = CGFloat(fromNumeric: blue)
@@ -196,7 +196,7 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     }
     
     
-    public func setFillColor<T>(red: T, green: T, blue: T, alpha: T) where T: NumericFloatingPoint {
+    public func setFillColor<T>(red: T, green: T, blue: T, alpha: T) where T: Numeric {
         let r = CGFloat(fromNumeric: red)
         let g = CGFloat(fromNumeric: green)
         let b = CGFloat(fromNumeric: blue)
@@ -229,23 +229,23 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     // MARK: - Transformations
     
     
-    public func translate<T>(dx: T, dy: T) where T: NumericFloatingPoint {
+    public func translate<T>(dx: T, dy: T) where T: Numeric {
         cg.translateBy(x: CGFloat(fromNumeric: dx), y: CGFloat(fromNumeric: dy))
     }
     
-    public func rotate<T>(by angle: T) where T: NumericFloatingPoint {
+    public func rotate<T>(by angle: T) where T: Numeric {
         cg.rotate(by: CGFloat(fromNumeric: angle))
     }
     
     // TODO
-    public func scale<T>(by amount: T) where T: NumericFloatingPoint {
+    public func scale<T>(by amount: T) where T: Numeric {
         
     }
     
     
     // MARK: - Image
     
-    public func image<T>(image: TImage, x: T, y: T) where T: NumericFloatingPoint {
+    public func image<T>(image: TImage, x: T, y: T) where T: Numeric {
         let rect = CGRect(x: CGFloat(fromNumeric: x), y: CGFloat(fromNumeric: y), width: image.width, height: image.height)
         if let cgimage = image.cgimage {
             cg.draw(cgimage, in: rect)
@@ -255,7 +255,7 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     
     // MARK: - Text
     
-    public func text<T>(message: String, font: TFont, x: T, y: T) where T: NumericFloatingPoint {
+    public func text<T>(message: String, font: TFont, x: T, y: T) where T: Numeric {
         let attributes = font.makeAttributes()
         let str: NSAttributedString = NSAttributedString(string: message, attributes: attributes)
         let size = str.size()

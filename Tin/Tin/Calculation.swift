@@ -70,7 +70,7 @@ public func constrain<T: Comparable>( value: T, min: T, max: T ) -> T {
  - Returns: (CGFloat) The interpolated value.
  
  */
-public func lerp<T>(startValue: T, endValue: T, t: T) -> T where T: NumericFloatingPoint, T: Mathable {
+public func lerp<T>(startValue: T, endValue: T, t: T) -> T where T: Numeric, T: Mathable {
     return startValue + (endValue - startValue) * t;
 }
 
@@ -83,7 +83,7 @@ public func lerp<T>(startValue: T, endValue: T, t: T) -> T where T: NumericFloat
  
  - Returns: (CGFloat) Magnitude (ie length).
  */
-public func mag<T>(x: T, y: T) -> T where T: NumericFloatingPoint, T: Mathable {
+public func mag<T>(x: T, y: T) -> T where T: Numeric, T: Mathable {
     return sqrt(x * x + y * y)
 }
 
@@ -104,7 +104,7 @@ public func mag<T>(x: T, y: T) -> T where T: NumericFloatingPoint, T: Mathable {
  
  - Returns: (CGFloat) The re-mapped value.
  */
-public func remap<T>(value: T, start1: T, stop1: T, start2: T, stop2: T) -> T where T: NumericFloatingPoint, T: Mathable {
+public func remap<T>(value: T, start1: T, stop1: T, start2: T, stop2: T) -> T where T: Numeric, T: Mathable {
     let result = start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1))
     if result.isNaN {
         print("NaN (not a number)")
@@ -125,7 +125,7 @@ public func remap<T>(value: T, start1: T, stop1: T, start2: T, stop2: T) -> T wh
  
  - Returns: (CGFloat) Normalized value.
  */
-public func norm<T>(value: T, startValue: T, endValue: T) -> T where T: NumericFloatingPoint, T: Mathable {
+public func norm<T>(value: T, startValue: T, endValue: T) -> T where T: Numeric, T: Mathable {
     return (value - startValue) / (endValue - startValue)
 }
 
@@ -140,7 +140,7 @@ public func norm<T>(value: T, startValue: T, endValue: T) -> T where T: NumericF
  
  - Returns: (CGFloat) distance.
  */
-public func dist<T>( x1: T, y1: T, x2: T, y2: T ) -> T where T: NumericFloatingPoint, T: Mathable {
+public func dist<T>( x1: T, y1: T, x2: T, y2: T ) -> T where T: Numeric, T: Mathable {
     return sqrt(sq(value:(x2 - x1)) + sq(value:(y2 - y1)))
 }
 
@@ -152,7 +152,7 @@ public func dist<T>( x1: T, y1: T, x2: T, y2: T ) -> T where T: NumericFloatingP
  
  - Returns: (CGFloat) square of value.
  */
-public func sq<T>( value: T ) -> T where T: NumericFloatingPoint, T: Mathable {
+public func sq<T>( value: T ) -> T where T: Numeric, T: Mathable {
     return value * value
 }
 
@@ -167,7 +167,7 @@ let degreesToRadians = 0.0174532925199433
  
  - Returns: (CGFloat) The converted value in degrees.
  */
-public func toDegrees<T>(radians: T) -> T where T: NumericFloatingPoint, T: Mathable {
+public func toDegrees<T>(radians: T) -> T where T: Numeric, T: Mathable {
     return radians * 57.2957795130823   // radians * radiansToDegrees
 }
 
@@ -179,7 +179,7 @@ public func toDegrees<T>(radians: T) -> T where T: NumericFloatingPoint, T: Math
  
  - Returns: (CGFloat) The converted value in radians.
  */
-public func toRadians<T>(degrees: T) -> T where T: NumericFloatingPoint, T: Mathable {
+public func toRadians<T>(degrees: T) -> T where T: Numeric, T: Mathable {
     return degrees * 0.0174532925199433 // radians * degreesToRadians
 }
 
