@@ -23,6 +23,7 @@
 		5C4C94091E203C4F00503D38 /* TVector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4C93FE1E203C4F00503D38 /* TVector2.swift */; };
 		5C4C942B1E20612200503D38 /* GameplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4C942A1E20612200503D38 /* GameplayKit.framework */; };
 		5C4C94881E206B0C00503D38 /* ImprovedNoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4C94871E206B0C00503D38 /* ImprovedNoise.swift */; };
+		5CDF09601E737346003EEAB8 /* TColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF095F1E737346003EEAB8 /* TColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		5C4C93FE1E203C4F00503D38 /* TVector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVector2.swift; sourceTree = "<group>"; };
 		5C4C942A1E20612200503D38 /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = System/Library/Frameworks/GameplayKit.framework; sourceTree = SDKROOT; };
 		5C4C94871E206B0C00503D38 /* ImprovedNoise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImprovedNoise.swift; sourceTree = "<group>"; };
+		5CDF095F1E737346003EEAB8 /* TColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				5C4C93FC1E203C4F00503D38 /* DateAndTime.swift */,
 				5C4C94871E206B0C00503D38 /* ImprovedNoise.swift */,
 				5C4C93FA1E203C4F00503D38 /* SimpleLog.swift */,
+				5CDF095F1E737346003EEAB8 /* TColor.swift */,
 				5C4C93F41E203C4F00503D38 /* TFont.swift */,
 				5C4C93F81E203C4F00503D38 /* TImage.swift */,
 				5C4C93F51E203C4F00503D38 /* Tin.swift */,
@@ -198,7 +201,6 @@
 				TargetAttributes = {
 					5C4C93D91E203C0200503D38 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = R75948WD5C;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -259,6 +261,7 @@
 				5C4C94061E203C4F00503D38 /* Calculation.swift in Sources */,
 				5C4C93FF1E203C4F00503D38 /* TFont.swift in Sources */,
 				5C4C94051E203C4F00503D38 /* SimpleLog.swift in Sources */,
+				5CDF09601E737346003EEAB8 /* TColor.swift in Sources */,
 				5C4C94031E203C4F00503D38 /* TImage.swift in Sources */,
 				5C4C94021E203C4F00503D38 /* TView.swift in Sources */,
 			);
@@ -388,7 +391,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = R75948WD5C;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -413,7 +416,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = R75948WD5C;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

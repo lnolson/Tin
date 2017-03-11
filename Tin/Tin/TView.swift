@@ -66,6 +66,10 @@ open class TView: NSView {
     
     open func setup() {
         // This space intentionally left blank
+        // setup() is intended to be overridden by the user.
+        // An opportunity for one time init for the view.
+        // Do not put drawing code in setup. The view isn't ready for drawing yet.
+        // It is a good time to init data.
     }
     
     
@@ -76,6 +80,8 @@ open class TView: NSView {
     
     open func update() {
         // This space intentionally left blank
+        // update() is intended to be overridden by the user.
+        // Drawing code show go in update, or methods called during update.
     }
     
     
@@ -147,8 +153,8 @@ open class TView: NSView {
         addTrackingArea(area)
         
         tin.makeRenderer()
-        tin.prepare(frame: frame)
         setup()
+        tin.prepare(frame: frame)
         startUpdateTimer()
     }
     

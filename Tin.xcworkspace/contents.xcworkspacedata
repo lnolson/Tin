@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:playgrounds/ScratchCalculation.playground">
+   </FileRef>
+   <FileRef
+      location = "group:examples/ImageDemo/ImageDemo.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:examples/Sway/Sway.xcodeproj">
    </FileRef>
    <FileRef

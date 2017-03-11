@@ -45,6 +45,8 @@ extension CGFloat : Numeric { public func _asOther<T:Numeric>() -> T { return T(
 
 public protocol TinRenderProtocol {
     
+    var useLayer: Bool { get set }
+    
     var delegate: Tin { get set }
     
     // rendering setup
@@ -144,7 +146,6 @@ public class Tin {
     }
     
     
-    
     func reset(width: CGFloat, height: CGFloat) {
         size = NSSize(width: width, height: height)
         midX = width / 2.0
@@ -154,6 +155,21 @@ public class Tin {
         lineWidth(2.0)
         setFillColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
         setStrokeColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
+    }
+    
+    
+    // enable "Restore from previous"
+    // When enabled, this feature will cause the rendering to be saved in an image buffer.
+    // After the double buffer swap, before the next render happens, the image saved
+    // in the buffer is restored to the current frame buffer. This allows continuous draw effects.
+    // Note, there is a time penalty for saving and restoring the image.
+    public func enableRestoreFromPrevious() {
+        render?.useLayer = true
+    }
+    
+    
+    public func disableRestoreFromPrevious() {
+        render?.useLayer = false
     }
     
     

@@ -16,8 +16,7 @@ class CirclesView: TView {
     
 
     override func setup() {
-        let cgrenderer = tin.render as! CoreGraphicsRenderer
-        cgrenderer.useLayer = true
+        tin.enableRestoreFromPrevious()
         showStats = false
     }
     
