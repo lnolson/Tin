@@ -345,35 +345,43 @@ public class Tin {
     
     
     public func setStrokeColor<T>(red: T, green: T, blue: T, alpha: T) where T: Numeric {
+        stroke = true
         render?.setStrokeColor(red: red, green: green, blue: blue, alpha: alpha)
     }
     
     public func setStrokeColor<T>(gray: T, alpha: T) where T: Numeric {
+        stroke = true
         render?.setStrokeColor(red: gray, green: gray, blue: gray, alpha: alpha)
     }
     
     public func setStrokeColor<T>(gray: T) where T: Numeric {
+        stroke = true
         render?.setStrokeColor(red: gray, green: gray, blue: gray, alpha: 1.0)
     }
     
     public func setStrokeColor(color: NSColor) {
+        stroke = true
         render?.setStrokeColor(red: color.redComponent, green: color.greenComponent, blue: color.blueComponent, alpha: color.alphaComponent)
     }
     
     
     public func setFillColor<T>(red: T, green: T, blue: T, alpha: T) where T: Numeric {
+        fill = true
         render?.setFillColor(red: red, green: green, blue: blue, alpha: alpha)
     }
     
     public func setFillColor<T>(gray: T, alpha: T) where T: Numeric {
+        fill = true
         render?.setFillColor(red: gray, green: gray, blue: gray, alpha: alpha)
     }
     
     public func setFillColor<T>(gray: T) where T: Numeric {
+        fill = true
         render?.setFillColor(red: gray, green: gray, blue: gray, alpha: 1.0)
     }
     
     public func setFillColor(color: NSColor) {
+        fill = true
         render?.setFillColor(red: color.redComponent, green: color.greenComponent, blue: color.blueComponent, alpha: color.alphaComponent)
     }
     
@@ -427,7 +435,7 @@ public class Tin {
     }
     
     
-    public func mouseMoved(to point: CGPoint) {
+    func mouseMoved(to point: CGPoint) {
         pmouseX = mouseX
         pmouseY = mouseY
         mouseX = point.x
