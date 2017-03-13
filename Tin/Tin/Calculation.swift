@@ -42,7 +42,7 @@ import Foundation
  - Parameter min: The lower limit, value will not be less than this.
  - Parameter max: The higher limit, value will not be greater than this.
  
- - Returns: (CGFloat) The constrained value.
+ - Returns: (Generic) The constrained value.
  
  */
 public func constrain<T: Comparable>( value: T, min: T, max: T ) -> T {
