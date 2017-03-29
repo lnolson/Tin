@@ -92,6 +92,7 @@ public protocol TinRenderProtocol {
     
     // image & text
     func image<T>(image: TImage, x: T, y: T) where T: Numeric
+    func image<T>(image: TImage, x: T, y: T, width: T, height: T) where T: Numeric
     func text<T>(message: String, font: TFont, x: T, y: T) where T: Numeric
     
 }
@@ -424,6 +425,11 @@ public class Tin {
     
     public func image<T>(image: TImage, x: T, y: T) where T: Numeric {
         render?.image(image: image, x: x, y: y)
+    }
+    
+    
+    public func image<T>(image: TImage, x: T, y: T, width: T, height: T) where T: Numeric {
+        render?.image(image: image, x: x, y: y, width: width, height: height)
     }
     
     

@@ -239,7 +239,7 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     
     // TODO
     public func scale<T>(by amount: T) where T: Numeric {
-        
+        cg.scaleBy(x: CGFloat(fromNumeric: amount), y: CGFloat(fromNumeric: amount))
     }
     
     
@@ -247,6 +247,14 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     
     public func image<T>(image: TImage, x: T, y: T) where T: Numeric {
         let rect = CGRect(x: CGFloat(fromNumeric: x), y: CGFloat(fromNumeric: y), width: image.width, height: image.height)
+        if let cgimage = image.cgimage {
+            cg.draw(cgimage, in: rect)
+        }
+    }
+    
+    
+    public func image<T>(image: TImage, x: T, y: T, width: T, height: T) where T: Numeric {
+        let rect = CGRect(x: CGFloat(fromNumeric: x), y: CGFloat(fromNumeric: y), width: CGFloat(fromNumeric: width), height: CGFloat(fromNumeric: height))
         if let cgimage = image.cgimage {
             cg.draw(cgimage, in: rect)
         }

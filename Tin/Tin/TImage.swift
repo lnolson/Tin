@@ -84,12 +84,30 @@ open class TImage: NSObject {
             
             // The context must be flipped in the Y axis.
             // Otherwise, origin will be top, left.
-            context?.translateBy(x: 0, y: height)
-            context?.scaleBy(x: 1.0, y: -1.0)
+            //context?.translateBy(x: 0, y: height)
+            //context?.scaleBy(x: 1.0, y: -1.0)
             
             context?.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
             pixels = pixelData
         }
+    }
+    
+    
+    public func savePixels() {
+        if pixels == nil {
+            return
+        }
+        let bitmapCount: Int = pixels!.count
+        let elementLength: Int = MemoryLayout<TPixel>.size
+        let intent: CGColorRenderingIntent = CGColorRenderingIntent.defaultIntent
+        let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo: CGBitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+        let providerRef: CGDataProvider? = CGDataProvider(data: NSData(bytes: &pixels!, length: bitmapCount * elementLength))
+        
+        let w = Int(width)
+        let h = Int(height)
+        let newimage: CGImage? = CGImage(width: w, height: h, bitsPerComponent: 8, bitsPerPixel: 32, bytesPerRow: w * elementLength, space: rgbColorSpace, bitmapInfo: bitmapInfo, provider: providerRef!, decode: nil, shouldInterpolate: true, intent: intent)
+        cgimage = newimage
     }
     
     
@@ -105,12 +123,29 @@ open class TImage: NSObject {
         if x < 0 || x > Int(width) || y < 0 || y > Int(height) {
             return TPixel(red: 0, green: 0, blue: 0, alpha: 0)
         }
-        let loc = Int(width) * 4 * y + (x * 4)
+        let flippedY = (y * -1) + Int(height) - 1
+        let loc = Int(width) * 4 * flippedY + (x * 4)
         return TPixel(red: pixels![loc], green: pixels![loc+1], blue: pixels![loc+2], alpha: pixels![loc+3])
     }
     
     
     public func color(atX x: Int, y: Int) -> TColor {
         return TColor(pixel: pixel(atX: x, y: y) )
+    }
+    
+    
+    public func set(pixel: TPixel, x: Int, y: Int) {
+        if x < 0 || x > Int(width) || y < 0 || y > Int(height) {
+            return
+        }
+        if pixels == nil {
+            return
+        }
+        let flippedY = (y * -1) + Int(height) - 1
+        let loc = Int(width) * 4 * flippedY + (x * 4)
+        pixels![loc] = pixel.red
+        pixels![loc+1] = pixel.green
+        pixels![loc+2] = pixel.blue
+        pixels![loc+3] = pixel.alpha
     }
 }

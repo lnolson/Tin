@@ -40,6 +40,11 @@ public struct TVector2 {
         self.init( x: 0.0, y: 0.0 )
     }
     
+    public init(angle: CGFloat) {
+        x = cos(angle)
+        y = sin(angle)
+    }
+    
     
     // MARK: - Type methods
     

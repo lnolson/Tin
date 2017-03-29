@@ -98,8 +98,27 @@ class DrawingView: TView {
             tin.text(message: "Tin", font: f, x: tin.midX, y: 50.0)
         }
         
-        stopUpdates()
+        //stopUpdates()
         
+    }
+    
+    
+    override func mouseUp() {
+        if let img = snowman {
+            img.loadPixels()
+            let w = Int(img.width)
+            let h = Int(img.height)
+            for y in 0 ..< h {
+                for x in 0 ..< w {
+                    var pixel = img.pixel(atX: x, y: y)
+                    pixel.red = UInt8(constrain(value: floor(Double(pixel.red) * 0.9), min: 0.0, max: 255.0))
+                    pixel.green = UInt8(constrain(value: floor(Double(pixel.green) * 0.9), min: 0.0, max: 255.0))
+                    pixel.blue = UInt8(constrain(value: floor(Double(pixel.blue) * 0.9), min: 0.0, max: 255.0))
+                    img.set(pixel: pixel, x: x, y: y)
+                }
+            }
+            img.savePixels()
+        }
     }
     
 }
