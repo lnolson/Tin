@@ -1,0 +1,103 @@
+---
+layout: default
+title: Reference
+---
+{% include header.html %}
+
+<p class="text-muted spacer">Structure</p>
+<h3>TColor</h3>
+
+<p class="text-muted spacer">Overview</p>
+<p>
+	TColor represents a color, using 4 stored properties - red, green, blue, and alpha. The expected value range for the color components is a floating point number in range 0.0 to 1.0. TColor provides a number of useful methods for working with a color.
+</p>
+
+<p class="text-muted spacer">Properties</p>
+<div>
+	<div class="ref-property">
+		<h5>var red: CGFloat</h5>
+		<p></p>
+	</div>
+	<div class="ref-property">
+		<h5>var green: CGFloat</h5>
+		<p></p>
+	</div>
+	<div class="ref-property">
+		<h5>var blue: CGFloat</h5>
+		<p></p>
+	</div>
+	<div class="ref-property">
+		<h5>var alpha: CGFloat</h5>
+		<p></p>
+	</div>
+</div>
+
+
+<p class="text-muted spacer">Computed properties</p>
+<div>
+	<div class="ref-property">
+		<h5>var hue: CGFloat</h5>
+		<p>Computed based on the values of red, green, and blue. A value in range 0.0 to 360.0.</p>
+	</div>
+	<div class="ref-property">
+		<h5>var saturation: CGFloat</h5>
+		<p>Computed based on the values of red, green, and blue. A value in range 0.0 to 1.0.</p>
+	</div>
+	<div class="ref-property">
+		<h5>var value: CGFloat</h5>
+		<p>Computed based on the values of red, green, and blue. A value in range 0.0 to 1.0.</p>
+	</div>
+</div>
+
+
+<p class="text-muted spacer">Initializers</p>
+<div class="ref-property">
+	<h5>init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)</h5>
+	<p>
+	</p>
+</div>
+<div class="ref-property">
+	<h5>init(pixel: TPixel)</h5>
+	<p>
+	</p>
+</div>
+
+<p class="text-muted spacer">Methods</p>
+<div class="ref-property">
+	<h5>func brightness() -> CGFloat</h5>
+	<p>
+		Return the brightness of this color - which is computed as the average of the color components. (red, green, and blue)
+	</p>
+</div>
+<div class="ref-property">
+	<h5>func lightness() -> CGFloat</h5>
+	<p>
+		Return the lightness value of this color.
+	</p>
+</div>
+<div class="ref-property">
+	<h5>func luminance() -> CGFloat</h5>
+	<p>
+		Return the "relative luminance" of this color.
+	</p>
+</div>
+<div class="ref-property">
+	<h5>func setFillColor()</h5>
+	<p>
+	</p>
+</div>
+<div class="ref-property">
+	<h5>func setStrokeColor()</h5>
+	<p>
+	</p>
+</div>
+
+
+
+
+<p class="text-muted spacer">Related</p>
+<div class="ref-property">
+	<p><a href="../timage">TImage</a></p>
+	<p><a href="../timage">TPixel</a></p>
+</div>
+<br><br><br>

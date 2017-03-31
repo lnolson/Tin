@@ -101,7 +101,6 @@ public struct TColor {
     }
     
     
-    // TODO: add methods to return lumanance? hue, saturation.
     
     // relative luminance https://en.wikipedia.org/wiki/Relative_luminance
     //
