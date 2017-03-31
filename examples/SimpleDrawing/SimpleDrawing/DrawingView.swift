@@ -21,8 +21,9 @@ class DrawingView: TView {
     override func setup() {
         super.setup()
         
-        snowman = TImage.makeImage(imageFileInBundle: "Snowman-200.jpg")
-        logo = TImage.makeImage(imageFileInBundle: "Swift.png")
+        
+        snowman = TImage(contentsOfFileInBundle: "Snowman-200.jpg")
+        logo = TImage(contentsOfFileInBundle: "Swift.png")
         
         font = TFont(fontName: "Helvetica Neue Medium", ofSize: 32.0)
     }

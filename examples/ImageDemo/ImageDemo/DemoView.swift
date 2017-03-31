@@ -17,7 +17,7 @@ class DemoView: TView {
     
     override func setup() {
         //
-        image = TImage.makeImage(imageFileInBundle: "puffin.jpg")
+        image = TImage(contentsOfFileInBundle: "puffin.jpg")
         showStats = false
         tin.enableRestoreFromPrevious()
         

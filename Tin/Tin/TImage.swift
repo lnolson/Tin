@@ -24,7 +24,7 @@ open class TImage: NSObject {
     public var pixels: [UInt8]?
     
     
-    init(image: CGImage) {
+    public init(image: CGImage) {
         cgimage = image
         width = CGFloat(image.width)
         height = CGFloat(image.height)
@@ -33,15 +33,14 @@ open class TImage: NSObject {
     }
     
     
-    
-    public class func makeImage(imageFile: String) -> TImage? {
-        if FileManager.default.fileExists(atPath: imageFile) == false {
-            error("File does not exist. \(imageFile)")
+    public convenience init?(contentsOfFile filename: String) {
+        if FileManager.default.fileExists(atPath: filename) == false {
+            error("File does not exist. \(filename)")
             return nil
         }
         var image: CGImage?
-        if let dataProvider = CGDataProvider(filename: imageFile.cString(using: .utf8)!) {
-            if let imageExtension = NSURL(fileURLWithPath: imageFile).pathExtension?.lowercased() {
+        if let dataProvider = CGDataProvider(filename: filename.cString(using: .utf8)!) {
+            if let imageExtension = NSURL(fileURLWithPath: filename).pathExtension?.lowercased() {
                 if imageExtension == "jpg" || imageExtension == "jpeg" {
                     image = CGImage(jpegDataProviderSource: dataProvider, decode: nil, shouldInterpolate: false, intent: .defaultIntent)
                 }
@@ -51,8 +50,8 @@ open class TImage: NSObject {
             }
         }
         
-        if image != nil {
-            return TImage(image: image!)
+        if let cgimage = image {
+            self.init(image: cgimage)
         }
         else {
             return nil
@@ -60,10 +59,10 @@ open class TImage: NSObject {
     }
     
     
-    public class func makeImage(imageFileInBundle: String) -> TImage? {
+    public convenience init?(contentsOfFileInBundle filename: String) {
         let bundle = Bundle.main
-        let imagePath = bundle.resourcePath! + "/" + imageFileInBundle
-        return self.makeImage(imageFile: imagePath)
+        let imagePath = bundle.resourcePath! + "/" + filename
+        self.init(contentsOfFile: imagePath)
     }
     
     
