@@ -67,11 +67,39 @@ public func constrain<T: Comparable>( value: T, min: T, max: T ) -> T {
  - Parameter endValue: End value.
  - Parameter t: The interpolation value.
  
- - Returns: (CGFloat) The interpolated value.
+ - Returns: (Generic) The interpolated value.
  
  */
 public func lerp<T>(startValue: T, endValue: T, t: T) -> T where T: Numeric, T: Mathable {
     return startValue + (endValue - startValue) * t;
+}
+
+
+/**
+ Smoothstep (ease in/ease out) interpolates between startValue and endVaue by t.
+ 
+ When t = 0 returns startValue.
+ When t = 1 return endValue.
+ When t = 0.5 returns the midpoint of startValue and endValue.
+ 
+ - Parameter startValue: Start value.
+ - Parameter endValue: End value.
+ - Parameter t: The interpolation value.
+ 
+ - Returns: (Generic) The interpolated value.
+ 
+ */
+public func smoothstep<T>(startValue: T, endValue: T, t: T) -> T where T: Numeric, T: Mathable {
+    if t <= 0.0 {
+        return startValue
+    }
+    else if t >= 1.0 {
+        return endValue
+    }
+    else {
+        let y = t * t * (3.0 - 2.0 * t)
+        return startValue + ((endValue - startValue) * y)
+    }
 }
 
 
