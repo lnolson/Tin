@@ -183,6 +183,17 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     }
     
     
+    public func roundedRect(rect: NSRect, xRadius: CGFloat, yRadius: CGFloat) {
+        let bezier = NSBezierPath(roundedRect: rect, xRadius: xRadius, yRadius: yRadius)
+        if delegate.fill {
+            bezier.fill()
+        }
+        if delegate.stroke {
+            bezier.stroke()
+        }
+    }
+    
+    
     // MARK: - Color state
     
     
@@ -211,6 +222,11 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     
     public func fillColor() -> NSColor {
         return currentFillColor
+    }
+    
+    
+    public func setAlpha<T>(_ alpha: T) where T: Numeric {
+        cg.setAlpha(CGFloat(fromNumeric: alpha))
     }
     
     
@@ -246,6 +262,7 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     // MARK: - Image
     
     public func image<T>(image: TImage, x: T, y: T) where T: Numeric {
+        
         let rect = CGRect(x: CGFloat(fromNumeric: x), y: CGFloat(fromNumeric: y), width: image.width, height: image.height)
         if let cgimage = image.cgimage {
             cg.draw(cgimage, in: rect)

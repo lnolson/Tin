@@ -21,6 +21,8 @@ class DrawingView: TView {
     override func setup() {
         super.setup()
         
+        debug("tin size is \(tin.size)")
+        
         
         snowman = TImage(contentsOfFileInBundle: "Snowman-200.jpg")
         logo = TImage(contentsOfFileInBundle: "Swift.png")
@@ -84,11 +86,12 @@ class DrawingView: TView {
         tin.pathEnd()
         
         
-        
+        tin.setAlpha(1.0)
         tin.image(image: snowman!, x: 800.0, y: 300.0)
+        tin.setAlpha(1.0)
         tin.image(image: logo!, x: 200.0, y: 300.0)
         
-        
+        tin.setAlpha(0.5)
         if let f = font {
             tin.setFillColor(red: 0.05, green: 0.05, blue: 0.05, alpha: 1.0)
             f.horizontalAlignment = .center
@@ -97,6 +100,12 @@ class DrawingView: TView {
             f.paragraphAlignment = .center
             f.kerning = 0.0
             tin.text(message: "Tin", font: f, x: tin.midX, y: 50.0)
+            
+            tin.setAlpha(1.0)
+            let rect = NSRect(x: tin.midX - 200.0, y: 20.0, width: 400.0, height: 90.0)
+            tin.fill = false
+            tin.setStrokeColor(gray: 0.05)
+            tin.roundedRect(rect: rect, xRadius: 5.0, yRadius: 5.0)
         }
         
         //stopUpdates()
@@ -104,21 +113,30 @@ class DrawingView: TView {
     }
     
     
+    func brightness(image: TImage, factor: CGFloat) {
+        image.loadPixels()
+        let w = Int(image.width)
+        let h = Int(image.height)
+        for y in 0 ..< h {
+            for x in 0 ..< w {
+                var pixel = image.pixel(atX: x, y: y)
+                let scaledRed = CGFloat(pixel.red) * factor
+                let scaledGreen = CGFloat(pixel.green) * factor
+                let scaledBlue = CGFloat(pixel.blue) * factor
+                
+                pixel.red = UInt8(constrain(value: scaledRed, min: 0.0, max: 255.0))
+                pixel.green = UInt8(constrain(value: scaledGreen, min: 0.0, max: 255.0))
+                pixel.blue = UInt8(constrain(value: scaledBlue, min: 0.0, max: 255.0))
+                image.set(pixel: pixel, x: x, y: y)
+            }
+        }
+        image.savePixels()
+    }
+    
+    
     override func mouseUp() {
         if let img = snowman {
-            img.loadPixels()
-            let w = Int(img.width)
-            let h = Int(img.height)
-            for y in 0 ..< h {
-                for x in 0 ..< w {
-                    var pixel = img.pixel(atX: x, y: y)
-                    pixel.red = UInt8(constrain(value: floor(Double(pixel.red) * 0.9), min: 0.0, max: 255.0))
-                    pixel.green = UInt8(constrain(value: floor(Double(pixel.green) * 0.9), min: 0.0, max: 255.0))
-                    pixel.blue = UInt8(constrain(value: floor(Double(pixel.blue) * 0.9), min: 0.0, max: 255.0))
-                    img.set(pixel: pixel, x: x, y: y)
-                }
-            }
-            img.savePixels()
+            brightness(image: img, factor: 1.5)
         }
     }
     

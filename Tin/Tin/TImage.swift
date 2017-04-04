@@ -101,11 +101,22 @@ open class TImage: NSObject {
         let intent: CGColorRenderingIntent = CGColorRenderingIntent.defaultIntent
         let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
         let bitmapInfo: CGBitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-        let providerRef: CGDataProvider? = CGDataProvider(data: NSData(bytes: &pixels!, length: bitmapCount * elementLength))
+        let data = NSData(bytes: &(pixels!), length: bitmapCount)
+        let providerRef: CGDataProvider? = CGDataProvider(data: data)
+        if providerRef == nil {
+            debug("Error in savePixels: CGDataProvider returned nil")
+            return
+        }
         
         let w = Int(width)
         let h = Int(height)
         let newimage: CGImage? = CGImage(width: w, height: h, bitsPerComponent: 8, bitsPerPixel: 32, bytesPerRow: w * elementLength, space: rgbColorSpace, bitmapInfo: bitmapInfo, provider: providerRef!, decode: nil, shouldInterpolate: true, intent: intent)
+        
+        if newimage == nil {
+            debug("Error in savePixels: CGImage returned nil")
+            return
+        }
+        
         cgimage = newimage
     }
     

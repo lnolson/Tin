@@ -74,12 +74,15 @@ public protocol TinRenderProtocol {
     func pathClose()
     func pathEnd()
     
+    func roundedRect(rect: NSRect, xRadius: CGFloat, yRadius: CGFloat)
+    
     
     // color state
     func setStrokeColor<T>(red: T, green: T, blue: T, alpha: T) where T: Numeric
     func setFillColor<T>(red: T, green: T, blue: T, alpha: T) where T: Numeric
     func strokeColor() -> NSColor
     func fillColor() -> NSColor
+    func setAlpha<T>(_ alpha: T) where T: Numeric
     
     
     // context state & transformations
@@ -147,10 +150,15 @@ public class Tin {
     }
     
     
-    func reset(width: CGFloat, height: CGFloat) {
+    func resetSize(width: CGFloat, height: CGFloat) {
         size = NSSize(width: width, height: height)
         midX = width / 2.0
         midY = height / 2.0
+    }
+    
+    
+    func reset(width: CGFloat, height: CGFloat) {
+        resetSize(width: width, height: height)
         fill = true
         stroke = true
         lineWidth(2.0)
@@ -341,6 +349,11 @@ public class Tin {
         pathVertexCount = 0
     }
     
+    // Draw a rectangle with rounded corners, specified by xRadius, yRadius
+    public func roundedRect(rect: NSRect, xRadius: CGFloat, yRadius: CGFloat) {
+        render?.roundedRect(rect: rect, xRadius: xRadius, yRadius: yRadius)
+    }
+    
     
     // MARK: - Color state
     
@@ -393,6 +406,10 @@ public class Tin {
     
     public func fillColor() -> NSColor {
         return (render?.fillColor())!
+    }
+    
+    public func setAlpha<T>(_ alpha: T) where T: Numeric {
+        render?.setAlpha(alpha)
     }
     
     

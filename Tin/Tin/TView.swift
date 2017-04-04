@@ -153,6 +153,7 @@ open class TView: NSView {
         addTrackingArea(area)
         
         tin.makeRenderer()
+        tin.resetSize(width: frame.width, height: frame.height)
         setup()
         tin.prepare(frame: frame)
         startUpdateTimer()
