@@ -1,0 +1,96 @@
+---
+layout: default
+title: Reference
+---
+{% include header.html %}
+
+<p class="text-muted spacer">Class</p>
+<h3>TImage</h3>
+
+<p class="text-muted spacer">Overview</p>
+<p>
+	TImage is an object that represents an image in your app.
+</p>
+
+<p class="text-muted spacer">Properties</p>
+<div>
+	<div class="ref-property">
+		<h5>var width: CGFloat</h5>
+		<p></p>
+	</div>
+	<div class="ref-property">
+		<h5>var height: CGFloat</h5>
+		<p></p>
+	</div>
+	<div class="ref-property">
+		<h5>var pixels: [UInt8]?</h5>
+		<p></p>
+	</div>
+</div>
+
+
+
+<p class="text-muted spacer">Initializers</p>
+<div class="ref-property">
+	<h5>init(image: CGImage)</h5>
+	<p>
+	</p>
+</div>
+<div class="ref-property">
+	<h5>init?(contentsOfFile filename: String)</h5>
+	<p>
+	</p>
+</div>
+<div class="ref-property">
+	<h5>init?(contentsOfFileInBundle filename: String)</h5>
+	<p>
+	</p>
+</div>
+
+<p class="text-muted spacer">Methods</p>
+<div class="ref-property">
+	<h5>func loadPixels()</h5>
+	<p>
+		
+	</p>
+</div>
+<div class="ref-property">
+	<h5>func savePixels()</h5>
+	<p>
+		
+	</p>
+</div>
+<div class="ref-property">
+	<h5>func pixel(at point: CGPoint) -> TPixel</h5>
+	<p>
+		
+	</p>
+</div>
+<div class="ref-property">
+	<h5>func pixel(atX x: Int, y: Int) -> TPixel</h5>
+	<p>
+		
+	</p>
+</div>
+<div class="ref-property">
+	<h5>func color(atX x: Int, y: Int) -> TColor</h5>
+	<p>
+		
+	</p>
+</div>
+<div class="ref-property">
+	<h5>func set(pixel: TPixel, x: Int, y: Int)</h5>
+	<p>
+		
+	</p>
+</div>
+
+
+
+
+<p class="text-muted spacer">Related</p>
+<div class="ref-property">
+	<p><a href="../tcolor">TColor</a></p>
+	<p><a href="../timage">TPixel</a></p>
+</div>
+<br><br><br>

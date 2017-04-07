@@ -5,36 +5,37 @@ title: Reference
 {% include header.html %}
 
 <p class="text-muted spacer">Global Function</p>
-<h3>mag()</h3>
+<h3>toRadians()</h3>
 
 <p class="text-muted spacer">Declaration</p>
-<code>func mag<T>(x: T, y: T) -> T where T: Numeric, T: Mathable</code>
+<code>func toRadians<T>(degrees: T) -> T where T: Numeric, T: Mathable</code>
+
+<p>
+	<small><em>
+		<br>
+		toRadians is a generic function that works with any floating point type such as Double, Float, or CGFloat. Make sure all arguments are of the same type.
+	</em></small>
+</p>
 
 <p class="text-muted spacer">Parameters</p>
 <table class="table table-bordered">
 	<tr>
-		<td>x</td>
-		<td>First vector component.</td>
+		<td>degrees</td>
+		<td>todo</td>
 	</tr>
-	<tr>
-		<td>y</td>
-		<td>Second vector component.</td>
-	</tr>
+	
 </table>
 
 <p class="text-muted spacer">Returns</p>
-<p>T</p>
+<p>T </p>
 
 <p class="text-muted spacer">Description</p>
-<p>Calculates the magnitude of a (2d) vector. This vector is relative to the origin (0,0).</p>
+<p></p>
 
 <p class="text-muted spacer">Examples</p>
 
 {% highlight swift %}
-let x = 150.0
-let y = 180.0
-let m = mag(x: x, y:y)
-// The value of m is 234.3074
+
 {% endhighlight %}
 
 <p class="text-muted spacer">Related</p>

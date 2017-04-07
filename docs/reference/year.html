@@ -5,36 +5,30 @@ title: Reference
 {% include header.html %}
 
 <p class="text-muted spacer">Global Function</p>
-<h3>mag()</h3>
+<h3>year()</h3>
 
 <p class="text-muted spacer">Declaration</p>
-<code>func mag<T>(x: T, y: T) -> T where T: Numeric, T: Mathable</code>
+<code>func year() -> Int</code>
+
 
 <p class="text-muted spacer">Parameters</p>
 <table class="table table-bordered">
 	<tr>
-		<td>x</td>
-		<td>First vector component.</td>
+		<td>None</td>
 	</tr>
-	<tr>
-		<td>y</td>
-		<td>Second vector component.</td>
-	</tr>
+	
 </table>
 
 <p class="text-muted spacer">Returns</p>
-<p>T</p>
+<p>Int</p>
 
 <p class="text-muted spacer">Description</p>
-<p>Calculates the magnitude of a (2d) vector. This vector is relative to the origin (0,0).</p>
+<p>Current year returned by system clock.</p>
 
 <p class="text-muted spacer">Examples</p>
 
 {% highlight swift %}
-let x = 150.0
-let y = 180.0
-let m = mag(x: x, y:y)
-// The value of m is 234.3074
+
 {% endhighlight %}
 
 <p class="text-muted spacer">Related</p>

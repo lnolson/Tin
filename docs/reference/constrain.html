@@ -8,7 +8,14 @@ title: Reference
 <h3>constrain()</h3>
 
 <p class="text-muted spacer">Declaration</p>
-<code>func constrain(value: Generic, min: Generic, max: Generic) -> Generic</code>
+<code>func constrain<T>(value: T, min: T, max: T) -> T where T: Comparable</code>
+
+<p>
+	<small><em>
+		<br>
+		constrain is a generic function that works with any numeric type such as Int, Double, Float, or CGFloat. Make sure all arguments are of the same type.
+	</em></small>
+</p>
 
 <p class="text-muted spacer">Parameters</p>
 <table class="table table-bordered">
@@ -27,7 +34,7 @@ title: Reference
 </table>
 
 <p class="text-muted spacer">Returns</p>
-<p>Constrained value.</p>
+<p>T (constrain is a generic function) Constrained value.</p>
 
 <p class="text-muted spacer">Description</p>
 <p>Constrains a value to not exceed a maximum and fall below a minimum value. This is a generic function that can work with any type that conforms to Comparable.</p>

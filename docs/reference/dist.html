@@ -1,0 +1,56 @@
+---
+layout: default
+title: Reference
+---
+{% include header.html %}
+
+<p class="text-muted spacer">Global Function</p>
+<h3>dist()</h3>
+
+<p class="text-muted spacer">Declaration</p>
+<code>func dist<T>( x1: T, y1: T, x2: T, y2: T ) -> T where T: Numeric, T: Mathable</code>
+
+<p>
+	<small><em>
+		<br>
+		dist is a generic function that works with any floating point type such as Double, Float, or CGFloat. Make sure all arguments are of the same type.
+	</em></small>
+</p>
+
+<p class="text-muted spacer">Parameters</p>
+<table class="table table-bordered">
+	<tr>
+		<td>x1</td>
+		<td>first point x component.</td>
+	</tr>
+	<tr>
+		<td>y1</td>
+		<td>first point y component.</td>
+	</tr>
+	<tr>
+		<td>x2</td>
+		<td>second point x component.</td>
+	</tr>
+	<tr>
+		<td>y2</td>
+		<td>second point y component.</td>
+	</tr>
+</table>
+
+<p class="text-muted spacer">Returns</p>
+<p>T (dist is a generic function) distance value.</p>
+
+<p class="text-muted spacer">Description</p>
+<p>Compute the distance from point (x1,y1) to point (x2,y2).</p>
+
+<p class="text-muted spacer">Examples</p>
+
+{% highlight swift %}
+// Compute distance from 100,100 to 400,300
+let distance = dist(x1: 100.0, y1: 100.0, x2: 400.0, y2: 300.0)
+
+// Compute distance from the current mouse location to center of the view.
+let distance = dist(x1: tin.mouseX, y1: tin.mouseY, x2: tin.midX, y2: tin.midY)
+{% endhighlight %}
+
+<p class="text-muted spacer">Related</p>
