@@ -130,7 +130,7 @@ open class TImage: NSObject {
         if pixels == nil {
             return TPixel(red: 0, green: 0, blue: 0, alpha: 0)
         }
-        if x < 0 || x > Int(width) || y < 0 || y > Int(height) {
+        if x < 0 || x >= Int(width) || y < 0 || y >= Int(height) {
             return TPixel(red: 0, green: 0, blue: 0, alpha: 0)
         }
         let flippedY = (y * -1) + Int(height) - 1

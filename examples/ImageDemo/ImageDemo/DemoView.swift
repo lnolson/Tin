@@ -18,6 +18,9 @@ class DemoView: TView {
     override func setup() {
         //
         image = TImage(contentsOfFileInBundle: "puffin.jpg")
+        if let image = image {
+            image.loadPixels()
+        }
         showStats = false
         tin.enableRestoreFromPrevious()
         
@@ -26,7 +29,7 @@ class DemoView: TView {
     
     override func update() {
         //tin.background(red: 0.5, green: 0.1, blue: 0.1)
-        if tin.frameCount <= 1 {
+        if tin.frameCount == 1 {
             debug("clear")
             tin.background(gray: 0.0)
         }
@@ -38,7 +41,9 @@ class DemoView: TView {
     func abstractB() {
         tin.stroke = false
         if image != nil {
-            image!.loadPixels()
+            
+            
+            dropCircle2(x: 1203.0, y: 800.0)
             
             for _ in 0...100 {
                 
@@ -47,6 +52,7 @@ class DemoView: TView {
                 dropCircle2(x: x, y: y)
                 
             }
+            
         }
     }
     

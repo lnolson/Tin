@@ -45,7 +45,7 @@ import Foundation
  - Returns: (Generic) The constrained value.
  
  */
-public func constrain<T: Comparable>( value: T, min: T, max: T ) -> T {
+public func constrain<T>( value: T, min: T, max: T ) -> T where T: Comparable {
     if value < min {
         return min
     }
