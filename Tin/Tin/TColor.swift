@@ -14,6 +14,28 @@ public struct TPixel {
     public var green: UInt8
     public var blue: UInt8
     public var alpha: UInt8 = 255
+    
+    
+    public init(red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8) {
+        self.red = red
+        self.green = green
+        self.blue = blue
+        self.alpha = alpha
+    }
+    
+    
+    public init(red: UInt8, green: UInt8, blue: UInt8) {
+        self.init(red: red, green: green, blue: blue, alpha: 255)
+    }
+    
+    
+    public init(color: TColor) {
+        let r = UInt8(constrain(value: color.red * 255.0, min: 0.0, max: 255.0))
+        let g = UInt8(constrain(value: color.red * 255.0, min: 0.0, max: 255.0))
+        let b = UInt8(constrain(value: color.red * 255.0, min: 0.0, max: 255.0))
+        let a = UInt8(constrain(value: color.red * 255.0, min: 0.0, max: 255.0))
+        self.init(red: r, green: g, blue: b, alpha: a)
+    }
 }
 
 

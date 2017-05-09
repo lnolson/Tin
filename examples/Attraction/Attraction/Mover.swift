@@ -52,7 +52,8 @@ class Mover {
         tin.setFillColor(red: 0.7, green: 0.2, blue: 0.1, alpha: 1.0)
         //cu.stroke = true
         //cu.fill = true
-        tin.rect(left: -radius, bottom: -radius / 2.0, right: radius * 2.0, top: radius)
+        //tin.rect(left: -radius, bottom: -radius / 2.0, right: radius * 2.0, top: radius)
+        tin.triangle(x1: -radius, y1: -radius / 1.5, x2: -radius, y2: radius / 1.5, x3: radius, y3: 0.0)
         
         tin.popState()
         
