@@ -12,6 +12,13 @@
 import Cocoa
 
 
+public protocol TViewDelegate {
+    
+    func update()
+    
+}
+
+    
 
 open class TView: NSView {
     
@@ -32,13 +39,13 @@ open class TView: NSView {
         return timer != nil
     }
     
-    
     private var timer: Timer?
     private var totalDrawTime: TimeInterval = 0.0
     private var infoFont = TFont(fontName: "Courier New", ofSize: 14.0)
     public var showStats = true
     private var statsString = ""
     public var event: NSEvent = NSEvent()
+    public var delegate: TViewDelegate?
     
     
     
@@ -55,34 +62,13 @@ open class TView: NSView {
         super.init(coder: coder)
     }
     
-    public init(width: CGFloat, height: CGFloat) {
+    public required init(width: Double, height: Double) {
         let newFrame = NSRect(x: 0.0, y: 0.0, width: width, height: height)
         super.init(frame: newFrame)
     }
     
     
     // MARK: - instance methods
-    
-    
-    open func setup() {
-        // This space intentionally left blank
-        // setup() is intended to be overridden by the user.
-        // An opportunity for one time init for the view.
-        // Do not put drawing code in setup. The view isn't ready for drawing yet.
-        // It is a good time to init data.
-    }
-    
-    
-    func updateView() {
-        needsDisplay = true
-    }
-    
-    
-    open func update() {
-        // This space intentionally left blank
-        // update() is intended to be overridden by the user.
-        // Drawing code show go in update, or methods called during update.
-    }
     
     
     public func stopUpdates() {
@@ -115,11 +101,12 @@ open class TView: NSView {
         
         super.draw(dirtyRect)
         
+        
         tin.updateFrameCount()
         
         tin.prepareForUpdate(frame: frame)
         
-        update()
+        delegate?.update()
         
         if showStats {
             var elapsedTime: TimeInterval = 0.0
@@ -131,13 +118,14 @@ open class TView: NSView {
                 let averageDrawTime = totalDrawTime / TimeInterval(tin.frameCount)
                 statsString = String(format: "Draw %0.4f/%.04f", elapsedTime, averageDrawTime)
             }
-            tin.setFillColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
+            fillColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
             infoFont.horizontalAlignment = .right
-            tin.text(message: statsString, font: infoFont, x: frame.width - 5, y: 5)
+            text(message: statsString, font: infoFont, x: Double(frame.width) - 5.0, y: 5.0)
         }
         
         // All drawing operations need to happen before calling didFinishUpdate()
         tin.didFinishUpdate()
+        
     }
     
     
@@ -151,13 +139,44 @@ open class TView: NSView {
         let trackingOptions: NSTrackingAreaOptions = [.activeAlways,.mouseMoved]
         let area = NSTrackingArea(rect: trackingRect, options: trackingOptions, owner: self, userInfo: nil)
         addTrackingArea(area)
+
         
         tin.makeRenderer()
-        tin.resetSize(width: frame.width, height: frame.height)
-        setup()
+        tin.resetSize(width: Double(frame.width), height: Double(frame.height))
+        //setup()
         tin.prepare(frame: frame)
+ 
+        
         startUpdateTimer()
     }
+    
+    
+    func updateView() {
+        needsDisplay = true
+    }
+    
+    
+    /*
+    open func setup() {
+        // This space intentionally left blank
+        // setup() is intended to be overridden by the user.
+        // An opportunity for one time init for the view.
+        // Do not put drawing code in setup. The view isn't ready for drawing yet.
+        // It is a good time to init data.
+    }
+    
+    
+    
+    
+    
+    open func update() {
+        // This space intentionally left blank
+        // update() is intended to be overridden by the user.
+        // Drawing code show go in update, or methods called during update.
+    }
+    */
+
+    
     
     
     // MARK: - NSResponder
@@ -166,6 +185,30 @@ open class TView: NSView {
     open override var acceptsFirstResponder: Bool {
         return true
     }
+    
+}
+
+
+/*
+
+    
+    
+ 
+    
+    
+    
+ 
+    
+    
+ 
+    
+    
+ 
+    
+ 
+    
+    
+ 
     
     
     // Idea. Don't have students override these NSResponder methods.
@@ -254,3 +297,5 @@ open class TView: NSView {
     
     
 }
+ 
+ */

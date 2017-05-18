@@ -19,15 +19,15 @@ open class TImage: NSObject {
 
     
     var cgimage: CGImage?
-    public var width: CGFloat
-    public var height: CGFloat
+    public var width: Double
+    public var height: Double
     public var pixels: [UInt8]?
     
     
     public init(image: CGImage) {
         cgimage = image
-        width = CGFloat(image.width)
-        height = CGFloat(image.height)
+        width = Double(image.width)
+        height = Double(image.height)
         pixels = nil
         super.init()
     }

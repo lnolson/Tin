@@ -56,7 +56,7 @@ open class TFont {
         paragraphStyle.alignment = paragraphAlignment
         paragraphStyle.lineHeightMultiple = lineHeightMultiple
         let attributes: [String : Any] = [
-            NSForegroundColorAttributeName: tin.fillColor(),
+            NSForegroundColorAttributeName: fillColor(),
             NSParagraphStyleAttributeName: paragraphStyle,
             NSKernAttributeName: kerning,
             NSFontAttributeName: font

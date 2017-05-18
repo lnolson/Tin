@@ -23,6 +23,7 @@
 		5C4C94091E203C4F00503D38 /* TVector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4C93FE1E203C4F00503D38 /* TVector2.swift */; };
 		5C4C942B1E20612200503D38 /* GameplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4C942A1E20612200503D38 /* GameplayKit.framework */; };
 		5C4C94881E206B0C00503D38 /* ImprovedNoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4C94871E206B0C00503D38 /* ImprovedNoise.swift */; };
+		5C6D157E1ECA425800016AC4 /* TController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D157D1ECA425800016AC4 /* TController.swift */; };
 		5CDF09601E737346003EEAB8 /* TColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF095F1E737346003EEAB8 /* TColor.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		5C4C93FE1E203C4F00503D38 /* TVector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVector2.swift; sourceTree = "<group>"; };
 		5C4C942A1E20612200503D38 /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = System/Library/Frameworks/GameplayKit.framework; sourceTree = SDKROOT; };
 		5C4C94871E206B0C00503D38 /* ImprovedNoise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImprovedNoise.swift; sourceTree = "<group>"; };
+		5C6D157D1ECA425800016AC4 /* TController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TController.swift; sourceTree = "<group>"; };
 		5CDF095F1E737346003EEAB8 /* TColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 				5C4C94871E206B0C00503D38 /* ImprovedNoise.swift */,
 				5C4C93FA1E203C4F00503D38 /* SimpleLog.swift */,
 				5CDF095F1E737346003EEAB8 /* TColor.swift */,
+				5C6D157D1ECA425800016AC4 /* TController.swift */,
 				5C4C93F41E203C4F00503D38 /* TFont.swift */,
 				5C4C93F81E203C4F00503D38 /* TImage.swift */,
 				5C4C93F51E203C4F00503D38 /* Tin.swift */,
@@ -261,6 +264,7 @@
 				5C4C94061E203C4F00503D38 /* Calculation.swift in Sources */,
 				5C4C93FF1E203C4F00503D38 /* TFont.swift in Sources */,
 				5C4C94051E203C4F00503D38 /* SimpleLog.swift in Sources */,
+				5C6D157E1ECA425800016AC4 /* TController.swift in Sources */,
 				5CDF09601E737346003EEAB8 /* TColor.swift in Sources */,
 				5C4C94031E203C4F00503D38 /* TImage.swift in Sources */,
 				5C4C94021E203C4F00503D38 /* TView.swift in Sources */,
@@ -399,6 +403,7 @@
 				INFOPLIST_FILE = Tin/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.asu.ame.Tin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -424,6 +429,7 @@
 				INFOPLIST_FILE = Tin/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.asu.ame.Tin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

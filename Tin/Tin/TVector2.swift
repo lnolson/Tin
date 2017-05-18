@@ -15,10 +15,10 @@ import Foundation
  A structure to represent a two dimensional vector.
  */
 public struct TVector2 {
-    public var x: CGFloat
-    public var y: CGFloat
+    public var x: Double
+    public var y: Double
     
-    public var magnitude: CGFloat {
+    public var magnitude: Double {
         get {
             return sqrt( x * x + y * y )
         }
@@ -31,7 +31,7 @@ public struct TVector2 {
     
     // MARK: - Initializers
     
-    public init( x: CGFloat, y: CGFloat ) {
+    public init( x: Double, y: Double ) {
         self.x = x
         self.y = y
     }
@@ -40,7 +40,7 @@ public struct TVector2 {
         self.init( x: 0.0, y: 0.0 )
     }
     
-    public init(angle: CGFloat) {
+    public init(angle: Double) {
         x = cos(angle)
         y = sin(angle)
     }
@@ -54,9 +54,9 @@ public struct TVector2 {
      - Parameter v1: The first vector.
      - Parameter v2: The second vector.
      
-     - Returns: (CGFloat) Result (in radians) angle between v1 and v2.
+     - Returns: (Double) Result (in radians) angle between v1 and v2.
     */
-    public static func angleBetween(v1: TVector2, v2: TVector2) -> CGFloat {
+    public static func angleBetween(v1: TVector2, v2: TVector2) -> Double {
         var n1 = v1
         var n2 = v2
         n1.normalize()
@@ -67,17 +67,17 @@ public struct TVector2 {
         return result
     }
     
-    public static func cross(v1: TVector2, v2:TVector2) -> CGFloat {
+    public static func cross(v1: TVector2, v2:TVector2) -> Double {
         return v1.x * v2.y - v1.y * v2.x
     }
     
-    public static func distance(v1: TVector2, v2: TVector2) -> CGFloat {
+    public static func distance(v1: TVector2, v2: TVector2) -> Double {
         let dx = v2.x - v1.x
         let dy = v2.y - v1.y
         return sqrt( dx * dx + dy * dy )
     }
     
-    public static func dot(v1: TVector2, v2:TVector2) -> CGFloat {
+    public static func dot(v1: TVector2, v2:TVector2) -> Double {
         return v1.x * v2.x + v1.y * v2.y
     }
 
@@ -86,30 +86,30 @@ public struct TVector2 {
     // MARK: - Instance methods
     
     
-    public func cross(v: TVector2) -> CGFloat {
+    public func cross(v: TVector2) -> Double {
         return x * v.y + y * v.x
     }
     
-    public func distance(v: TVector2) -> CGFloat {
+    public func distance(v: TVector2) -> Double {
         let dx = x - v.x
         let dy = y - v.y
         return sqrt( dx * dx + dy * dy )
     }
     
-    public func dot(v: TVector2) -> CGFloat {
+    public func dot(v: TVector2) -> Double {
         return x * v.x + y * v.y
     }
     
-    public func heading() -> CGFloat {
+    public func heading() -> Double {
         return atan2(y, x)
     }
     
-    public mutating func lerp( v: TVector2, amount: CGFloat ) {
+    public mutating func lerp( v: TVector2, amount: Double ) {
         x = x + (v.x - x) * amount
         y = y + (v.y - y) * amount
     }
     
-    public mutating func limit( mag: CGFloat ) {
+    public mutating func limit( mag: Double ) {
         normalize()
         x = x * mag
         y = y * mag
@@ -123,7 +123,7 @@ public struct TVector2 {
         }
     }
     
-    public mutating func rotate( theta: CGFloat ) {
+    public mutating func rotate( theta: Double ) {
         let temp = x
         x = x * cos(theta) - y * sin(theta)
         y = temp * sin(theta) + y * cos(theta)
@@ -147,13 +147,13 @@ public func -(left: TVector2, right: TVector2) -> TVector2 {
     return TVector2(x: x, y: y)
 }
 
-public func *(left: TVector2, right: CGFloat) -> TVector2 {
+public func *(left: TVector2, right: Double) -> TVector2 {
     let x = left.x * right
     let y = left.y * right
     return TVector2(x: x, y: y)
 }
 
-public func /(left: TVector2, right: CGFloat) -> TVector2 {
+public func /(left: TVector2, right: Double) -> TVector2 {
     let x = left.x / right
     let y = left.y / right
     return TVector2(x: x, y: y)

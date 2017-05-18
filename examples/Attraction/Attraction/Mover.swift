@@ -13,14 +13,14 @@ class Mover {
     var location: TVector2
     var velocity: TVector2
     var acceleration: TVector2
-    var radius: CGFloat = 8.0
-    var mass: CGFloat = 1.0
-    var angle: CGFloat = 0.0
-    var aVelocity: CGFloat = 0.0
-    var aAcceleration: CGFloat = 0.0
+    var radius = 8.0
+    var mass = 1.0
+    var angle = 0.0
+    var aVelocity = 0.0
+    var aAcceleration = 0.0
     
     
-    init( x: CGFloat, y: CGFloat ) {
+    init( x: Double, y: Double ) {
         location = TVector2(x: x, y: y)
         velocity = TVector2()
         acceleration = TVector2()
@@ -43,19 +43,19 @@ class Mover {
     
     func render() {
         
-        tin.pushState()
+        pushState()
         
-        tin.translate(dx: CGFloat(location.x), dy: CGFloat(location.y))
-        tin.rotate(by: CGFloat(angle))
+        translate(dx: location.x, dy: location.y)
+        rotate(by: angle)
         
-        tin.setStrokeColor(red: 0.04, green: 0.04, blue: 0.04, alpha: 1.0)
-        tin.setFillColor(red: 0.7, green: 0.2, blue: 0.1, alpha: 1.0)
+        strokeColor(red: 0.04, green: 0.04, blue: 0.04, alpha: 1.0)
+        fillColor(red: 0.7, green: 0.2, blue: 0.1, alpha: 1.0)
         //cu.stroke = true
         //cu.fill = true
         //tin.rect(left: -radius, bottom: -radius / 2.0, right: radius * 2.0, top: radius)
-        tin.triangle(x1: -radius, y1: -radius / 1.5, x2: -radius, y2: radius / 1.5, x3: radius, y3: 0.0)
+        triangle(x1: -radius, y1: -radius / 1.5, x2: -radius, y2: radius / 1.5, x3: radius, y3: 0.0)
         
-        tin.popState()
+        popState()
         
     }
     
@@ -64,7 +64,7 @@ class Mover {
         var distance = force.magnitude
         distance = constrain(value: distance, min: 5.0, max: 25.0)
         force.normalize()
-        let g: CGFloat = 0.4
+        let g = 0.4
         let strength = (g * mass * m.mass) / (distance * distance)
         force = force * strength
         return force

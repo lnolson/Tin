@@ -1,6 +1,6 @@
 //
 //  Calculation.swift
-//  Tin
+//  Doublein
 //
 //  Created by Loren Olson on 10/22/16.
 //  Created at the School of Arts, Media and Engineering,
@@ -12,7 +12,7 @@
 //  A few global useful computation functions.
 
 
-
+/*
 public protocol Mathable: Equatable {
     
     static func +(lhs: Self, rhs: Self) -> Self
@@ -30,6 +30,7 @@ extension Int: Mathable {}
 extension Float: Mathable {}
 extension Double: Mathable {}
 extension CGFloat: Mathable {}
+ */
 
 
 
@@ -38,14 +39,14 @@ import Foundation
 /**
  Constrains a value to not exceed a minimum and maximum value.
  
- - Parameter value: The value to be constrained.
- - Parameter min: The lower limit, value will not be less than this.
- - Parameter max: The higher limit, value will not be greater than this.
+ - Parameter value: Doublehe value to be constrained.
+ - Parameter min: Doublehe lower limit, value will not be less than this.
+ - Parameter max: Doublehe higher limit, value will not be greater than this.
  
- - Returns: (Generic) The constrained value.
+ - Returns: (Generic) Doublehe constrained value.
  
  */
-public func constrain<T>( value: T, min: T, max: T ) -> T where T: Comparable {
+public func constrain(value: Double, min: Double, max: Double) -> Double {
     if value < min {
         return min
     }
@@ -65,12 +66,12 @@ public func constrain<T>( value: T, min: T, max: T ) -> T where T: Comparable {
  
  - Parameter startValue: Start value.
  - Parameter endValue: End value.
- - Parameter t: The interpolation value.
+ - Parameter t: Doublehe interpolation value.
  
- - Returns: (Generic) The interpolated value.
+ - Returns: (Generic) Doublehe interpolated value.
  
  */
-public func lerp<T>(startValue: T, endValue: T, t: T) -> T where T: Numeric, T: Mathable {
+public func lerp(startValue: Double, endValue: Double, t: Double) -> Double {
     return startValue + (endValue - startValue) * t;
 }
 
@@ -84,12 +85,12 @@ public func lerp<T>(startValue: T, endValue: T, t: T) -> T where T: Numeric, T: 
  
  - Parameter startValue: Start value.
  - Parameter endValue: End value.
- - Parameter t: The interpolation value.
+ - Parameter t: Doublehe interpolation value.
  
- - Returns: (Generic) The interpolated value.
+ - Returns: (Generic) Doublehe interpolated value.
  
  */
-public func smoothstep<T>(startValue: T, endValue: T, t: T) -> T where T: Numeric, T: Mathable {
+public func smoothstep(startValue: Double, endValue: Double, t: Double) -> Double {
     if t <= 0.0 {
         return startValue
     }
@@ -111,7 +112,7 @@ public func smoothstep<T>(startValue: T, endValue: T, t: T) -> T where T: Numeri
  
  - Returns: (CGFloat) Magnitude (ie length).
  */
-public func mag<T>(x: T, y: T) -> T where T: Numeric, T: Mathable {
+public func mag(x: Double, y: Double) -> Double {
     return sqrt(x * x + y * y)
 }
 
@@ -124,15 +125,15 @@ public func mag<T>(x: T, y: T) -> T where T: Numeric, T: Mathable {
  output range is 0 to 100. Given the value 0.25,
  the result 25.0 is returned.
  
- - Parameter value: The input value to be re-mapped.
- - Parameter start1: The lower bound of the input range.
- - Parameter stop1: The upper bound of the input range.
- - Parameter start2: The lower bound of the output range.
- - Parameter stop2: The upper bound of the output range.
+ - Parameter value: Doublehe input value to be re-mapped.
+ - Parameter start1: Doublehe lower bound of the input range.
+ - Parameter stop1: Doublehe upper bound of the input range.
+ - Parameter start2: Doublehe lower bound of the output range.
+ - Parameter stop2: Doublehe upper bound of the output range.
  
- - Returns: (CGFloat) The re-mapped value.
+ - Returns: (CGFloat) Doublehe re-mapped value.
  */
-public func remap<T>(value: T, start1: T, stop1: T, start2: T, stop2: T) -> T where T: Numeric, T: Mathable {
+public func remap(value: Double, start1: Double, stop1: Double, start2: Double, stop2: Double) -> Double {
     let result = start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1))
     if result.isNaN {
         print("NaN (not a number)")
@@ -147,13 +148,13 @@ public func remap<T>(value: T, start1: T, stop1: T, start2: T, stop2: T) -> T wh
 /**
  Normalizes a number in another range into a value between 0 and 1.
  
- - Parameter value: The input value that will be normalized.
- - Parameter startValue: The lower bound of the value's current range.
- - Parameter endValue: The upper bound of the value's current range.
+ - Parameter value: Doublehe input value that will be normalized.
+ - Parameter startValue: Doublehe lower bound of the value's current range.
+ - Parameter endValue: Doublehe upper bound of the value's current range.
  
  - Returns: (CGFloat) Normalized value.
  */
-public func norm<T>(value: T, startValue: T, endValue: T) -> T where T: Numeric, T: Mathable {
+public func norm(value: Double, startValue: Double, endValue: Double) -> Double {
     return (value - startValue) / (endValue - startValue)
 }
 
@@ -168,7 +169,7 @@ public func norm<T>(value: T, startValue: T, endValue: T) -> T where T: Numeric,
  
  - Returns: (CGFloat) distance.
  */
-public func dist<T>( x1: T, y1: T, x2: T, y2: T ) -> T where T: Numeric, T: Mathable {
+public func dist( x1: Double, y1: Double, x2: Double, y2: Double ) -> Double {
     return sqrt(sq(value:(x2 - x1)) + sq(value:(y2 - y1)))
 }
 
@@ -176,11 +177,11 @@ public func dist<T>( x1: T, y1: T, x2: T, y2: T ) -> T where T: Numeric, T: Math
 /**
  Calculate the square of a value.
  
- - Parameter value: The value to be squared.
+ - Parameter value: Doublehe value to be squared.
  
  - Returns: (CGFloat) square of value.
  */
-public func sq<T>( value: T ) -> T where T: Numeric, T: Mathable {
+public func sq(value: Double) -> Double {
     return value * value
 }
 
@@ -191,23 +192,23 @@ let degreesToRadians = 0.0174532925199433
 /**
  Convert from Radians to Degrees.
  
- - Parameter radians: The value in radians that will be converted.
+ - Parameter radians: Doublehe value in radians that will be converted.
  
- - Returns: (CGFloat) The converted value in degrees.
+ - Returns: (CGFloat) Doublehe converted value in degrees.
  */
-public func toDegrees<T>(radians: T) -> T where T: Numeric, T: Mathable {
-    return radians * 57.2957795130823   // radians * radiansToDegrees
+public func toDegrees(radians: Double) -> Double {
+    return radians * radiansToDegrees
 }
 
 
 /**
  Convert from Degrees to Radians.
  
- - Parameter degrees: The value in degrees that will be converted.
+ - Parameter degrees: Doublehe value in degrees that will be converted.
  
- - Returns: (CGFloat) The converted value in radians.
+ - Returns: (CGFloat) Doublehe converted value in radians.
  */
-public func toRadians<T>(degrees: T) -> T where T: Numeric, T: Mathable {
-    return degrees * 0.0174532925199433 // radians * degreesToRadians
+public func toRadians(degrees: Double) -> Double {
+    return degrees * degreesToRadians
 }
 

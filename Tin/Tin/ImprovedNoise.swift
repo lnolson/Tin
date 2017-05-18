@@ -43,17 +43,17 @@ fileprivate let p : [Int] = {
 }()
 
 
-fileprivate func fade( _ t: CGFloat ) -> CGFloat {
+fileprivate func fade( _ t: Double ) -> Double {
     return t * t * t * (t * (t * 6 - 15) + 10)
 }
 
 
-fileprivate func lerp( t: CGFloat, a: CGFloat, b: CGFloat) -> CGFloat {
+fileprivate func lerp( t: Double, a: Double, b: Double) -> Double {
     return a + t * (b - a);
 }
 
 
-fileprivate func grad( hash: Int, x: CGFloat, y: CGFloat, z:CGFloat ) -> CGFloat {
+fileprivate func grad( hash: Int, x: Double, y: Double, z:Double ) -> Double {
     let h = hash & 15;                      // CONVERT LO 4 BITS OF HASH CODE
     let u = h<8 ? x : y                     // INTO 12 GRADIENT DIRECTIONS.
     let v = h<4 ? y : h==12||h==14 ? x : z
@@ -61,7 +61,7 @@ fileprivate func grad( hash: Int, x: CGFloat, y: CGFloat, z:CGFloat ) -> CGFloat
 }
 
 
-fileprivate func grad( hash: Int, x: CGFloat, y: CGFloat ) -> CGFloat {
+fileprivate func grad( hash: Int, x: Double, y: Double ) -> Double {
     let h = hash & 15;                      // CONVERT LO 4 BITS OF HASH CODE
     let u = h<8 ? x : y                     // INTO 12 GRADIENT DIRECTIONS.
     let v = h<4 ? y : x
@@ -69,7 +69,7 @@ fileprivate func grad( hash: Int, x: CGFloat, y: CGFloat ) -> CGFloat {
 }
 
 
-public func noise( x: CGFloat, y: CGFloat, z: CGFloat ) -> CGFloat {
+public func noise( x: Double, y: Double, z: Double ) -> Double {
     let X = Int(floor(x)) & 255             // FIND UNIT CUBE THAT
     let Y = Int(floor(y)) & 255             // CONTAINS POINT.
     let Z = Int(floor(z)) & 255
@@ -100,7 +100,7 @@ public func noise( x: CGFloat, y: CGFloat, z: CGFloat ) -> CGFloat {
 }
 
 
-public func noise(x: CGFloat, y: CGFloat) -> CGFloat {
+public func noise(x: Double, y: Double) -> Double {
     let X = Int(floor(x)) & 255
     let Y = Int(floor(y)) & 255
     var x = x
