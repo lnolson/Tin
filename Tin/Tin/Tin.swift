@@ -12,14 +12,14 @@
 import Cocoa
 
 
-public var tin = Tin()
+public var tin = TinContext()
 
 
 public protocol TinRenderProtocol {
     
     var useLayer: Bool { get set }
     
-    var delegate: Tin { get set }
+    var delegate: TinContext { get set }
     
     // rendering setup
     func prepare(frame: NSRect)
@@ -74,7 +74,7 @@ public protocol TinRenderProtocol {
 
 
 
-public class Tin {
+public class TinContext {
     
     public var fill = true
     public var stroke = true

@@ -11,17 +11,17 @@ import Tin
 
 
 class Segment {
-    var x: CGFloat
-    var y: CGFloat
-    var w: CGFloat
-    var h: CGFloat
-    var rot: CGFloat
-    var freq: CGFloat
-    var amp: CGFloat
+    var x: Double
+    var y: Double
+    var w: Double
+    var h: Double
+    var rot: Double
+    var freq: Double
+    var amp: Double
     var child: Segment?
     
     
-    init(x: CGFloat, y: CGFloat, w: CGFloat, h: CGFloat) {
+    init(x: Double, y: Double, w: Double, h: Double) {
         self.x = x
         self.y = y
         self.w = w
@@ -39,26 +39,26 @@ class Segment {
     
     
     func process() {
-        let u = (x + y) * freq + (CGFloat(tin.frameCount) / 120.0)
+        let u = (x + y) * freq + (Double(tin.frameCount) / 120.0)
         let z = noise(x: u, y: 0.0) * amp
         rot += z
-        if child != nil {
-            child?.process()
+        if let child = child {
+            child.process()
         }
     }
     
     
     func render() {
-        tin.pushState()
-        tin.translate(dx: x, dy: y)
-        tin.rotate(by: rot)
+        pushState()
+        translate(dx: x, dy: y)
+        rotate(by: rot)
         
-        tin.rect(x: -w / 2.0, y: 0.0, width: w, height: h)
+        rect(x: -w / 2.0, y: 0.0, width: w, height: h)
         
-        if (child != nil) {
-            child?.render()
+        if let child = child {
+            child.render()
         }
-        tin.popState()
+        popState()
     }
     
 }

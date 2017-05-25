@@ -12,6 +12,17 @@ import Cocoa
 
 open class TController: NSViewController, TViewDelegate {
     
+    
+    
+    open override func viewWillAppear() {
+        if let window = view.window {
+            window.acceptsMouseMovedEvents = true
+        }
+        else {
+            debug("window is nil")
+        }
+    }
+    
 
     
     // move the window to the top, left corner of the current screen
@@ -55,6 +66,52 @@ open class TController: NSViewController, TViewDelegate {
     }
     
     
+    
+    // MARK: - NSResponder
+    
+    
+    open override var acceptsFirstResponder: Bool {
+        return true
+    }
+    
+    
+    open override func keyDown(with event: NSEvent) {
+        //self.event = event
+    }
+    
+    
+    open override func keyUp(with event: NSEvent) {
+        //self.event = event
+    }
+    
+    
+    open override func mouseDown(with event: NSEvent) {
+        let point: CGPoint = view.convert(event.locationInWindow, from: nil)
+        tin.mouseMoved(to: point)
+        //self.event = event
+    }
+    
+    
+    open override func mouseDragged(with event: NSEvent) {
+        let point: CGPoint = view.convert(event.locationInWindow, from: nil)
+        tin.mouseMoved(to: point)
+        //self.event = event
+    }
+    
+    
+    open override func mouseMoved(with event: NSEvent) {
+        let point: CGPoint = view.convert(event.locationInWindow, from: nil)
+        tin.mouseMoved(to: point)
+        //self.event = event
+    }
+    
+    
+    open override func mouseUp(with event: NSEvent) {
+        let point: CGPoint = view.convert(event.locationInWindow, from: nil)
+        tin.mouseMoved(to: point)
+        //self.event = event
+    }
+
 }
 
 

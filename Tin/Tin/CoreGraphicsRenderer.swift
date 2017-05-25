@@ -17,13 +17,13 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     
     var cg: CGContext
     var fb: CGContext?
-    public var delegate: Tin
+    public var delegate: TinContext
     var currentFillColor: NSColor = NSColor(calibratedRed: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
     var currentStrokeColor: NSColor = NSColor(calibratedRed: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
     var cglayer: CGLayer?
     public var useLayer = false
     
-    init(delegate: Tin) {
+    init(delegate: TinContext) {
         self.delegate = delegate
         cglayer = nil
         fb = nil
