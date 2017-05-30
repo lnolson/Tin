@@ -110,14 +110,16 @@ public struct TVector2 {
     }
     
     public mutating func limit( mag: Double ) {
-        normalize()
-        x = x * mag
-        y = y * mag
+        if magSq() > (mag * mag) {
+            normalize()
+            x = x * mag
+            y = y * mag
+        }
     }
     
     public mutating func normalize() {
         let mag = magnitude
-        if mag != 0.0 {
+        if mag != 0.0 && mag != 1.0 {
             x = x / mag
             y = y / mag
         }
@@ -129,6 +131,11 @@ public struct TVector2 {
         y = temp * sin(theta) + y * cos(theta)
     }
     
+    
+    // Squared magnitude
+    public func magSq() -> Double {
+        return x * x + y * y
+    }
     
 }
 

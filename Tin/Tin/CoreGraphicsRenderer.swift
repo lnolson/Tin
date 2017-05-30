@@ -177,7 +177,11 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
             cg.fillPath()
         }
         if delegate.stroke {
-            if delegate.fill { cg.addPath(path!) }
+            if delegate.fill {
+                if let path = path {
+                    cg.addPath(path)
+                }
+            }
             cg.strokePath()
         }
     }

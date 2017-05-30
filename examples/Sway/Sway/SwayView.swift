@@ -7,17 +7,17 @@
 //
 
 import Cocoa
-import Tin
 
-
-class SwayView: TView {
-    
-    
-
-
-   
-    
-    
-    
-    
-}
+//
+//
+//class SwayView: TView {
+//    
+//    
+//
+//
+//   
+//    
+//    
+//    
+//    
+//}
