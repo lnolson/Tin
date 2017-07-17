@@ -10,8 +10,32 @@ import Cocoa
 
 
 
-open class TController: NSViewController, TViewDelegate {
+open class TController: NSViewController {
     
+    
+    open var tinView: TView = TView(width: 500.0, height: 500.0)
+    
+    // TODO: This name is highly suspect. What would be better?
+    public var tview: TView {
+        return view as! TView
+    }
+    
+//    override open var view: NSView {
+//        get {
+//            print("get view")
+//            return tinView
+//        }
+//        set {
+//            print("set view")
+//            if newValue is TView {
+//                print("set tinView using newValue")
+//                tinView = newValue as! TView
+//            }
+//            else {
+//                print("Warning, incorrect view type")
+//            }
+//        }
+//    }
     
     
     open override func viewWillAppear() {
@@ -19,22 +43,22 @@ open class TController: NSViewController, TViewDelegate {
             window.acceptsMouseMovedEvents = true
         }
         else {
-            debug("window is nil")
+            error("window is nil.")
         }
     }
     
 
     
-    // move the window to the top, left corner of the current screen
-    public func setWindowTopLeft() {
+    /// move the window to the top, left corner of the current screen
+    public func moveWindowToTopLeft() {
         if let visibleFrame = view.window?.screen?.visibleFrame {
             view.window?.setFrameTopLeftPoint(NSPoint(x: visibleFrame.origin.x, y: visibleFrame.origin.y + visibleFrame.size.height))
         }
     }
     
     
-    // center the window in the current screen
-    public func setWindowCentered() {
+    /// move the window to center it in the current screen
+    public func moveWindowToCenter() {
         if let visibleFrame = view.window?.screen?.visibleFrame {
             let x = visibleFrame.origin.x + (visibleFrame.size.width - view.frame.size.width) / 2.0
             let y = visibleFrame.origin.y + (visibleFrame.size.height - view.frame.size.height) / 2.0
@@ -45,25 +69,20 @@ open class TController: NSViewController, TViewDelegate {
 
     
     
-    public func createView<T>(width: Double, height: Double, type: T.Type) where T: TView {
-        let tinView = T(width: width, height: height)
-        tinView.delegate = self
-        view = tinView
+    
+    
+    /// create a TView object and assign to the view property
+    public func makeView(width: Double, height: Double) {
+        view = TView(width: width, height: height)
     }
     
     
-    public func createView(width: Double, height: Double) {
-        let tinView = TView(width: width, height: height)
-        tinView.delegate = self
-        view = tinView
+    /// make scene be the current TScene that is displayed by this TController.
+    public func present(scene: TScene) {
+        let tv = view as! TView
+        tv.present(scene: scene)
     }
     
-    
-    open func update() {
-        // This space intentionally left blank
-        // update() is intended to be overridden by the user.
-        // Drawing code show go in update, or methods called during update.
-    }
     
     
     

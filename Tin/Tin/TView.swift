@@ -45,7 +45,7 @@ open class TView: NSView {
     public var showStats = true
     private var statsString = ""
     public var event: NSEvent = NSEvent()
-    public var delegate: TViewDelegate?
+    public var scene: TScene?
     
     
     
@@ -69,6 +69,13 @@ open class TView: NSView {
     
     
     // MARK: - instance methods
+    
+    
+    
+    public func present(scene: TScene) {
+        self.scene = scene
+        scene.view = self
+    }
     
     
     public func stopUpdates() {
@@ -106,7 +113,13 @@ open class TView: NSView {
         
         tin.prepareForUpdate(frame: frame)
         
-        delegate?.update()
+        if let scene = scene {
+            if scene.needsSetup {
+                scene.setup()
+                scene.needsSetup = false
+            }
+            scene.update()
+        }
         
         if showStats {
             var elapsedTime: TimeInterval = 0.0

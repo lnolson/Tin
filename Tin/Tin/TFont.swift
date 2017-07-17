@@ -40,7 +40,7 @@ open class TFont {
     
     public init(fontName: String, ofSize size: CGFloat) {
         if let font = NSFont(name: fontName, size: size) {
-            debug("font \(fontName) loaded.")
+            //debug("font \(fontName) loaded.")
             self.font = font
         }
         else {

@@ -15,10 +15,12 @@ import GameplayKit
 public struct TRandom {
     static let randomSource = GKLinearCongruentialRandomSource.sharedRandom()
     
+    /// return a random Double in the range [0.0, 1.0].
     public static func next(max: Double) -> Double {
         return Double(self.randomSource.nextUniform()) * max
     }
     
+    /// return a random Double in the range [min, max].
     public static func next(min: Double, max: Double) -> Double {
         let distance = max - min
         return min + Double(self.randomSource.nextUniform()) * distance

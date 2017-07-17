@@ -11,7 +11,7 @@
 		5C4C94581E20626300503D38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4C94571E20626300503D38 /* ViewController.swift */; };
 		5C4C945A1E20626300503D38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C4C94591E20626300503D38 /* Assets.xcassets */; };
 		5C4C945D1E20626300503D38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C4C945B1E20626300503D38 /* Main.storyboard */; };
-		5C4C94651E20627A00503D38 /* CirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4C94641E20627A00503D38 /* CirclesView.swift */; };
+		5C5AE9091F1D651A008352BB /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5AE9081F1D651A008352BB /* Scene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +21,7 @@
 		5C4C94591E20626300503D38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C4C945C1E20626300503D38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5C4C945E1E20626300503D38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C4C94641E20627A00503D38 /* CirclesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CirclesView.swift; sourceTree = "<group>"; };
+		5C5AE9081F1D651A008352BB /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,9 +54,9 @@
 		5C4C94541E20626300503D38 /* RandomCircles */ = {
 			isa = PBXGroup;
 			children = (
-				5C4C94641E20627A00503D38 /* CirclesView.swift */,
 				5C4C94551E20626300503D38 /* AppDelegate.swift */,
 				5C4C94571E20626300503D38 /* ViewController.swift */,
+				5C5AE9081F1D651A008352BB /* Scene.swift */,
 				5C4C94591E20626300503D38 /* Assets.xcassets */,
 				5C4C945B1E20626300503D38 /* Main.storyboard */,
 				5C4C945E1E20626300503D38 /* Info.plist */,
@@ -138,7 +138,7 @@
 			files = (
 				5C4C94581E20626300503D38 /* ViewController.swift in Sources */,
 				5C4C94561E20626300503D38 /* AppDelegate.swift in Sources */,
-				5C4C94651E20627A00503D38 /* CirclesView.swift in Sources */,
+				5C5AE9091F1D651A008352BB /* Scene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

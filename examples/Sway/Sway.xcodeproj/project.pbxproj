@@ -11,8 +11,8 @@
 		5C4C94981E206D2B00503D38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4C94971E206D2B00503D38 /* ViewController.swift */; };
 		5C4C949A1E206D2B00503D38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C4C94991E206D2B00503D38 /* Assets.xcassets */; };
 		5C4C949D1E206D2B00503D38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C4C949B1E206D2B00503D38 /* Main.storyboard */; };
-		5C4C94A51E206D4C00503D38 /* SwayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4C94A41E206D4C00503D38 /* SwayView.swift */; };
 		5C4C94A71E206DE900503D38 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4C94A61E206DE900503D38 /* Segment.swift */; };
+		5C5AE9071F1D5F13008352BB /* Sway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5AE9061F1D5F13008352BB /* Sway.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,8 +22,8 @@
 		5C4C94991E206D2B00503D38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C4C949C1E206D2B00503D38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5C4C949E1E206D2B00503D38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C4C94A41E206D4C00503D38 /* SwayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwayView.swift; sourceTree = "<group>"; };
 		5C4C94A61E206DE900503D38 /* Segment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		5C5AE9061F1D5F13008352BB /* Sway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sway.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +61,8 @@
 				5C4C94991E206D2B00503D38 /* Assets.xcassets */,
 				5C4C949B1E206D2B00503D38 /* Main.storyboard */,
 				5C4C949E1E206D2B00503D38 /* Info.plist */,
-				5C4C94A41E206D4C00503D38 /* SwayView.swift */,
 				5C4C94A61E206DE900503D38 /* Segment.swift */,
+				5C5AE9061F1D5F13008352BB /* Sway.swift */,
 			);
 			path = Sway;
 			sourceTree = "<group>";
@@ -139,8 +139,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C4C94A51E206D4C00503D38 /* SwayView.swift in Sources */,
 				5C4C94981E206D2B00503D38 /* ViewController.swift in Sources */,
+				5C5AE9071F1D5F13008352BB /* Sway.swift in Sources */,
 				5C4C94961E206D2B00503D38 /* AppDelegate.swift in Sources */,
 				5C4C94A71E206DE900503D38 /* Segment.swift in Sources */,
 			);

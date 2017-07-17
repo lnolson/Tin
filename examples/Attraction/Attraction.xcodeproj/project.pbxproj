@@ -13,6 +13,7 @@
 		5C4C941E1E205E1A00503D38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C4C941C1E205E1A00503D38 /* Main.storyboard */; };
 		5C4C94271E205E4100503D38 /* Mover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4C94251E205E4100503D38 /* Mover.swift */; };
 		5C4C94281E205E4100503D38 /* Graphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4C94261E205E4100503D38 /* Graphics.swift */; };
+		5C9EB2791EDF7BC6001B6C12 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9EB2781EDF7BC6001B6C12 /* Scene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		5C4C941F1E205E1A00503D38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C4C94251E205E4100503D38 /* Mover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mover.swift; sourceTree = "<group>"; };
 		5C4C94261E205E4100503D38 /* Graphics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graphics.swift; sourceTree = "<group>"; };
+		5C9EB2781EDF7BC6001B6C12 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				5C4C94261E205E4100503D38 /* Graphics.swift */,
 				5C4C94161E205E1A00503D38 /* AppDelegate.swift */,
 				5C4C94181E205E1A00503D38 /* ViewController.swift */,
+				5C9EB2781EDF7BC6001B6C12 /* Scene.swift */,
 				5C4C941A1E205E1A00503D38 /* Assets.xcassets */,
 				5C4C941C1E205E1A00503D38 /* Main.storyboard */,
 				5C4C941F1E205E1A00503D38 /* Info.plist */,
@@ -141,6 +144,7 @@
 			files = (
 				5C4C94191E205E1A00503D38 /* ViewController.swift in Sources */,
 				5C4C94171E205E1A00503D38 /* AppDelegate.swift in Sources */,
+				5C9EB2791EDF7BC6001B6C12 /* Scene.swift in Sources */,
 				5C4C94281E205E4100503D38 /* Graphics.swift in Sources */,
 				5C4C94271E205E4100503D38 /* Mover.swift in Sources */,
 			);
