@@ -8,7 +8,7 @@ title: Reference
 <h3>lerp()</h3>
 
 <p class="text-muted spacer">Declaration</p>
-<code>func lerp<T>(startValue: T, endValue: T, t: T) -> T where T: Numeric, T: Mathable</code>
+<code>func lerp(startValue: Double, endValue: Double, t: Double) -> Double</code>
 
 <p class="text-muted spacer">Parameters</p>
 <table class="table table-bordered">
@@ -27,7 +27,7 @@ title: Reference
 </table>
 
 <p class="text-muted spacer">Returns</p>
-<p>T</p>
+<p>Double - interpolated value.</p>
 
 <p class="text-muted spacer">Description</p>
 <p>Linear interpolation. Calculate a position between startValue and endValue given the value t. t is a number 0 to 1. 0 is at startValue, 1 is at endValue.</p>
@@ -35,6 +35,9 @@ title: Reference
 <p class="text-muted spacer">Examples</p>
 
 {% highlight swift %}
+
+var a = lerp(startValue: 0.0, endValue: 100.0, t: 0.5)
+// value of a is 50.0
 
 {% endhighlight %}
 

@@ -5,9 +5,9 @@ title: Reference
 {% include header.html %}
 
 <div class="row">
-	
+
 	<div class="col-sm-6">
-		
+
 		<h4>Global Functions</h4>
 			<div class="list-group">
 				<a href="#" class="list-group-item disabled">
@@ -21,7 +21,21 @@ title: Reference
 				<a href="{{site.github.url}}{{page.url}}remap" class="list-group-item">remap()</a>
 				<a href="{{site.github.url}}{{page.url}}smoothstep" class="list-group-item">smoothstep()</a>
 			</div>
-			
+
+			<div class="list-group">
+				<a href="#" class="list-group-item disabled">
+					Color
+				</a>
+				<a href="{{site.github.url}}{{page.url}}background" class="list-group-item">background()</a>
+				<a href="{{site.github.url}}{{page.url}}fillColor" class="list-group-item">fillColor()</a>
+				<a href="{{site.github.url}}{{page.url}}fillDisable" class="list-group-item">fillDisable()</a>
+				<a href="{{site.github.url}}{{page.url}}fillEnable" class="list-group-item">fillEnable()</a>
+				<a href="{{site.github.url}}{{page.url}}setAlpha" class="list-group-item">setAlpha()</a>
+				<a href="{{site.github.url}}{{page.url}}strokeColor" class="list-group-item">strokeColor()</a>
+				<a href="{{site.github.url}}{{page.url}}strokeDisable" class="list-group-item">strokeDisable()</a>
+				<a href="{{site.github.url}}{{page.url}}strokeEnable" class="list-group-item">strokeEnable()</a>
+			</div>
+
 			<div class="list-group">
 				<a href="#" class="list-group-item disabled">
 					Conversions
@@ -29,7 +43,7 @@ title: Reference
 				<a href="{{site.github.url}}{{page.url}}todegrees" class="list-group-item">toDegrees()</a>
 				<a href="{{site.github.url}}{{page.url}}toradians" class="list-group-item">toRadians()</a>
 			</div>
-			
+
 			<div class="list-group">
 				<a href="#" class="list-group-item disabled">
 					Date and Time
@@ -43,7 +57,25 @@ title: Reference
 				<a href="{{site.github.url}}{{page.url}}millis" class="list-group-item">mills()</a>
 				<a href="{{site.github.url}}{{page.url}}nanosecond" class="list-group-item">nanosecond()</a>
 			</div>
-			
+
+			<div class="list-group">
+				<a href="#" class="list-group-item disabled">
+					Images
+				</a>
+				<a href="{{site.github.url}}{{page.url}}image" class="list-group-item">image()</a>
+			</div>
+
+			<div class="list-group">
+				<a href="#" class="list-group-item disabled">
+					Paths
+				</a>
+				<a href="{{site.github.url}}{{page.url}}pathAddCurve" class="list-group-item">pathAddCurve()</a>
+				<a href="{{site.github.url}}{{page.url}}pathBegin" class="list-group-item">pathBegin()</a>
+				<a href="{{site.github.url}}{{page.url}}pathClose" class="list-group-item">pathClose()</a>
+				<a href="{{site.github.url}}{{page.url}}pathEnd" class="list-group-item">pathEnd()</a>
+				<a href="{{site.github.url}}{{page.url}}pathVertex" class="list-group-item">pathVertex()</a>
+			</div>
+
 			<div class="list-group">
 				<a href="#" class="list-group-item disabled">
 					Perlin Noise
@@ -51,12 +83,42 @@ title: Reference
 				<a href="{{site.github.url}}{{page.url}}noise" class="list-group-item">noise()</a>
 			</div>
 
+			<div class="list-group">
+				<a href="#" class="list-group-item disabled">
+					Primitive Shapes
+				</a>
+				<a href="{{site.github.url}}{{page.url}}ellipse" class="list-group-item">ellipse()</a>
+				<a href="{{site.github.url}}{{page.url}}line" class="list-group-item">line()</a>
+				<a href="{{site.github.url}}{{page.url}}lineWidth" class="list-group-item">lineWidth()</a>
+				<a href="{{site.github.url}}{{page.url}}rect" class="list-group-item">rect()</a>
+				<a href="{{site.github.url}}{{page.url}}roundedRect" class="list-group-item">roundedRect()</a>
+				<a href="{{site.github.url}}{{page.url}}triangle" class="list-group-item">triangle()</a>
+			</div>
+
+			<div class="list-group">
+				<a href="#" class="list-group-item disabled">
+					Text
+				</a>
+				<a href="{{site.github.url}}{{page.url}}text" class="list-group-item">text()</a>
+			</div>
+
+			<div class="list-group">
+				<a href="#" class="list-group-item disabled">
+					Transformations
+				</a>
+				<a href="{{site.github.url}}{{page.url}}popState" class="list-group-item">popState()</a>
+				<a href="{{site.github.url}}{{page.url}}pushState" class="list-group-item">pushState()</a>
+				<a href="{{site.github.url}}{{page.url}}rotate" class="list-group-item">rotate()</a>
+				<a href="{{site.github.url}}{{page.url}}scale" class="list-group-item">scale()</a>
+				<a href="{{site.github.url}}{{page.url}}translate" class="list-group-item">translate()</a>
+			</div>
+
 	</div>
 
 	<div class="col-sm-6">
-		
+
 		<h4>Objects</h4>
-		
+
 		<div class="list-group">
 			<a href="{{site.github.url}}{{page.url}}tcolor" class="list-group-item">TColor</a>
 			<a href="{{site.github.url}}{{page.url}}tfont" class="list-group-item">TFont</a>
@@ -64,6 +126,7 @@ title: Reference
 			<a href="{{site.github.url}}{{page.url}}tin" class="list-group-item">Tin</a>
 			<a href="{{site.github.url}}{{page.url}}tpixel" class="list-group-item">TPixel</a>
 			<a href="{{site.github.url}}{{page.url}}trandom" class="list-group-item">TRandom</a>
+			<a href="{{site.github.url}}{{page.url}}tscene" class="list-group-item">TScene</a>
 			<a href="{{site.github.url}}{{page.url}}tview" class="list-group-item">TView</a>
 			<a href="{{site.github.url}}{{page.url}}tvector2" class="list-group-item">TVector2</a>
 		</div>
@@ -71,8 +134,3 @@ title: Reference
 
 	</div>
 </div>
-
-
-
-
-

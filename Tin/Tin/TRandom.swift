@@ -15,7 +15,7 @@ import GameplayKit
 public struct TRandom {
     static let randomSource = GKLinearCongruentialRandomSource.sharedRandom()
     
-    /// return a random Double in the range [0.0, 1.0].
+    /// return a random Double in the range [0.0, max].
     public static func next(max: Double) -> Double {
         return Double(self.randomSource.nextUniform()) * max
     }

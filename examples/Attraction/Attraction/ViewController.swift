@@ -26,7 +26,7 @@ class ViewController: TController {
     
         present(scene: scene)
         
-        tview.frameRate = 60.0
+        tview.frameRate = 30.0
         tview.showStats = true
         
     }

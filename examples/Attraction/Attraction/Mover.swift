@@ -33,7 +33,7 @@ class Mover {
     
     func update() {
         velocity = velocity + acceleration
-        velocity.limit(mag: 3.0)
+        velocity.limit(mag: 5.0)
         location = location + velocity
         
         angle = velocity.heading()
@@ -62,7 +62,7 @@ class Mover {
     func attract( m: Mover ) -> TVector2 {
         var force = location - m.location
         var distance = force.magnitude
-        distance = constrain(value: distance, min: 5.0, max: 25.0)
+        distance = constrain(value: distance, min: 12.0, max: 50.0)
         force.normalize()
         let g = 0.4
         let strength = (g * mass * m.mass) / (distance * distance)
