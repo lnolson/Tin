@@ -44,7 +44,7 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     
     
     public func prepareForUpdate(frame: NSRect) {
-        if let context = NSGraphicsContext.current() {
+        if let context = NSGraphicsContext.current {
             if useLayer && cglayer == nil {
                 fb = context.cgContext
                 cglayer = CGLayer(context.cgContext, size: CGSize(width: frame.width, height: frame.height), auxiliaryInfo: nil)
