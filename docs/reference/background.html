@@ -1,0 +1,51 @@
+---
+layout: default
+title: Tin / background
+---
+{% include header.html %}
+
+<p class="text-muted spacer">Global Function</p>
+<h3>background()</h3>
+
+<p class="text-muted spacer">Declaration</p>
+<code>
+	<br>
+	func background(gray: Double)<br>
+	func background(red: Double, green: Double, blue: Double)<br>
+	func background(color: NSColor)<br>
+</code>
+
+
+<p class="text-muted spacer">Parameters</p>
+<table class="table table-bordered">
+	<tr>
+		<td>gray</td>
+		<td>A grayscale value (Double) in the range 0.0 to 1.0.</td>
+	</tr>
+	<tr>
+		<td>red, green, blue</td>
+		<td>red, green, blue color components to define the background color in the range 0.0 to 1.0.</td>
+	</tr>
+	<tr>
+		<td>color</td>
+		<td>NSColor object to define the background color.</td>
+	</tr>
+</table>
+
+<p class="text-muted spacer">Returns</p>
+<p>-</p>
+
+<p class="text-muted spacer">Description</p>
+<p>Sets the color used for the background of the view, and causes a clear operation.</p>
+
+<p class="text-muted spacer">Examples</p>
+
+{% highlight swift %}
+// Clear the background to white
+background(gray: 1.0)
+
+// Clear to white using red, green, blue
+background(red: 1.0, green: 1.0, blue: 1.0)
+{% endhighlight %}
+
+<p class="text-muted spacer">Related</p>
