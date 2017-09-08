@@ -1,0 +1,53 @@
+---
+layout: default
+title: Update an existing project
+---
+{% include header.html %}
+
+<div class="spacer"> 
+	<h3>Update the Tin framework in an existing project.</h3>
+	
+	<br>
+	<p>
+		There are several reasons you might want or need to update the Tin framwork in an existing project. There could be a bug fix, or a new feature in the framework and you want to take advantage of that improvement. Or, you may have updated Xcode and and now have a new version of the compiler that is no longer compatible with the older version of the framework. The example in the video below is that later case.
+		<br>
+		<br>
+	</p>
+	<div class="list-group">
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">1. Remove the existing Tin framework in the project</h4>
+			<p class="list-group-item-text">When prompted in the dialog, choose "Move to Trash"</p>
+		</div>
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">2. Drag the Tin Framework into the Project Navigator.</h4>
+			<p class="list-group-item-text"><em>Copy items if needed</em> should be checked ON.<br><br></p>
+			<p class="list-group-item-text">Before you add the Tin Framework into your Project, you will need a copy of the Framework. You can download the framework from the <a href="https://github.com/lnolson/Tin">GitHub repo</a>, and build it yourself. Or, find the latest release, and there will be a zip of the framework binary. The <a href="https://github.com/lnolson/Tin/releases/tag/v1.0-beta6">latest release at this time is here</a>. Here is a <a href="https://github.com/lnolson/Tin/releases/download/v1.0-beta6/Tin.framework.zip">direct link to the framework zip</a>.</p>
+		</div>
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">3. Add the Tin Framework to Project Settings, General, Embedded Binaries.</h4>
+			<p class="list-group-item-text">Note that doing this also adds Tin to the Linked Frameworks and Libraries section.</p>
+		</div>
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">4. Product -> Clean</h4>
+			<p class="list-group-item-text">This step will remove the cached compiled components that Xcode has stored from previous build commands.</p>
+		</div>
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">5. Product -> Build</h4>
+			<p class="list-group-item-text">Rebuild the project.</p>
+		</div>
+	</div>
+	
+	<br>
+	<hr>
+	
+	<div class="embed-responsive embed-responsive-16by9">
+	  	<video controls>
+	  		<source class="embed-responsive-item" src="/movies/UpdateTinFrameworkInProject.mp4" type="video/mp4">
+	  		Your browser does not support the video tag.
+	  	</video>
+	</div>
+
+	
+	<br>
+	<br>
+</div>

@@ -1,0 +1,128 @@
+---
+layout: default
+title: Make a new Tin project from scratch
+---
+{% include header.html %}
+
+<div class="spacer"> 
+	<h3>Make a new Tin project from scratch</h3>
+	
+	<br>
+	<div class="list-group">
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">1. Start Xcode</h4>
+			<p class="list-group-item-text">The video on this page was made using Xcode 9 beta 6.</p>
+		</div>
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">2. File -> New -> Project</h4>
+		</div>
+		
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">3. Choose the project template: Mac / Cocoa App</h4>
+		</div>
+		
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">4. Set the project attributes.</h4>
+			<p class="list-group-item-text">Make sure there are good entries for Product Name (this will become the app name), Organization Name, and Organization Identifier. Language should be set to Swift.</p>
+		</div>
+		
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">5. Choose a location to save the project folder.</h4>
+		</div>
+		
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">6. Drag the Tin Framework into the Project Navigator.</h4>
+			<p class="list-group-item-text"><em>Copy items if needed</em> should be checked ON.<br><br></p>
+			<p class="list-group-item-text">Before you add the Tin Framework into your Project, you will need a copy of the Framework. You can download the framework from the <a href="https://github.com/lnolson/Tin">GitHub repo</a>, and build it yourself. Or, find the latest release, and there will be a zip of the framework binary. The <a href="https://github.com/lnolson/Tin/releases/tag/v1.0-beta6">latest release at this time is here</a>. Here is a <a href="https://github.com/lnolson/Tin/releases/download/v1.0-beta6/Tin.framework.zip">direct link to the framework zip</a>.</p>
+		</div>
+		
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">7. Add the Tin Framework to Project Settings, General, Embedded Binaries.</h4>
+			<p class="list-group-item-text">Note that doing this also adds Tin to the Linked Frameworks and Libraries section.</p>
+		</div>
+		
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">8. Edit ViewController.swift</h4>
+		</div>
+		
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">9. Add "import Tin".</h4>
+		</div>
+		
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">10. Change the ViewController class declaration to inherit from TController instead of NSViewController.</h4>
+			<p class="list-group-item-text">Note TController is a subclass of NSViewController.</p>
+		</div>
+		
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">11. Add viewWillAppear method to the ViewController class.</h4>
+						<p class="list-group-item-text">
+				
+							<pre>			
+override func viewWillAppear() {
+    super.viewWillAppear()
+
+}
+							</pre>
+				
+
+						</p>
+		</div>
+		
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">12. Add code to create a Tin view, and to present a Tin Scene in the view.</h4>
+			<p class="list-group-item-text">
+				Add this code to the viewWillAppear method, after the call to super.viewWillAppear().
+				
+				<pre>			
+makeView(width: 800.0, height: 400.0)
+let scene = Scene()
+present(scene: scene)		
+				</pre>
+				
+
+			</p>
+			<p class="list-group-item-text">
+				a. The makeView method will create a TView object, and assign it to the controller's view property. The arguments width and height will set the window and view size.
+			</p>
+			<p class="list-group-item-text">
+				b. The second line creates an instance of a Scene object.
+			</p>
+			<p class="list-group-item-text">
+				c. The third line sets the Scene object as the current scene for the TView object. The TView object will draw and update the scene inside the view.
+			</p>
+		</div>
+		
+		<div class="list-group-item">
+			<h4 class="list-group-item-heading">13. Add a Tin Scene class.</h4>
+			<p class="list-group-item-text">
+				
+				<pre>			
+class Scene: TScene {
+    
+    override func update() {
+        background(gray: 0.5)
+        
+    }
+}		
+				</pre>
+				
+
+			</p>
+		</div>
+	</div>
+	
+	<br>
+	<hr>
+	
+	<div class="embed-responsive embed-responsive-16by9">
+	  	<video controls>
+	  		<source class="embed-responsive-item" src="/movies/MakeANewTinProject.mp4" type="video/mp4">
+	  		Your browser does not support the video tag.
+	  	</video>
+	</div>
+
+	
+	<br>
+	<br>
+</div>
