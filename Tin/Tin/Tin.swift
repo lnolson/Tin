@@ -79,12 +79,15 @@ public class TinContext {
     public var fill = true
     public var stroke = true
     public var size = NSSize(width: 0, height: 0)
+    public var width = 0.0
+    public var height = 0.0
     public var midX = 0.0
     public var midY = 0.0
     public var mouseX = 0.0
     public var mouseY = 0.0
     public var pmouseX = 0.0
     public var pmouseY = 0.0
+    public var mousePressed = false
     public var frameCount = 0
     
     var pathVertexCount = 0
@@ -125,6 +128,8 @@ public class TinContext {
     
     func resetSize(width: Double, height: Double) {
         size = NSSize(width: width, height: height)
+        self.width = width
+        self.height = height
         midX = width / 2.0
         midY = height / 2.0
     }

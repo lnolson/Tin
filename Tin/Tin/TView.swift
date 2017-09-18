@@ -147,7 +147,7 @@ open class TView: NSView {
      Should we do something to notice multiple calls?
      */
     open override func viewDidMoveToWindow() {
-        window?.acceptsMouseMovedEvents = true
+        //window?.acceptsMouseMovedEvents = true
         wantsLayer = true
         let trackingRect = NSRect(x: 0, y: 0, width: frame.width, height: frame.height)
         let trackingOptions: NSTrackingArea.Options = [.activeAlways,.mouseMoved]
@@ -172,99 +172,8 @@ open class TView: NSView {
     
     override open var acceptsFirstResponder: Bool { return true }
     
-    /*
-    open func setup() {
-        // This space intentionally left blank
-        // setup() is intended to be overridden by the user.
-        // An opportunity for one time init for the view.
-        // Do not put drawing code in setup. The view isn't ready for drawing yet.
-        // It is a good time to init data.
-    }
-    
-    
-    
-    
-    
-    open func update() {
-        // This space intentionally left blank
-        // update() is intended to be overridden by the user.
-        // Drawing code show go in update, or methods called during update.
-    }
-    */
-
-    
     
     
         
 }
 
-
-/*
-
-    
-    
- 
-    
-    
-    
- 
-    
-    
- 
-    
-    
- 
-    
- 
-    
-    
- 
-    
-    
-    // Idea. Don't have students override these NSResponder methods.
-    // During early part of introductory class, I don't want to deal with
-    // complexity of overriding functions, and needing to call the super.
-    // Provide another method for implentation in subclasses, which never
-    // requires call to super. 
-    // Should the names be very different to avoid confusion? Neet to consider.
- 
-    
-    
-    
-    // MARK: - Simplified override methods for events
-    
-    // Users should override these methods, not the NSResponder methods.
-    
-    open func keyDown() {
-        
-    }
-    
-    
-    open func keyUp() {
-        
-    }
-    
-    
-    open func mouseDown() {
-        
-    }
-    
-    
-    open func mouseDragged() {
-        
-    }
-    
-    
-    open func mouseMoved() {
-        
-    }
-    
-    
-    open func mouseUp() {
-        
-    }
-    
-    
-}
- 
- */

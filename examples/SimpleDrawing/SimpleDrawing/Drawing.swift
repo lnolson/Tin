@@ -52,7 +52,12 @@ class Drawing: TScene {
         rect(x: 1050.0, y: 10.0, width: 30.0, height: 100.0)
         rect(x: tin.midX - 25.0, y: tin.midY - 25.0, width: 50.0, height: 50.0)
         
-        fillColor(red: 0.6, green: 0.1, blue: 0.2, alpha: 1.0)
+        if tin.mousePressed {
+            fillDisable()
+        }
+        else {
+            fillColor(red: 0.6, green: 0.1, blue: 0.2, alpha: 1.0)
+        }
         ellipse(centerX: tin.midX, centerY: tin.midY + 125.0, width: 100.0, height: 100.0)
         
         lineWidth(5.0)
@@ -62,7 +67,7 @@ class Drawing: TScene {
         lineWidth(2.0)
         fillColor(color: NSColor(red: 0.3, green: 0.2, blue: 0.8, alpha: 1.0))
         strokeEnable()
-        triangle(x1: tin.midX, y1: Double(tin.size.height) - 20.0, x2: tin.midX - 50.0, y2: Double(tin.size.height) - 100.0, x3: tin.midX + 50.0, y3: Double(tin.size.height) - 100.0)
+        triangle(x1: tin.midX, y1: tin.height - 20.0, x2: tin.midX - 50.0, y2: tin.height - 100.0, x3: tin.midX + 50.0, y3: tin.height - 100.0)
         
         lineWidth(3.0)
         strokeEnable()

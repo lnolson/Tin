@@ -95,40 +95,81 @@ open class TController: NSViewController {
     
     
     open override func keyDown(with event: NSEvent) {
-        //self.event = event
     }
     
     
     open override func keyUp(with event: NSEvent) {
-        //self.event = event
     }
     
+    
+    // If the user overrides any of these mouse responder events in a TController subclass,
+    // then it is important that they call the super method, otherwise mouse position will break.
     
     open override func mouseDown(with event: NSEvent) {
         let point: CGPoint = view.convert(event.locationInWindow, from: nil)
         tin.mouseMoved(to: point)
-        //self.event = event
+        tin.mousePressed = true
     }
     
     
+
     open override func mouseDragged(with event: NSEvent) {
         let point: CGPoint = view.convert(event.locationInWindow, from: nil)
         tin.mouseMoved(to: point)
-        //self.event = event
     }
+ 
     
     
     open override func mouseMoved(with event: NSEvent) {
         let point: CGPoint = view.convert(event.locationInWindow, from: nil)
         tin.mouseMoved(to: point)
-        //self.event = event
     }
     
     
     open override func mouseUp(with event: NSEvent) {
         let point: CGPoint = view.convert(event.locationInWindow, from: nil)
         tin.mouseMoved(to: point)
-        //self.event = event
+        tin.mousePressed = false
+    }
+    
+    
+    open override func rightMouseDown(with event: NSEvent) {
+        let point: CGPoint = view.convert(event.locationInWindow, from: nil)
+        tin.mouseMoved(to: point)
+        tin.mousePressed = true
+    }
+    
+    
+    open override func rightMouseDragged(with event: NSEvent) {
+        let point: CGPoint = view.convert(event.locationInWindow, from: nil)
+        tin.mouseMoved(to: point)
+    }
+    
+    
+    open override func rightMouseUp(with event: NSEvent) {
+        let point: CGPoint = view.convert(event.locationInWindow, from: nil)
+        tin.mouseMoved(to: point)
+        tin.mousePressed = false
+    }
+    
+    
+    open override func otherMouseDown(with event: NSEvent) {
+        let point: CGPoint = view.convert(event.locationInWindow, from: nil)
+        tin.mouseMoved(to: point)
+        tin.mousePressed = true
+    }
+    
+    
+    open override func otherMouseDragged(with event: NSEvent) {
+        let point: CGPoint = view.convert(event.locationInWindow, from: nil)
+        tin.mouseMoved(to: point)
+    }
+    
+    
+    open override func otherMouseUp(with event: NSEvent) {
+        let point: CGPoint = view.convert(event.locationInWindow, from: nil)
+        tin.mouseMoved(to: point)
+        tin.mousePressed = false
     }
 
 }
