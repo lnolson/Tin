@@ -148,6 +148,7 @@ open class TView: NSView {
      */
     open override func viewDidMoveToWindow() {
         window?.acceptsMouseMovedEvents = true
+        wantsLayer = true
         let trackingRect = NSRect(x: 0, y: 0, width: frame.width, height: frame.height)
         let trackingOptions: NSTrackingArea.Options = [.activeAlways,.mouseMoved]
         let area = NSTrackingArea(rect: trackingRect, options: trackingOptions, owner: self, userInfo: nil)
@@ -168,6 +169,8 @@ open class TView: NSView {
         needsDisplay = true
     }
     
+    
+    override open var acceptsFirstResponder: Bool { return true }
     
     /*
     open func setup() {
