@@ -27,3 +27,25 @@ public struct TRandom {
     }
     
 }
+
+
+let tinRandomSource = GKLinearCongruentialRandomSource.sharedRandom()
+let tinGaussianSource = GKGaussianDistribution(lowestValue: 0, highestValue: 10000)
+
+
+public func random(max: Double) -> Double {
+    return Double(tinRandomSource.nextUniform()) * max
+}
+
+
+public func random(min: Double, max: Double) -> Double {
+    let distance = max - min
+    return min + Double(tinRandomSource.nextUniform()) * distance
+}
+
+
+// Return a random value in a normal distribution, in the range -1 to 1.
+// The mean value is 0. Deviation is 0.3334.
+public func randomGaussian() -> Double {
+    return (Double(tinGaussianSource.nextUniform()) * 2.0) - 1.0
+}
