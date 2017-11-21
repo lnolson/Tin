@@ -33,6 +33,8 @@ public protocol TinRenderProtocol {
     // drawing methods
     func background(red: Double, green: Double, blue: Double)
     
+    func arc(x: Double, y: Double, radius: Double, startAngle: Double, endAngle: Double)
+    
     func ellipse(inRect rect: CGRect)
     func rect(withRect rect: CGRect)
     
@@ -192,6 +194,13 @@ public func background(gray: Double) {
 public func background(color: NSColor) {
     tin.render.background(red: Double(color.redComponent), green: Double(color.greenComponent), blue: Double(color.blueComponent))
 }
+
+
+
+public func arc(x: Double, y: Double, radius: Double, startAngle: Double, endAngle: Double) {
+    tin.render.arc(x: x, y: y, radius: radius, startAngle: startAngle, endAngle: endAngle)
+}
+
 
 // Ellipse method
 

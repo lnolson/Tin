@@ -87,6 +87,32 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     }
     
     
+    public func arc(x: Double, y: Double, radius: Double, startAngle: Double, endAngle: Double) {
+        if let context = NSGraphicsContext.current {
+            let cg = context.cgContext
+            cg.beginPath()
+            let center = CGPoint(x: x, y: y)
+            cg.move(to: center)
+            cg.addArc(center: center, radius: CGFloat(radius), startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle), clockwise: false)
+            cg.closePath()
+            
+            var path: CGPath?
+            if delegate.fill {
+                if delegate.stroke { path = cg.path }
+                cg.fillPath()
+            }
+            if delegate.stroke {
+                if delegate.fill {
+                    if let p = path {
+                        cg.addPath(p)
+                    }
+                }
+                cg.strokePath()
+            }
+        }
+    }
+    
+    
     public func ellipse(x: CGFloat, y: CGFloat, w: CGFloat, h: CGFloat) {
         let r = CGRect(x: x, y: y, width: w, height: h)
         ellipse(inRect: r)

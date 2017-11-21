@@ -85,6 +85,11 @@ class Drawing: TScene {
         pathAddCurve(to: CGPoint(x: 300.0, y: 180.0), control1: CGPoint(x: 230.0, y: 50.0), control2: CGPoint(x: 300.0, y: 100.0))
         pathEnd()
         
+        lineWidth(2)
+        strokeColor(gray: 0.0)
+        fillColor(red: 0.6, green: 0.2, blue: 0.2, alpha: 1.0)
+        arc(x: 50.0, y: tin.height - 200.0, radius: 75, startAngle: -.pi/4, endAngle: .pi/4)
+        
         
         setAlpha(1.0)
         image(image: snowman!, x: 800.0, y: 300.0)
