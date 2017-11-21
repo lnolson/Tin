@@ -10,7 +10,7 @@ import Cocoa
 
 
 
-open class TScene {
+open class TScene: NSObject {
     
     // MARK: - properties
     
@@ -21,7 +21,7 @@ open class TScene {
     // MARK: - initializers
     
     
-    public init() {
+    public override init() {
         
     }
     

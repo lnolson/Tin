@@ -137,6 +137,15 @@ public struct TVector2 {
         return x * x + y * y
     }
     
+    
+    // Angle between two vectors
+    func angleBetween(v: TVector2) -> Double {
+        let alen = magnitude
+        let blen = v.magnitude
+        let a_dot_b = dot(v: v)
+        return acos(a_dot_b / (alen * blen))
+    }
+    
 }
 
 
