@@ -15,7 +15,7 @@ import Cocoa
 
 public class CoreGraphicsRenderer: TinRenderProtocol {
     
-    var cg: CGContext
+    var cg: CGContext!
     var fb: CGContext?
     public var delegate: TinContext
     var currentFillColor: NSColor = NSColor(calibratedRed: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
@@ -29,9 +29,12 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
         fb = nil
         
         let data = NSMutableData()
-        let consumer = CGDataConsumer(data: data)
-        var rect = CGRect(x: 0, y: 0, width: 100, height: 100)
-        cg = CGContext(consumer: consumer!, mediaBox: &rect, nil)!
+        if let consumer = CGDataConsumer(data: data) {
+            var rect = CGRect(x: 0, y: 0, width: 100, height: 100)
+            if let ctx = CGContext(consumer: consumer, mediaBox: &rect, nil) {
+                cg = ctx
+            }
+        }
     }
     
     
@@ -48,7 +51,11 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
             if useLayer && cglayer == nil {
                 fb = context.cgContext
                 cglayer = CGLayer(context.cgContext, size: CGSize(width: frame.width, height: frame.height), auxiliaryInfo: nil)
-                cg = (cglayer?.context)!
+                if let cglayer = cglayer {
+                    if let ctx = cglayer.context {
+                        cg = ctx
+                    }
+                }
                 delegate.reset(width: Double(frame.width), height: Double(frame.height))
             }
             else if useLayer == false {
@@ -60,8 +67,10 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     
     
     public func didFinishUpdate() {
-        if useLayer && cglayer != nil {
-            fb?.draw(cglayer!, at: CGPoint(x: 0, y: 0))
+        if useLayer {
+            if let fb = fb, let cglayer = cglayer {
+                fb.draw(cglayer, at: CGPoint(x: 0, y: 0))
+            }
         }
     }
     
@@ -138,7 +147,11 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
             cg.fillPath()
         }
         if delegate.stroke {
-            if delegate.fill { cg.addPath(path!) }
+            if delegate.fill {
+                if let p = path {
+                    cg.addPath(p)
+                }
+            }
             cg.strokePath()
         }
     }
