@@ -1,0 +1,70 @@
+---
+layout: default
+title: Tin / fillColor
+---
+{% include header.html %}
+
+<p class="text-muted spacer">Global Function</p>
+<h3>fillColor()</h3>
+
+<p class="text-muted spacer">Declaration</p>
+
+<code>
+	<br>
+	func fillColor(red: Double, green: Double, blue: Double, alpha: Double)<br>
+	func fillColor(gray: Double, alpha: Double)<br>
+	func fillColor(gray: Double)<br>
+	func fillColor(color: NSColor)<br>
+	func fillColor() -> NSColor
+</code>
+
+
+
+<p class="text-muted spacer">Parameters</p>
+<table class="table table-bordered">
+	<tr>
+		<td>gray</td>
+		<td>A grayscale value (Double) in the range 0.0 to 1.0.</td>
+	</tr>
+	<tr>
+		<td>red, green, blue</td>
+		<td>red, green, blue color components to define the fill color in the range 0.0 to 1.0.</td>
+	</tr>
+	<tr>
+		<td>alpha</td>
+		<td>A value (Double) in the range 0.0 to 1.0 to define opacity. 1.0 is completely opaque. 0.0 is completely transparent.</td>
+	</tr>
+	<tr>
+		<td>color</td>
+		<td>NSColor object to define the fill color.</td>
+	</tr>
+</table>
+
+<p class="text-muted spacer">Returns</p>
+<p>-</p>
+
+<p class="text-muted spacer">Description</p>
+<p>Sets the color used to fill shapes. Drawing operations that happen after this function (for example, calling rect or ellipse) will use this color to fill the shape.</p>
+
+<p class="text-muted spacer">Examples</p>
+
+{% highlight swift %}
+// Fill to full red
+fillColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+
+// Fill to white with 50% transparency
+fillColor(gray: 1.0, alpha: 0.5)
+
+// Fill to white
+fillColor(gray: 1.0)
+
+
+{% endhighlight %}
+
+<p class="text-muted spacer">Related</p>
+<p>
+	fillDisable()<br>
+	strokeColor()<br>
+	strokeDisable()<br>
+	background()
+</p>
