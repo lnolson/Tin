@@ -1,0 +1,56 @@
+---
+layout: default
+title: Tin / Reference / pathEnd
+---
+{% include header.html %}
+
+<p class="text-muted spacer">Global Function</p>
+<h3>pathEnd()</h3>
+
+<p class="text-muted spacer">Declaration</p>
+
+<code>
+	func pathEnd()<br>
+</code>
+
+
+
+<p class="text-muted spacer">Parameters</p>
+<table class="table table-bordered">
+	<tr>
+		<td>None.</td>
+	</tr>
+</table>
+
+<p class="text-muted spacer">Returns</p>
+<p>-</p>
+
+<p class="text-muted spacer">Description</p>
+<p>Use pathBegin and pathEnd to create a shape using a series of points.</p>
+
+<p class="text-muted spacer">Examples</p>
+
+{% highlight swift %}
+
+// Create a line with 3 points
+pathBegin()
+pathVertex(x: 50.0, y: 50.0)
+pathVertex(x: 125.0, y: 100.0)
+pathVertex(x: 50.0, y: 150.0)
+pathEnd()
+
+// Create a bezier curve
+pathBegin()
+pathVertex(x: 150.0, y: 50.0)
+pathAddCurve(to: CGPoint(x: 300, y: 180), control1: CGPoint(x: 230, y: 50), control2: CGPoint(x: 300, y: 100))
+pathEnd()
+
+{% endhighlight %}
+
+<p class="text-muted spacer">Related</p>
+<p>
+	pathVertex<br>
+	pathAddCurve<br>
+	pathClose<br>
+	pathEnd<br>
+</p>

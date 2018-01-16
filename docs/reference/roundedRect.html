@@ -1,0 +1,52 @@
+---
+layout: default
+title: Tin / Reference / roundedRect
+---
+{% include header.html %}
+
+<p class="text-muted spacer">Global Function</p>
+<h3>roundedRect()</h3>
+
+<p class="text-muted spacer">Declaration</p>
+
+<code>
+	roundedRect(rect: CGRect, xRadius: Double, yRadius: Double)<br>
+</code>
+
+
+
+<p class="text-muted spacer">Parameters</p>
+<table class="table table-bordered">
+	<tr>
+		<td>rect</td>
+		<td>A CGRect structure that defines the position and size of the rectangle.</td>
+	</tr>
+	<tr>
+		<td>xRadius</td>
+		<td>X-axis dimension of the radius of corners.</td>
+	</tr>
+	<tr>
+		<td>yRadius</td>
+		<td>Y-axis dimension of the radius of corners.</td>
+	</tr>
+</table>
+
+<p class="text-muted spacer">Returns</p>
+<p>-</p>
+
+<p class="text-muted spacer">Description</p>
+<p>Draws a rounded rectangle in the view. <a href="https://www.folklore.org/StoryView.py?story=Round_Rects_Are_Everywhere.txt">Round rects are everywhere!</a></p>
+
+<p class="text-muted spacer">Examples</p>
+
+{% highlight swift %}
+
+let myRect = CGRect(x: 50, y: 80, width: 40, height: 40)
+roundedRect(rect: myRect, xRadius: 5, yRadius: 5)
+
+{% endhighlight %}
+
+<p class="text-muted spacer">Related</p>
+<p>
+
+</p>

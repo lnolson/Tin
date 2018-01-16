@@ -1,20 +1,20 @@
 ---
 layout: default
-title: Tin / Reference / fillColor
+title: Tin / Reference / strokeColor
 ---
 {% include header.html %}
 
 <p class="text-muted spacer">Global Function</p>
-<h3>fillColor()</h3>
+<h3>strokeColor()</h3>
 
 <p class="text-muted spacer">Declaration</p>
 
 <code>
-	func fillColor(red: Double, green: Double, blue: Double, alpha: Double)<br>
-	func fillColor(gray: Double, alpha: Double)<br>
-	func fillColor(gray: Double)<br>
-	func fillColor(color: NSColor)<br>
-	func fillColor() -> NSColor
+	func strokeColor(red: Double, green: Double, blue: Double, alpha: Double)<br>
+	func strokeColor(gray: Double, alpha: Double)<br>
+	func strokeColor(gray: Double)<br>
+	func strokeColor(color: NSColor)<br>
+	func strokeColor() -> NSColor
 </code>
 
 
@@ -27,7 +27,7 @@ title: Tin / Reference / fillColor
 	</tr>
 	<tr>
 		<td>red, green, blue</td>
-		<td>red, green, blue color components to define the fill color in the range 0.0 to 1.0.</td>
+		<td>red, green, blue color components to define the stroke color in the range 0.0 to 1.0.</td>
 	</tr>
 	<tr>
 		<td>alpha</td>
@@ -35,7 +35,7 @@ title: Tin / Reference / fillColor
 	</tr>
 	<tr>
 		<td>color</td>
-		<td>NSColor object to define the fill color.</td>
+		<td>NSColor object to define the stroke color.</td>
 	</tr>
 </table>
 
@@ -43,27 +43,27 @@ title: Tin / Reference / fillColor
 <p>-</p>
 
 <p class="text-muted spacer">Description</p>
-<p>Sets the color used to fill shapes. Drawing operations that happen after this function (for example, calling rect or ellipse) will use this color to fill the shape.</p>
+<p>Sets the color used to stroke (outline) shapes. Drawing operations that happen after this function (for example, calling rect or ellipse) will use this color to stroke the shape.</p>
 
 <p class="text-muted spacer">Examples</p>
 
 {% highlight swift %}
-// Fill to full red
-fillColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+// Stroke to full red
+strokeColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
 
-// Fill to white with 50% transparency
-fillColor(gray: 1.0, alpha: 0.5)
+// Stroke to white with 50% transparency
+strokeColor(gray: 1.0, alpha: 0.5)
 
 // Fill to white
-fillColor(gray: 1.0)
+strokeColor(gray: 1.0)
 
 
 {% endhighlight %}
 
 <p class="text-muted spacer">Related</p>
 <p>
-	fillDisable()<br>
-	strokeColor()<br>
 	strokeDisable()<br>
+	fillColor()<br>
+	fillDisable()<br>
 	background()
 </p>

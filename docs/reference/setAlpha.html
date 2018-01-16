@@ -1,0 +1,53 @@
+---
+layout: default
+title: Tin / Reference / setAlpha
+---
+{% include header.html %}
+
+<p class="text-muted spacer">Global Function</p>
+<h3>setAlpha()</h3>
+
+<p class="text-muted spacer">Declaration</p>
+
+<code>
+
+	func setAlpha(_ alpha: Double)
+
+</code>
+
+
+
+<p class="text-muted spacer">Parameters</p>
+<table class="table table-bordered">
+	<tr>
+		<td>alpha</td>
+		<td>An alpha value (Double) in the range 0.0 to 1.0.</td>
+	</tr>
+</table>
+
+<p class="text-muted spacer">Returns</p>
+<p>-</p>
+
+<p class="text-muted spacer">Description</p>
+<p>Set a alpha (transparency) value for drawing operations. A value of 1.0 is opaque, a value of 0.0 is completely transparent.</p>
+
+<p class="text-muted spacer">Examples</p>
+
+{% highlight swift %}
+// Completely opaque (the default)
+setAlpha(1.0)
+
+// 50% transparency
+setAlpha(0.5)
+
+
+{% endhighlight %}
+
+<p class="text-muted spacer">Related</p>
+<p>
+	fillColor()<br>
+	fillDisable()<br>
+	strokeColor()<br>
+	strokeDisable()<br>
+	background()
+</p>

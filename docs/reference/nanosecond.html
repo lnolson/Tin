@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Reference
+title: Tin / Reference / nanosecond
 ---
 {% include header.html %}
 
@@ -23,11 +23,13 @@ title: Reference
 <p>Int</p>
 
 <p class="text-muted spacer">Description</p>
-<p></p>
+<p>Current nanosecond returned by system clock. An Int value in the range 0 to 999999999. A nanosecond is one billionth of a second. eg. 1 / 1,000,000,000 of a second.</p>
 
 <p class="text-muted spacer">Examples</p>
 
 {% highlight swift %}
+
+var nano = nanosecond()
 
 {% endhighlight %}
 

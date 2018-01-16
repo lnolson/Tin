@@ -1,0 +1,56 @@
+---
+layout: default
+title: Tin / Reference / text
+---
+{% include header.html %}
+
+<p class="text-muted spacer">Global Function</p>
+<h3>text()</h3>
+
+<p class="text-muted spacer">Declaration</p>
+
+<code>
+	func text(message: String, font: TFont, x: Double, y: Double)<br>
+</code>
+
+
+
+<p class="text-muted spacer">Parameters</p>
+<table class="table table-bordered">
+	<tr>
+		<td>message</td>
+		<td>A String to be rendered in the view.</td>
+	</tr>
+	<tr>
+		<td>font</td>
+		<td>TFont object that specifies the font and attributes for rendering.</td>
+	</tr>
+	<tr>
+		<td>x</td>
+		<td>x-coordinate of the position of the text.</td>
+	</tr>
+	<tr>
+		<td>y</td>
+		<td>y-coordinate of the position of the text.</td>
+	</tr>
+</table>
+
+<p class="text-muted spacer">Returns</p>
+<p>-</p>
+
+<p class="text-muted spacer">Description</p>
+<p>Render text in the view. The current fillColor determines the text color.</p>
+
+<p class="text-muted spacer">Examples</p>
+
+{% highlight swift %}
+
+let font1 = TFont(fontName: "Futura", ofSize: 80.0)
+text(message: "Hello World", font: font1, x: 200, y: 100)
+
+{% endhighlight %}
+
+<p class="text-muted spacer">Related</p>
+<p>
+
+</p>

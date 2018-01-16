@@ -1,0 +1,49 @@
+---
+layout: default
+title: Tin / Reference / random
+---
+{% include header.html %}
+
+<p class="text-muted spacer">Global Function</p>
+<h3>random()</h3>
+
+<p class="text-muted spacer">Declaration</p>
+<code>
+	func random(max: Double) -> Double<br>
+	func random(min: Double, max: Double) -> Double
+</code>
+
+<p class="text-muted spacer">Parameters</p>
+<table class="table table-bordered">
+	<tr>
+		<td>min</td>
+		<td>Lower limit for random value. In the version without a min argument, the min value is 0.</td>
+	</tr>
+	<tr>
+		<td>max</td>
+		<td>Upper limit for random value. The returned value will always be less than this value.</td>
+	</tr>
+</table>
+
+<p class="text-muted spacer">Returns</p>
+<p>Double</p>
+
+<p class="text-muted spacer">Description</p>
+<p>
+	Generates a random number. The number is generated using the GKLinearCongruentialRandomSource generator in the GameplayKit framework, using the sharedRandom source.
+</p>
+
+<p class="text-muted spacer">Examples</p>
+
+{% highlight swift %}
+
+// n will be a random number in range [0,10)
+let n = random(max: 10.0)
+
+// m will be a random number in range [2,8)
+let m = random(min:2.0, max: 8.0)
+
+{% endhighlight %}
+
+<p class="text-muted spacer">Related</p>
+<p><a href="{{site.github.url}}../remap">remap()</a></p>

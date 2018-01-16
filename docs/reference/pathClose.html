@@ -1,0 +1,52 @@
+---
+layout: default
+title: Tin / Reference / pathClose
+---
+{% include header.html %}
+
+<p class="text-muted spacer">Global Function</p>
+<h3>pathClose()</h3>
+
+<p class="text-muted spacer">Declaration</p>
+
+<code>
+	func pathClose()<br>
+</code>
+
+
+
+<p class="text-muted spacer">Parameters</p>
+<table class="table table-bordered">
+	<tr>
+		<td>None.</td>
+	</tr>
+</table>
+
+<p class="text-muted spacer">Returns</p>
+<p>-</p>
+
+<p class="text-muted spacer">Description</p>
+<p>Use pathBegin and pathEnd to create a shape using a series of points. Use pathClose to make a new segment that connects the current point with the first point on the path.</p>
+
+<p class="text-muted spacer">Examples</p>
+
+{% highlight swift %}
+
+// Create a closed triangle with 3 points and pathClose
+pathBegin()
+pathVertex(x: 50.0, y: 50.0)
+pathVertex(x: 125.0, y: 100.0)
+pathVertex(x: 50.0, y: 150.0)
+pathClose()
+pathEnd()
+
+
+{% endhighlight %}
+
+<p class="text-muted spacer">Related</p>
+<p>
+	pathVertex<br>
+	pathAddCurve<br>
+	pathClose<br>
+	pathEnd<br>
+</p>

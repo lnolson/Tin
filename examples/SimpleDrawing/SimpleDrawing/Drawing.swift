@@ -76,6 +76,7 @@ class Drawing: TScene {
         pathVertex(x: 50.0, y: 50.0)
         pathVertex(x: 125.0, y: 100.0)
         pathVertex(x: 50.0, y: 150.0)
+        pathClose()
         pathEnd()
         
         fillDisable()

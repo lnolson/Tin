@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Reference
+title: Tin / Reference / hour
 ---
 {% include header.html %}
 
@@ -23,11 +23,13 @@ title: Reference
 <p>Int</p>
 
 <p class="text-muted spacer">Description</p>
-<p>Current hour returned by system clock. An integer value 0-23.</p>
+<p>Current hour returned by system clock. The hour value returned is an Int, in the range 0 to 23. For example, during the 4PM hour, the value returned is 16.</p>
 
 <p class="text-muted spacer">Examples</p>
 
 {% highlight swift %}
+
+var h = hour()
 
 {% endhighlight %}
 

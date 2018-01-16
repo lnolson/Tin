@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Reference
+title: Tin / Reference / noise
 ---
 {% include header.html %}
 
@@ -8,7 +8,7 @@ title: Reference
 <h3>noise()</h3>
 
 <p class="text-muted spacer">Declaration</p>
-<code>func noise( x: CGFloat, y: CGFloat, z: CGFloat ) -> CGFloat</code>
+<code>func noise( x: Double, y: Double, z: Double ) -> Double</code>
 
 <p class="text-muted spacer">Parameters</p>
 <table class="table table-bordered">
@@ -27,11 +27,11 @@ title: Reference
 </table>
 
 <p class="text-muted spacer">Returns</p>
-<p>CGFloat</p>
+<p>Double</p>
 
 <p class="text-muted spacer">Description</p>
 <p>
-	Calculate the Perlin noise value at specified location. 
+	Calculate the Perlin noise value at specified location. Perlin noise is a type of gradient noise developed by Ken Perlin. The value returned will be in the range [-1, 1].
 	<br><br>
 	<a href="https://en.wikipedia.org/wiki/Perlin_noise">Perlin noise at wikipedia.</a>
 	<br><br>
@@ -41,6 +41,8 @@ title: Reference
 <p class="text-muted spacer">Examples</p>
 
 {% highlight swift %}
+
+let n = noise(x: 0.5, y: 0.1, z: 0.0)
 
 {% endhighlight %}
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Reference
+title: Tin / Reference / year
 ---
 {% include header.html %}
 
@@ -23,16 +23,17 @@ title: Reference
 <p>Int</p>
 
 <p class="text-muted spacer">Description</p>
-<p>Current year returned by system clock.</p>
+<p>Current year returned by system clock. The year value (eg 2017, 2018, etc) is returned as an Int.</p>
 
 <p class="text-muted spacer">Examples</p>
 
 {% highlight swift %}
 
+var y = year()
+
 {% endhighlight %}
 
 <p class="text-muted spacer">Related</p>
-<p><a href="../year">year()</a></p>
 <p><a href="../month">month()</a></p>
 <p><a href="../day">day()</a></p>
 <p><a href="../hour">hour()</a></p>

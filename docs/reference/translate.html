@@ -1,40 +1,47 @@
 ---
 layout: default
-title: Tin / Reference / mag
+title: Tin / Reference / translate
 ---
 {% include header.html %}
 
 <p class="text-muted spacer">Global Function</p>
-<h3>mag()</h3>
+<h3>translate()</h3>
 
 <p class="text-muted spacer">Declaration</p>
-<code>func mag(x: Double, y: Double) -> Double</code>
+
+<code>
+	func translate(dx: Double, dy: Double)<br>
+</code>
+
+
 
 <p class="text-muted spacer">Parameters</p>
 <table class="table table-bordered">
 	<tr>
-		<td>x</td>
-		<td>First vector component.</td>
+		<td>dx</td>
+		<td>The amount to displace the x-axis of the coordinate system.</td>
 	</tr>
 	<tr>
-		<td>y</td>
-		<td>Second vector component.</td>
+		<td>dy</td>
+		<td>The amount to displace the y-axis of the coordinate system.</td>
 	</tr>
 </table>
 
 <p class="text-muted spacer">Returns</p>
-<p>Double - magnitude value.</p>
+<p>-</p>
 
 <p class="text-muted spacer">Description</p>
-<p>Calculates the magnitude of a (2d) vector. This vector is relative to the origin (0,0).</p>
+<p>Change (move) the orign of the coordinate system.</p>
 
 <p class="text-muted spacer">Examples</p>
 
 {% highlight swift %}
-let x1 = 150.0
-let y1 = 180.0
-let m = mag(x: x1, y: y1)
-// The value of m is 234.3074
+
+
+
 {% endhighlight %}
 
 <p class="text-muted spacer">Related</p>
+<p>
+
+</p>

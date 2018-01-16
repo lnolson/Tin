@@ -1,0 +1,61 @@
+---
+layout: default
+title: Tin / Reference / image
+---
+{% include header.html %}
+
+<p class="text-muted spacer">Global Function</p>
+<h3>image()</h3>
+
+<p class="text-muted spacer">Declaration</p>
+
+<code>
+	func image(image: TImage, x: Double, y: Double)<br>
+	func image(image: TImage, x: Double, y: Double, width: Double, height: Double)
+</code>
+
+
+
+<p class="text-muted spacer">Parameters</p>
+<table class="table table-bordered">
+	<tr>
+		<td>image</td>
+		<td>A TImage object that represents an image, to be rendered in the view.</td>
+	</tr>
+	<tr>
+		<td>x</td>
+		<td>x-coordinate of the position of the image. (lower,left corner)</td>
+	</tr>
+	<tr>
+		<td>y</td>
+		<td>y-coordinate of the position of the image. (lower,left corner)</td>
+	</tr>
+	<tr>
+		<td>width</td>
+		<td>The image will be resized to this width</td>
+	</tr>
+	<tr>
+		<td>height</td>
+		<td>The image will be resized to this width</td>
+	</tr>
+</table>
+
+<p class="text-muted spacer">Returns</p>
+<p>-</p>
+
+<p class="text-muted spacer">Description</p>
+<p>Render an image in the view.</p>
+
+<p class="text-muted spacer">Examples</p>
+
+{% highlight swift %}
+
+let birdImage: TImage! = TImage(contentsOfFileInBundle: "puffin.jpg")
+image(image: birdImage, x: 200, y: 100)
+
+{% endhighlight %}
+
+<p class="text-muted spacer">Related</p>
+<p>
+	TImage
+</p>

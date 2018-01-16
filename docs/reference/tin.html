@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Reference
+title: Tin / Reference / Tin
 ---
 {% include header.html %}
 
@@ -9,7 +9,7 @@ title: Reference
 
 <p class="text-muted spacer">Overview</p>
 <p>
-	The Tin object is the central controller object that holds the current state of the graphics context. Thru this object the application can issue changes to the state - such as translations of the coordinate system, or setting the stroke color, and issue drawing methods.
+	The Tin object is the central controller object that holds the current state of the graphics context. 
 </p>
 
 <p class="text-muted spacer">Properties</p>
@@ -23,27 +23,31 @@ title: Reference
 		<p>Count of update method calls. This value starts at 0 at application launch, and continues to increase by 1 everytime the update method is called.</p>
 	</div>
 	<div class="ref-property">
+		<h5>var height: Double</h5>
+		<p>height of the view.</p>
+	</div>
+	<div class="ref-property">
 		<h5>var midX: CGFloat</h5>
 		<p>Horizontal mid point coordinate for the view.</p>
 	</div>
 	<div class="ref-property">
-		<h5>var midY: CGFloat</h5>
+		<h5>var midY: Double</h5>
 		<p>Vertical mid point coordinate for the view.</p>
 	</div>
 	<div class="ref-property">
-		<h5>var mouseX: CGFloat</h5>
+		<h5>var mouseX: Double</h5>
 		<p>Current x-axis coordinate for the position of the mouse pointer.</p>
 	</div>
 	<div class="ref-property">
-		<h5>var mouseY: CGFloat</h5>
+		<h5>var mouseY: Double</h5>
 		<p>Current y-axis coordinate for the position of the mouse pointer.</p>
 	</div>
 	<div class="ref-property">
-		<h5>var pmouseX: CGFloat</h5>
+		<h5>var pmouseX: Double</h5>
 		<p>X-axis coordinate for the position of the mouse pointer at the previous update frame.</p>
 	</div>
 	<div class="ref-property">
-		<h5>var pmouseY: CGFloat</h5>
+		<h5>var pmouseY: Double</h5>
 		<p>Y-axis coordinate for the position of the mouse pointer at the previous update frame.</p>
 	</div>
 	<div class="ref-property">
@@ -54,121 +58,16 @@ title: Reference
 		<h5>var stroke: Bool</h5>
 		<p>Will drawing operations stroke the outline path of their shape?</p>
 	</div>
+	<div class="ref-property">
+		<h5>var width: Double</h5>
+		<p>width of the view.</p>
+	</div>
 </div>
 
 <p class="text-muted spacer">Creating an Instance</p>
 <p>
 	Your application will use just one instance of a Tin object, and the creation of that object happens automatically, you don't need to call an initializer. Instead, you can reference the global variable <em>tin</em>.
 </p>
-
-<p class="text-muted spacer">Drawing methods</p>
-<div class="ref-property">
-	<h5>func <a href="background">background(red: CGFloat, green: CGFloat, blue: CGFloat)</a></h5>
-	<p>Clear the background (erasing any previous drawing) using the specified color.</p>
-</div>
-<div class="ref-property">
-	<h5>func ellipse(left: CGFloat, bottom: CGFloat, right: CGFloat, top: CGFloat)</h5>
-	<h5>func ellipse(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat)</h5>
-	<h5>func ellipse(origin: CGPoint, size: CGSize)</h5>
-	<h5>func ellipse(centerX: CGFloat, centerY: CGFloat, width: CGFloat, height: CGFloat)</h5>
-	<h5>func ellipse(center: CGPoint, size: CGSize)</h5>
-	<h5>func ellipse(inRect rect: CGRect)</h5>
-	<p>Draw an ellipse. The size and position of the ellipse is specified by a rectangle.</p>
-</div>
-
-<div class="ref-property">
-	<h5>func line(x1: CGFloat, y1: CGFloat, x2: CGFloat, y2: CGFloat)</h5>
-	<p>Draw a line from (x1, y1) to (x2, y2).</p>
-</div>
-<div class="ref-property">
-	<h5>func lineWidth(_ width: CGFloat)</h5>
-	<p>Set stroke/line/path width for subsequent draw operations.</p>
-</div>
-
-<div class="ref-property">
-	<h5>func pathBegin()</h5>
-	<p>Create a new empty path.</p>
-</div>
-<div class="ref-property">
-	<h5>func pathVertex(x: CGFloat, y: CGFloat)</h5>
-	<p>Add a new vertex position to the current path.</p>
-</div>
-<div class="ref-property">
-	<h5>func pathAddCurve(to: CGPoint, control1: CGPoint, control2: CGPoint)</h5>
-	<p>Add a cubic Bézier curve to the current path, with the specified end point and control points.</p>
-</div>
-<div class="ref-property">
-	<h5>func pathClose()</h5>
-	<p>Close the current line, connecting the current point to the first point. Then, stroke/fill the current path.</p>
-</div>
-<div class="ref-property">
-	<h5>func pathEnd()</h5>
-	<p>Stroke/fill the current path.</p>
-</div>
-
-<div class="ref-property">
-	<h5>func rect(left: CGFloat, bottom: CGFloat, right: CGFloat, top: CGFloat)</h5>
-	<h5>func rect(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat)</h5>
-	<h5>func rect(origin: CGPoint, size: CGSize)</h5>
-	<h5>func rect(centerX: CGFloat, centerY: CGFloat, width: CGFloat, height: CGFloat)</h5>
-	<h5>func rect(center: CGPoint, size: CGSize)</h5>
-	<h5>func rect(withRect rect: CGRect)</h5>
-	<p>Draw a rectangle.</p>
-</div>
-
-<div class="ref-property">
-	<h5>func triangle(x1: CGFloat, y1: CGFloat, x2: CGFloat, y2: CGFloat, x3: CGFloat, y3: CGFloat)</h5>
-	<p>Draw a triangle.</p>
-</div>
-
-
-
-<div class="ref-property">
-	<h5>func setStrokeColor(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)</h5>
-	<p>Set the current stroke color.</p>
-</div>
-<div class="ref-property">
-	<h5>func setFillColor(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)</h5>
-	<p>Set the current fill color.</p>
-</div>
-<div class="ref-property">
-	<h5>func strokeColor() -> NSColor</h5>
-	<p>Return the current stroke color as an NSColor object.</p>
-</div>
-<div class="ref-property">
-	<h5>func fillColor() -> NSColor</h5>
-	<p>Return the current fill color as an NSColor object.</p>
-</div>
-
-<div class="ref-property">
-	<h5>func pushState()</h5>
-	<p>Save the current graphics state by pushing a copy onto the graphics state stack.</p>
-</div>
-<div class="ref-property">
-	<h5>func popState()</h5>
-	<p>Set the current graphics state to the most recently pushed state from the graphics state stack.</p>
-</div>
-<div class="ref-property">
-	<h5>func translate(dx: CGFloat, dy: CGFloat)</h5>
-	<p>Change the position of origin of the user coordinate system.</p>
-</div>
-<div class="ref-property">
-	<h5>func rotate(by angle: CGFloat)</h5>
-	<p>Rotate the user coordinate system.</p>
-</div>
-<div class="ref-property">
-	<h5>func scale(by amount: CGFloat)</h5>
-	<p>Change the scale of the user coordinate system.</p>
-</div>
-
-<div class="ref-property">
-	<h5>func image(x: CGFloat, y: CGFloat, image: TImage)</h5>
-	<p>Draw an image using a TImage object.</p>
-</div>
-<div class="ref-property">
-	<h5>func text(message: String, x: CGFloat, y: CGFloat, font: TFont)</h5>
-	<p>Render a string to view.</p>
-</div>
 
 
 

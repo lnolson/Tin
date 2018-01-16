@@ -1,40 +1,43 @@
 ---
 layout: default
-title: Tin / Reference / mag
+title: Tin / Reference / lineWidth
 ---
 {% include header.html %}
 
 <p class="text-muted spacer">Global Function</p>
-<h3>mag()</h3>
+<h3>lineWidth()</h3>
 
 <p class="text-muted spacer">Declaration</p>
-<code>func mag(x: Double, y: Double) -> Double</code>
+
+<code>
+	func lineWidth(_ width: Double)<br>
+</code>
+
+
 
 <p class="text-muted spacer">Parameters</p>
 <table class="table table-bordered">
 	<tr>
-		<td>x</td>
-		<td>First vector component.</td>
-	</tr>
-	<tr>
-		<td>y</td>
-		<td>Second vector component.</td>
+		<td>width</td>
+		<td>Width of stroke operation in pixels.</td>
 	</tr>
 </table>
 
 <p class="text-muted spacer">Returns</p>
-<p>Double - magnitude value.</p>
+<p>-</p>
 
 <p class="text-muted spacer">Description</p>
-<p>Calculates the magnitude of a (2d) vector. This vector is relative to the origin (0,0).</p>
+<p>Sets the width of stroke operations in units of pixels.</p>
 
 <p class="text-muted spacer">Examples</p>
 
 {% highlight swift %}
-let x1 = 150.0
-let y1 = 180.0
-let m = mag(x: x1, y: y1)
-// The value of m is 234.3074
+
+lineWidth(3.0)
+
 {% endhighlight %}
 
 <p class="text-muted spacer">Related</p>
+<p>
+	strokeColor()
+</p>

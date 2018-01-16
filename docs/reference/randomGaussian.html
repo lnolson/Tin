@@ -1,40 +1,39 @@
 ---
 layout: default
-title: Tin / Reference / mag
+title: Tin / Reference / randomGaussian
 ---
 {% include header.html %}
 
 <p class="text-muted spacer">Global Function</p>
-<h3>mag()</h3>
+<h3>random()</h3>
 
 <p class="text-muted spacer">Declaration</p>
-<code>func mag(x: Double, y: Double) -> Double</code>
+<code>
+	func randomGaussian() -> Double
+</code>
 
 <p class="text-muted spacer">Parameters</p>
 <table class="table table-bordered">
-	<tr>
-		<td>x</td>
-		<td>First vector component.</td>
-	</tr>
-	<tr>
-		<td>y</td>
-		<td>Second vector component.</td>
-	</tr>
+	<td>None</td>
 </table>
 
 <p class="text-muted spacer">Returns</p>
-<p>Double - magnitude value.</p>
+<p>Double</p>
 
 <p class="text-muted spacer">Description</p>
-<p>Calculates the magnitude of a (2d) vector. This vector is relative to the origin (0,0).</p>
+<p>
+	Generates a random value in a normal distribution, in the range -1 to 1. The mean value is 0. Deviation is 0.3334. 
+	
+	Uses the GKGaussianDistribution generator in the GameplayKit framework.
+</p>
 
 <p class="text-muted spacer">Examples</p>
 
 {% highlight swift %}
-let x1 = 150.0
-let y1 = 180.0
-let m = mag(x: x1, y: y1)
-// The value of m is 234.3074
+
+let n = randomGaussian
+
 {% endhighlight %}
 
 <p class="text-muted spacer">Related</p>
+<p><a href="{{site.github.url}}../remap">remap()</a></p>
