@@ -28,10 +28,9 @@ open class TView: NSView {
     public var frameRate = 60.0 {
         didSet {
             if frameRate != oldValue {
-                if timer != nil {
-                    timer!.invalidate()
-                }
-                startUpdateTimer()
+                stopUpdates()
+                debug("frameRate: \(frameRate)")
+                startUpdates()
             }
         }
     }
@@ -46,6 +45,7 @@ open class TView: NSView {
     private var statsString = ""
     public var event: NSEvent = NSEvent()
     public var scene: TScene?
+    private var didMoveToWindowComplete = false
     
     
     
@@ -147,6 +147,17 @@ open class TView: NSView {
      Should we do something to notice multiple calls?
      */
     open override func viewDidMoveToWindow() {
+        //debug("viewDidMoveToWindow")
+        if window == nil {
+            debug("window is nil, view was removed from window.")
+            stopUpdates()
+            didMoveToWindowComplete = false
+            return
+        }
+        if didMoveToWindowComplete {
+            debug("didMoveToWindowComplete is true")
+            return
+        }
         //window?.acceptsMouseMovedEvents = true
         wantsLayer = true
         let trackingRect = NSRect(x: 0, y: 0, width: frame.width, height: frame.height)
@@ -160,8 +171,8 @@ open class TView: NSView {
         //setup()
         tin.prepare(frame: frame)
  
-        
-        startUpdateTimer()
+        startUpdates()
+        didMoveToWindowComplete = true
     }
     
     
