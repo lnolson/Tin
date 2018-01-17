@@ -9,7 +9,7 @@ title: Tin / Reference / TView
 
 <p class="text-muted spacer">Overview</p>
 <p>
-	TView is a subclass of NSView. TView provides infrastructure for drawing and handling events. It is expected that you will make a custom subclass of TView, and provide your own implementation of at least the update method, perhaps setup method, and the other event handlers such as mouseDown, keyDown, etc.
+	TView is a subclass of NSView. TView provides infrastructure for drawing and handling events.
 </p>
 
 <p class="text-muted spacer">Properties</p>
@@ -26,10 +26,6 @@ title: Tin / Reference / TView
 		<h5>var showStats: Bool</h5>
 		<p></p>
 	</div>
-	<div class="ref-property">
-		<h5>var event: NSEvent</h5>
-		<p></p>
-	</div>
 </div>
 
 <p class="text-muted spacer">Creating an Instance</p>
@@ -37,22 +33,11 @@ title: Tin / Reference / TView
 </p>
 
 <p class="text-muted spacer">Frame methods</p>
-<div class="ref-property">
-	<h5>func <a href="setup">setup()</a></h5>
-	<p>
-		This method is intended to be overridden in a subclass. Setup is called once, after the view is created, and added to the window. You should not perform any drawing in setup, as the drawing context is not yet ready for rendering. It is a good opportunity for initialization of data or other one time computation. Drawing should happen in the update method.
-	</p>
-</div>
-<div class="ref-property">
-	<h5>func update()</h5>
-	<p>
-		This method is intended to be overriden in a subclass. TView arranges a timer to call update repeatedly with a frequency based on the frameRate property. Put drawing methods here.
-	</p>
-</div>
+
 
 <p class="text-muted spacer">Enable/Disable frame timer</p>
 <div class="ref-property">
-	<h5>func <a href="setup">startUpdates()</a></h5>
+	<h5>func startUpdates()</h5>
 	<p>
 		Restart the timer that calls the update method. Note that the update timer is started automatically for you by default. You only need to call this method if you have previously called the stopUpdates method.
 	</p>
@@ -64,48 +49,6 @@ title: Tin / Reference / TView
 	</p>
 </div>
 
-<p class="text-muted spacer">Event handlers</p>
-<div class="ref-property">
-	<h5>func <a href="keydown">keyDown()</a></h5>
-	<p>
-		Event handler.
-	</p>
-</div>
-
-<div class="ref-property">
-	<h5>func <a href="keyup">keyUp()</a></h5>
-	<p>
-		Event handler.
-	</p>
-</div>
-
-<div class="ref-property">
-	<h5>func <a href="mousedown">mouseDown()</a></h5>
-	<p>
-		Event handler.
-	</p>
-</div>
-
-<div class="ref-property">
-	<h5>func <a href="mousedragged">mouseDragged()</a></h5>
-	<p>
-		Event handler.
-	</p>
-</div>
-
-<div class="ref-property">
-	<h5>func <a href="mousemoved">mouseMoved()</a></h5>
-	<p>
-		Event handler.
-	</p>
-</div>
-
-<div class="ref-property">
-	<h5>func <a href="mouseup">mouseUp()</a></h5>
-	<p>
-		Event handler.
-	</p>
-</div>
 
 
 
