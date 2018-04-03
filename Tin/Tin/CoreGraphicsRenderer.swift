@@ -46,6 +46,23 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     // MARK: - Rendering cycle
     
     
+    func currentCgContext() -> CGContext? {
+        if let context = NSGraphicsContext.current {
+            if useLayer == false {
+                return context.cgContext
+            }
+            else if let cglayer = cglayer {
+                return cglayer.context
+            }
+            else {
+                return nil
+            }
+        }
+        else {
+            return nil
+        }
+    }
+    
     public func prepareForUpdate(frame: NSRect) {
         if let context = NSGraphicsContext.current {
             if useLayer && cglayer == nil {
@@ -305,17 +322,31 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     
     public func image(image: TImage, x: Double, y: Double) {
         
-        let rect = CGRect(x: x, y: y, width: image.width, height: image.height)
-        if let cgimage = image.cgimage {
-            cg.draw(cgimage, in: rect)
+        if image.cglayer == nil {
+            // Create the CGLayer object.
+            image.createLayer(cg: cg, width: image.width, height: image.height)
+        }
+        
+        let point = CGPoint(x: x, y: y)
+        if let imageLayer = image.cglayer {
+            cg.draw(imageLayer, at: point)
         }
     }
     
     
     public func image(image: TImage, x: Double, y: Double, width: Double, height: Double) {
+        self.image(image: image, x: x, y: y, width: width, height: height, resize: false)
+    }
+    
+    
+    public func image(image: TImage, x: Double, y: Double, width: Double, height: Double, resize: Bool = false) {
+        if image.cglayer == nil || resize == true {
+            image.createLayer(cg: cg, width: width, height: height)
+        }
+    
         let rect = CGRect(x: x, y: y, width: width, height: height)
-        if let cgimage = image.cgimage {
-            cg.draw(cgimage, in: rect)
+        if let imageLayer = image.cglayer {
+            cg.draw(imageLayer, in: rect)
         }
     }
     

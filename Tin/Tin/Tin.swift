@@ -70,6 +70,7 @@ public protocol TinRenderProtocol {
     // image & text
     func image(image: TImage, x: Double, y: Double)
     func image(image: TImage, x: Double, y: Double, width: Double, height: Double)
+    func image(image: TImage, x: Double, y: Double, width: Double, height: Double, resize: Bool)
     func text(message: String, font: TFont, x: Double, y: Double)
     
 }
@@ -386,6 +387,11 @@ public func image(image: TImage, x: Double, y: Double) {
 
 public func image(image: TImage, x: Double, y: Double, width: Double, height: Double) {
     tin.render.image(image: image, x: x, y: y, width: width, height: height)
+}
+
+
+public func image(image: TImage, x: Double, y: Double, width: Double, height: Double, resize: Bool) {
+    tin.render.image(image: image, x: x, y: y, width: width, height: height, resize: resize)
 }
 
 

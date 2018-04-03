@@ -22,6 +22,7 @@ open class TImage: NSObject {
     public var width: Double
     public var height: Double
     public var pixels: [UInt8]?
+    var cglayer: CGLayer?
     
     
     public init(image: CGImage) {
@@ -63,6 +64,17 @@ open class TImage: NSObject {
         let bundle = Bundle.main
         let imagePath = bundle.resourcePath! + "/" + filename
         self.init(contentsOfFile: imagePath)
+    }
+    
+    
+    // Create a CGLayer, then draw the image into the CGLayer.
+    // The CGLayer will be used to actually draw the image.
+    func createLayer(cg: CGContext, width: Double, height: Double) {
+        cglayer = CGLayer(cg, size: CGSize(width: width, height: height), auxiliaryInfo: nil)
+        let rect = CGRect(x: 0, y: 0, width: width, height: height)
+        if let cgimage = cgimage, let cglayer = cglayer, let ctx = cglayer.context {
+            ctx.draw(cgimage, in: rect)
+        }
     }
     
     
