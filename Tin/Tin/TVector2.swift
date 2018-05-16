@@ -63,7 +63,6 @@ public struct TVector2 {
         n2.normalize()
         let dp = dot(v1: n1, v2: n2)
         let result = acos(dp)
-        //print("dp: \(dp) --- result: \(result)")
         return result
     }
     
@@ -135,15 +134,6 @@ public struct TVector2 {
     // Squared magnitude
     public func magSq() -> Double {
         return x * x + y * y
-    }
-    
-    
-    // Angle between two vectors
-    func angleBetween(v: TVector2) -> Double {
-        let alen = magnitude
-        let blen = v.magnitude
-        let a_dot_b = dot(v: v)
-        return acos(a_dot_b / (alen * blen))
     }
     
 }
