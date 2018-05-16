@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:examples/ImageBench/ImageBench.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:playgrounds/ScratchCalculation.playground">
    </FileRef>
    <FileRef
