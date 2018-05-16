@@ -135,12 +135,6 @@ public func mag(x: Double, y: Double) -> Double {
  */
 public func remap(value: Double, start1: Double, stop1: Double, start2: Double, stop2: Double) -> Double {
     let result = start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1))
-    if result.isNaN {
-        print("NaN (not a number)")
-    }
-    else if result.isInfinite {
-        print("Infinity")
-    }
     return result
 }
 

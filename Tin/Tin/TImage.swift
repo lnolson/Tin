@@ -48,6 +48,9 @@ open class TImage: NSObject {
                 else if imageExtension == "png" {
                     image = CGImage(pngDataProviderSource: dataProvider, decode: nil, shouldInterpolate: false, intent: .defaultIntent)
                 }
+                else {
+                    print("Image file must be in jpeg or png format.")
+                }
             }
         }
         
@@ -62,8 +65,13 @@ open class TImage: NSObject {
     
     public convenience init?(contentsOfFileInBundle filename: String) {
         let bundle = Bundle.main
-        let imagePath = bundle.resourcePath! + "/" + filename
-        self.init(contentsOfFile: imagePath)
+        if let bundleResourcePath = bundle.resourcePath {
+            let imagePath = bundleResourcePath + "/" + filename
+            self.init(contentsOfFile: imagePath)
+        }
+        else {
+            self.init(contentsOfFile: filename)
+        }
     }
     
     
@@ -85,20 +93,15 @@ open class TImage: NSObject {
             let dataSize = w * h * 4
             var pixelData = [UInt8](repeating: 0, count: dataSize)
             let colorSpace = CGColorSpaceCreateDeviceRGB()
-            let context = CGContext(data: &pixelData,
+            if let context = CGContext(data: &pixelData,
                                     width: w,
                                     height: h,
                                     bitsPerComponent: 8,
                                     bytesPerRow: 4 * w,
                                     space: colorSpace,
-                                    bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue)
-            
-            // The context must be flipped in the Y axis.
-            // Otherwise, origin will be top, left.
-            //context?.translateBy(x: 0, y: height)
-            //context?.scaleBy(x: 1.0, y: -1.0)
-            
-            context?.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
+                                    bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue) {
+                context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
+            }
             pixels = pixelData
         }
     }
@@ -114,17 +117,14 @@ open class TImage: NSObject {
         let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
         let bitmapInfo: CGBitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
         let data = NSData(bytes: &(pixels!), length: bitmapCount)
-        let providerRef: CGDataProvider? = CGDataProvider(data: data)
-        if providerRef == nil {
+        guard let providerRef = CGDataProvider(data: data) else {
             debug("Error in savePixels: CGDataProvider returned nil")
             return
         }
         
         let w = Int(width)
         let h = Int(height)
-        let newimage: CGImage? = CGImage(width: w, height: h, bitsPerComponent: 8, bitsPerPixel: 32, bytesPerRow: w * elementLength, space: rgbColorSpace, bitmapInfo: bitmapInfo, provider: providerRef!, decode: nil, shouldInterpolate: true, intent: intent)
-        
-        if newimage == nil {
+        guard let newimage = CGImage(width: w, height: h, bitsPerComponent: 8, bitsPerPixel: 32, bytesPerRow: w * elementLength, space: rgbColorSpace, bitmapInfo: bitmapInfo, provider: providerRef, decode: nil, shouldInterpolate: true, intent: intent) else {
             debug("Error in savePixels: CGImage returned nil")
             return
         }
@@ -145,9 +145,14 @@ open class TImage: NSObject {
         if x < 0 || x >= Int(width) || y < 0 || y >= Int(height) {
             return TPixel(red: 0, green: 0, blue: 0, alpha: 0)
         }
-        let flippedY = (y * -1) + Int(height) - 1
-        let loc = Int(width) * 4 * flippedY + (x * 4)
-        return TPixel(red: pixels![loc], green: pixels![loc+1], blue: pixels![loc+2], alpha: pixels![loc+3])
+        if let pixels = pixels {
+            let flippedY = (y * -1) + Int(height) - 1
+            let loc = Int(width) * 4 * flippedY + (x * 4)
+            return TPixel(red: pixels[loc], green: pixels[loc+1], blue: pixels[loc+2], alpha: pixels[loc+3])
+        }
+        else {
+            return TPixel(red: 0, green: 0, blue: 0, alpha: 0)
+        }
     }
     
     
@@ -163,11 +168,13 @@ open class TImage: NSObject {
         if pixels == nil {
             return
         }
-        let flippedY = (y * -1) + Int(height) - 1
-        let loc = Int(width) * 4 * flippedY + (x * 4)
-        pixels![loc] = pixel.red
-        pixels![loc+1] = pixel.green
-        pixels![loc+2] = pixel.blue
-        pixels![loc+3] = pixel.alpha
+        if var pixels = pixels {
+            let flippedY = (y * -1) + Int(height) - 1
+            let loc = Int(width) * 4 * flippedY + (x * 4)
+            pixels[loc] = pixel.red
+            pixels[loc+1] = pixel.green
+            pixels[loc+2] = pixel.blue
+            pixels[loc+3] = pixel.alpha
+        }
     }
 }
