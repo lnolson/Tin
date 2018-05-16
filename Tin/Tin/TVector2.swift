@@ -95,6 +95,8 @@ public struct TVector2 {
         return sqrt( dx * dx + dy * dy )
     }
     
+    // TODO: why have this instance method?
+    // is this used in a NOC example? If not, remove it.
     public func dot(v: TVector2) -> Double {
         return x * v.x + y * v.y
     }
@@ -141,6 +143,14 @@ public struct TVector2 {
 
 // MARK: - Operators
 
+public prefix func +(left: TVector2) -> TVector2 {
+    return left
+}
+
+public prefix func -(left: TVector2) -> TVector2 {
+    return TVector2(x: -left.x, y: -left.y)
+}
+
 public func +(left: TVector2, right: TVector2) -> TVector2 {
     let x = left.x + right.x
     let y = left.y + right.y
@@ -153,9 +163,28 @@ public func -(left: TVector2, right: TVector2) -> TVector2 {
     return TVector2(x: x, y: y)
 }
 
+public func *(left: TVector2, right: TVector2) -> TVector2 {
+    let x = left.x * right.x
+    let y = left.y * right.y
+    return TVector2(x: x, y: y)
+}
+
 public func *(left: TVector2, right: Double) -> TVector2 {
     let x = left.x * right
     let y = left.y * right
+    return TVector2(x: x, y: y)
+}
+
+public func *(left: Double, right: TVector2) -> TVector2 {
+    let x = left * right.x
+    let y = left * right.y
+    return TVector2(x: x, y: y)
+}
+
+
+public func /(left: TVector2, right: TVector2) -> TVector2 {
+    let x = left.x / right.x
+    let y = left.y / right.y
     return TVector2(x: x, y: y)
 }
 
@@ -164,3 +193,29 @@ public func /(left: TVector2, right: Double) -> TVector2 {
     let y = left.y / right
     return TVector2(x: x, y: y)
 }
+
+
+public func +=(left: inout TVector2, right: TVector2) {
+    left = left + right
+}
+
+public func -=(left: inout TVector2, right: TVector2) {
+    left = left - right
+}
+
+public func *=(left: inout TVector2, right: TVector2) {
+    left = left * right
+}
+
+public func /=(left: inout TVector2, right: TVector2) {
+    left = left / right
+}
+
+public func *=(left: inout TVector2, right: Double) {
+    left = left * right
+}
+
+public func /=(left: inout TVector2, right: Double) {
+    left = left / right
+}
+
