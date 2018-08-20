@@ -51,15 +51,15 @@ open class TFont {
     
     
     
-    func makeAttributes() -> [NSAttributedStringKey : Any] {
+    func makeAttributes() -> [NSAttributedString.Key : Any] {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = paragraphAlignment
         paragraphStyle.lineHeightMultiple = lineHeightMultiple
-        let attributes: [NSAttributedStringKey : Any] = [
-            NSAttributedStringKey.foregroundColor: fillColor(),
-            NSAttributedStringKey.paragraphStyle: paragraphStyle,
-            NSAttributedStringKey.kern: kerning,
-            NSAttributedStringKey.font: font
+        let attributes: [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.foregroundColor: fillColor(),
+            NSAttributedString.Key.paragraphStyle: paragraphStyle,
+            NSAttributedString.Key.kern: kerning,
+            NSAttributedString.Key.font: font
         ]
         return attributes
     }

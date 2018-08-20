@@ -31,6 +31,12 @@ class Drawing: TScene {
         snowman = TImage(contentsOfFileInBundle: "Snowman-200.jpg")
         logo = TImage(contentsOfFileInBundle: "Swift.png")
         
+        let v = remap(value: 0.5, start1: 1.0, stop1: 1.0, start2: 0.0, stop2: 100.0)
+        print("v = \(v)")
+        let v1 = TVector2(x: 1, y: 2)
+        let v2 = v1 * 2.0
+        print("v2 = \(v2.x),\(v2.y)")
+        
         font = TFont(fontName: "Helvetica Neue Medium", ofSize: 32.0)
     }
     
