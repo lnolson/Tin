@@ -1,6 +1,6 @@
 //
 //  Calculation.swift
-//  Doublein
+//  Tin
 //
 //  Created by Loren Olson on 10/22/16.
 //  Created at the School of Arts, Media and Engineering,
@@ -10,27 +10,6 @@
 //
 
 //  A few global useful computation functions.
-
-
-/*
-public protocol Mathable: Equatable {
-    
-    static func +(lhs: Self, rhs: Self) -> Self
-    
-    static func -(lhs: Self, rhs: Self) -> Self
-    
-    static func *(lhs: Self, rhs: Self) -> Self
-    
-    static func /(lhs: Self, rhs: Self) -> Self
-    
-}
-
-
-extension Int: Mathable {}
-extension Float: Mathable {}
-extension Double: Mathable {}
-extension CGFloat: Mathable {}
- */
 
 
 

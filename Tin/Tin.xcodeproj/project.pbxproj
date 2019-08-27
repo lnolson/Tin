@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C0D967F22FA9C5A00C1D5CC /* Easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0D967E22FA9C5A00C1D5CC /* Easing.swift */; };
 		5C4C93E41E203C0200503D38 /* Tin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4C93DA1E203C0200503D38 /* Tin.framework */; };
 		5C4C93E91E203C0200503D38 /* TinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4C93E81E203C0200503D38 /* TinTests.swift */; };
 		5C4C93EB1E203C0200503D38 /* Tin.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C4C93DD1E203C0200503D38 /* Tin.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C0D967E22FA9C5A00C1D5CC /* Easing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Easing.swift; sourceTree = "<group>"; };
 		5C32CA1A1E2357DE004D19BC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		5C4C93DA1E203C0200503D38 /* Tin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C4C93DD1E203C0200503D38 /* Tin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tin.h; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				5C4C93F61E203C4F00503D38 /* CoreGraphicsRenderer.swift */,
 				5C4C93FB1E203C4F00503D38 /* Calculation.swift */,
 				5C4C93FC1E203C4F00503D38 /* DateAndTime.swift */,
+				5C0D967E22FA9C5A00C1D5CC /* Easing.swift */,
 				5C4C94871E206B0C00503D38 /* ImprovedNoise.swift */,
 				5C4C93FA1E203C4F00503D38 /* SimpleLog.swift */,
 				5CDF095F1E737346003EEAB8 /* TColor.swift */,
@@ -222,6 +225,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 5C4C93D01E203C0200503D38;
@@ -271,6 +275,7 @@
 				5C6D157E1ECA425800016AC4 /* TController.swift in Sources */,
 				5CDF09601E737346003EEAB8 /* TColor.swift in Sources */,
 				5C4C94031E203C4F00503D38 /* TImage.swift in Sources */,
+				5C0D967F22FA9C5A00C1D5CC /* Easing.swift in Sources */,
 				5C4C94021E203C4F00503D38 /* TView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,12 +412,12 @@
 				INFOPLIST_FILE = Tin/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.asu.ame.Tin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -433,11 +438,11 @@
 				INFOPLIST_FILE = Tin/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.asu.ame.Tin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -449,9 +454,10 @@
 				DEVELOPMENT_TEAM = R75948WD5C;
 				INFOPLIST_FILE = TinTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.asu.ame.TinTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -463,9 +469,10 @@
 				DEVELOPMENT_TEAM = R75948WD5C;
 				INFOPLIST_FILE = TinTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.asu.ame.TinTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

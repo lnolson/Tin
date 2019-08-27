@@ -22,11 +22,11 @@ class Sway: TScene {
         }
         
         
-        for _ in 0...400 {
-            let x = TRandom.next(max: maxX)
-            let y = TRandom.next(min: 40.0, max: 100.0)
-            let w = TRandom.next(min: 16, max: 22)
-            let h = TRandom.next(min: 90, max: 110)
+        for _ in 0...200 {
+            let x = random(max: maxX)
+            let y = random(min: 40.0, max: 100.0)
+            let w = random(min: 16, max: 22)
+            let h = random(min: 90, max: 110)
             let s1 = createPlant(x: x, y: y, w: w, h: h)
             segments.append(s1)
         }
@@ -63,23 +63,17 @@ class Sway: TScene {
     
     
     func createPlant(x: Double, y: Double, w: Double, h: Double) -> Segment {
-        let a = Segment(x: x, y: y, w: w, h: h)
+        let root = Segment(x: x, y: y, w: w, h: h)
         
-        let bw = w * 0.75
-        let bh = h * 0.8
-        let b = Segment(x: 0, y: h, w: bw, h: bh)
-        a.add(child: b)
+        var current = root
+        for _ in 0...6 {
+            let cw = current.w * 0.85
+            let ch = current.h * 0.8
+            let child = Segment(x: 0, y: current.h, w: cw, h: ch)
+            current.add(child: child)
+            current = child
+        }
         
-        let cw = bw * 0.75
-        let ch = bh * 0.8
-        let c = Segment(x: 0, y: bh, w: cw, h: ch)
-        b.add(child: c)
-        
-        let dw = cw * 0.75
-        let dh = ch * 0.8
-        let d = Segment(x: 0, y: ch, w: dw, h: dh)
-        c.add(child: d)
-        
-        return a
+        return root
     }
 }

@@ -99,9 +99,13 @@ class Drawing: TScene {
         
         
         setAlpha(1.0)
-        image(image: snowman!, x: 800.0, y: 300.0)
+        if let snowman = snowman {
+            snowman.draw(x: 800, y: 300)
+        }
         setAlpha(1.0)
-        image(image: logo!, x: 200.0, y: 300.0)
+        if let logo = logo {
+            logo.draw(x: 200, y: 300)
+        }
         
         setAlpha(0.5)
         if let f = font {

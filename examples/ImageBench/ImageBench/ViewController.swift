@@ -39,7 +39,7 @@ class Scene: TScene {
         background(gray: 0.5)
         
         let x = remap(value: tin.mouseX, start1: 0, stop1: tin.width, start2: -500, stop2: 0)
-        image(image: photo, x: x, y: 0)
+        photo.draw(x: x, y: 0)
     }
 }
 

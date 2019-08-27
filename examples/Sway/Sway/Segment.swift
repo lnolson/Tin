@@ -19,6 +19,10 @@ class Segment {
     var freq: Double
     var amp: Double
     var child: Segment?
+    var x1: Double
+    var x2: Double
+    var x3: Double
+    var x4: Double
     
     
     init(x: Double, y: Double, w: Double, h: Double) {
@@ -26,10 +30,14 @@ class Segment {
         self.y = y
         self.w = w
         self.h = h
-        rot = 0.0
-        freq = 0.005
-        amp = 0.01
+        rot = 0
+        freq = random(min: 0.002, max: 0.01)
+        amp = random(min: 0.0010, max: 0.01)
         child = nil
+        x1 = -w / 2.0
+        x2 = x1 + w
+        x3 = x2 * 0.75
+        x4 = x1 * 0.75
     }
     
     
@@ -53,7 +61,8 @@ class Segment {
         translate(dx: x, dy: y)
         rotate(by: rot)
         
-        rect(x: -w / 2.0, y: 0.0, width: w, height: h)
+        triangle(x1: x1, y1: 0, x2: x2, y2: 0, x3: x4, y3: h)
+        triangle(x1: x2, y1: 0, x2: x3, y2: h, x3: x4, y3: h)
         
         if let child = child {
             child.render()

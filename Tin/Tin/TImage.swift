@@ -109,6 +109,7 @@ open class TImage: NSObject {
     
     public func savePixels() {
         if pixels == nil {
+            print("savePixels failed, pixels buffer is nil.")
             return
         }
         let bitmapCount: Int = pixels!.count
@@ -116,9 +117,9 @@ open class TImage: NSObject {
         let intent: CGColorRenderingIntent = CGColorRenderingIntent.defaultIntent
         let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
         let bitmapInfo: CGBitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-        let data = NSData(bytes: &(pixels!), length: bitmapCount)
+        let data = NSData(bytes: pixels, length: bitmapCount)
         guard let providerRef = CGDataProvider(data: data) else {
-            debug("Error in savePixels: CGDataProvider returned nil")
+            print("savePixels failed, CGDataProvider returned nil")
             return
         }
         
@@ -145,14 +146,10 @@ open class TImage: NSObject {
         if x < 0 || x >= Int(width) || y < 0 || y >= Int(height) {
             return TPixel(red: 0, green: 0, blue: 0, alpha: 0)
         }
-        if let pixels = pixels {
-            let flippedY = (y * -1) + Int(height) - 1
-            let loc = Int(width) * 4 * flippedY + (x * 4)
-            return TPixel(red: pixels[loc], green: pixels[loc+1], blue: pixels[loc+2], alpha: pixels[loc+3])
-        }
-        else {
-            return TPixel(red: 0, green: 0, blue: 0, alpha: 0)
-        }
+        
+        let flippedY = (y * -1) + Int(height) - 1
+        let loc = Int(width) * 4 * flippedY + (x * 4)
+        return TPixel(red: pixels![loc], green: pixels![loc+1], blue: pixels![loc+2], alpha: pixels![loc+3])
     }
     
     
@@ -163,18 +160,31 @@ open class TImage: NSObject {
     
     public func set(pixel: TPixel, x: Int, y: Int) {
         if x < 0 || x > Int(width) || y < 0 || y > Int(height) {
+            print("Timage set(pixel:,x:\(x),y:\(y) out of range")
             return
         }
         if pixels == nil {
+            print("TImage set(pixel:,x:,y:), pixels buffer is nil.")
             return
         }
-        if var pixels = pixels {
-            let flippedY = (y * -1) + Int(height) - 1
-            let loc = Int(width) * 4 * flippedY + (x * 4)
-            pixels[loc] = pixel.red
-            pixels[loc+1] = pixel.green
-            pixels[loc+2] = pixel.blue
-            pixels[loc+3] = pixel.alpha
-        }
+        
+        let flippedY = (y * -1) + Int(height) - 1
+        let loc = Int(width) * 4 * flippedY + (x * 4)
+        
+        pixels![loc] = pixel.red
+        pixels![loc+1] = pixel.green
+        pixels![loc+2] = pixel.blue
+        pixels![loc+3] = pixel.alpha
+    }
+    
+    //func image(image: TImage, x: Double, y: Double)
+    //func image(image: TImage, x: Double, y: Double, width: Double, height: Double)
+    public func draw(x: Double, y: Double) {
+        image(image: self, x: x, y: y)
+    }
+    
+    
+    public func draw(x: Double, y: Double, width: Double, height: Double) {
+        image(image: self, x: x, y: y, width: width, height: height)
     }
 }
