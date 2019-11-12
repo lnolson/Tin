@@ -40,7 +40,7 @@ open class TView: NSView {
     
     private var timer: Timer?
     private var totalDrawTime: TimeInterval = 0.0
-    private var infoFont = TFont(fontName: "Courier New", ofSize: 14.0)
+    private var infoFont: TFont = TFont(fontName: "Courier New", ofSize: 14.0)
     public var showStats = true
     private var statsString = ""
     public var event: NSEvent = NSEvent()
@@ -129,7 +129,8 @@ open class TView: NSView {
             }
             if tin.frameCount % Int(frameRate) == 0 {
                 let averageDrawTime = totalDrawTime / TimeInterval(tin.frameCount)
-                statsString = String(format: "Draw %0.4f/%.04f", elapsedTime, averageDrawTime)
+                let bestCaseFPS = 1.0 / elapsedTime
+                statsString = String(format: "Draw %0.4f/%.04f (%.1fFPS)", elapsedTime, averageDrawTime, bestCaseFPS)
             }
             fillColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
             infoFont.horizontalAlignment = .right

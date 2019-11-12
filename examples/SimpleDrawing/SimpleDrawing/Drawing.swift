@@ -38,10 +38,49 @@ class Drawing: TScene {
         print("v2 = \(v2.x),\(v2.y)")
         
         font = TFont(fontName: "Helvetica Neue Medium", ofSize: 32.0)
+        view?.showStats = true
     }
     
     override func update() {
         
+        
+       demoDrawingA()
+        
+    }
+    
+    
+    func demoDrawingB() {
+        background(gray: 0.5)
+        
+        
+        let x = 10.0
+        var y = 10.0
+        var size: CGFloat = 12.0
+        
+        lineWidth(1)
+        while y < tin.height {
+            
+            print("\n*******\nDraw at size \(size)")
+            let font = TFont(fontName: "Optima Regular", ofSize: size)
+            font.horizontalAlignment = .left
+            
+            strokeColor(gray: 0.0)
+            fillColor(gray: 1.0)
+            line(x1: 0, y1: y, x2: x, y2: y)
+            text(message: "Hello world", font: font, x: x, y: y)
+            
+            y = y + Double(size) + 4.0
+            size = size + 10.0
+        }
+        
+        
+        
+        
+        view?.stopUpdates()
+    }
+    
+    
+    func demoDrawingA() {
         background(red: 0.5, green: 0.5, blue: 0.5)
         
         lineWidth(2.0)
@@ -123,9 +162,6 @@ class Drawing: TScene {
             strokeColor(gray: 0.05)
             roundedRect(rect: rect, xRadius: 5.0, yRadius: 5.0)
         }
-        
-        //stopUpdates()
-        
     }
 
 }

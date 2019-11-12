@@ -356,18 +356,23 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
     public func text(message: String, font: TFont, x: Double, y: Double) {
         let attributes = font.makeAttributes()
         let str: NSAttributedString = NSAttributedString(string: message, attributes: attributes)
-        let size = str.size()
         
-        // Using NSAttributedString.draw doesn't work correctly with drawing into a CGLayer?
-        // Instead, below uses CoreText.
-        //str.draw(at: NSPoint(x: x, y: y))
+        let frameSetter = CTFramesetterCreateWithAttributedString(str as CFAttributedString)
         
+        // As of 10.14, can't use NSAttributedString size to get accurate size
+        // I found out if the size isn't big enough, the entire text frame will render
+        // blank. Use CTFramesetterSuggestFrameSizeWithConstraints instead.
+        var fitRange = CFRangeMake(0, 0)
+        let suggested = CTFramesetterSuggestFrameSizeWithConstraints(frameSetter, CFRangeMake(0,str.length), nil, CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), &fitRange)
+        
+        
+        // Adjust the path position based on the alignment attributes.
         var xPos = CGFloat(x)
         if font.horizontalAlignment == .center {
-            xPos = xPos - size.width / 2.0
+            xPos = xPos - suggested.width / 2.0
         }
         else if font.horizontalAlignment == .right {
-            xPos = xPos - size.width
+            xPos = xPos - suggested.width
         }
         
         var yPos = CGFloat(y) + font.font.descender
@@ -375,17 +380,20 @@ public class CoreGraphicsRenderer: TinRenderProtocol {
             yPos = CGFloat(y)
         }
         else if font.verticalAlignment == .center {
-            yPos = CGFloat(y) - size.height / 2.0
+            yPos = CGFloat(y) - suggested.height / 2.0
         }
         else if font.verticalAlignment == .top {
-            yPos = CGFloat(y) - size.height
+            yPos = CGFloat(y) - suggested.height
         }
         
-        let textPath = CGPath(rect: CGRect(x: xPos, y: yPos, width: ceil(size.width), height: ceil(size.height)), transform: nil)
-        let frameSetter = CTFramesetterCreateWithAttributedString(str)
-        let frame = CTFramesetterCreateFrame(frameSetter, CFRange(location: 0, length: str.length), textPath, nil)
-        //cg.setShouldSmoothFonts(false)
+        //print("text: \(xPos) \(yPos) \(ceil(suggested.width)) \(ceil(suggested.height))")
         
+        let textPath = CGPath(rect: CGRect(x: xPos, y: yPos, width: ceil(suggested.width), height: ceil(suggested.height)), transform: nil)
+        
+        let frame = CTFramesetterCreateFrame(frameSetter, CFRange(location: 0, length: str.length), textPath, nil)
+        
+        // Draw using CoreText. This became neccessary to get correct
+        // text rendering in a CGLayer.
         CTFrameDraw(frame, cg)
     }
     
